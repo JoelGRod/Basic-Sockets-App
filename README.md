@@ -1,4 +1,8 @@
-# Basics
+# Basic-Sockets-App
+
+Basic socket config in angular app for demostrative purposes
+
+Library: ngx-socket-io
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.1.
 
