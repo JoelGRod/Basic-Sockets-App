@@ -12,6 +12,8 @@ const config: SocketIoConfig = {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// Modules
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     SocketIoModule.forRoot(config),
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

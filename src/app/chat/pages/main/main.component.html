@@ -1,0 +1,27 @@
+<h1>Chat Main Page</h1>
+<hr>
+<h3>Messages</h3>
+<hr>
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="send_message()" [formGroup]="my_form" autocomplete="false">
+            <div class="mb-3">
+                <label class="form-label">From</label>
+                <input type="text" 
+                       class="form-control"
+                       formControlName="from">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Message</label>
+                <input type="text" 
+                       class="form-control"
+                       formControlName="msg">
+            </div>
+            <button type="submit" 
+                    class="btn btn-primary" 
+                    [disabled]="my_form.invalid">
+                    Send Message
+            </button>
+        </form>
+    </div>
+</div>
