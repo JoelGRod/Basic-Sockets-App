@@ -6,3 +6,10 @@ footer.my-footer {
     width: 100%;
     z-index: 1;
 }
+
+.chat-messages {
+    height: 300px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    overflow-y: scroll;
+}
