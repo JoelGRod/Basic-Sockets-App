@@ -21,7 +21,7 @@ export class MainComponent implements OnInit, OnDestroy {
   
   public messages: any[] = [];
   public my_form: FormGroup = this.fb.group({
-    from: [ 'Joel', [ Validators.required ] ],
+    from: [ {value: 'Joel', disabled: true}, [ Validators.required ] ],
     msg: [ '', [ Validators.required ] ]
   });
 
