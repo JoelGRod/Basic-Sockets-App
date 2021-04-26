@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { JwtValidatorGuard } from './shared/guards/jwt-validator.guard';
 
 const routes: Routes = [
   {
@@ -8,7 +9,9 @@ const routes: Routes = [
   },
   {
     path: 'chat',
-    loadChildren: () => import('./chat/chat.module').then( m => m.ChatModule )
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatModule ),
+    canLoad: [JwtValidatorGuard],
+    canActivate: [JwtValidatorGuard]
   },
   {
     path: '**',

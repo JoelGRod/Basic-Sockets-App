@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   // Sockets
-  ws_url: 'http://localhost:4000'
+  ws_url: 'http://localhost:4000',
+  base_url: 'http://localhost:4000/api'
 };
 
 /*

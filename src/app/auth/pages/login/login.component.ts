@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+// Sweet Alert
+import Swal from 'sweetalert2'
+// Custom validators
 import { FormValidatorsService } from '../../../shared/validators/form-validators.service';
+// Service
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -26,7 +31,8 @@ export class LoginComponent {
   constructor(
       private _fb: FormBuilder,
       private _fvalidators: FormValidatorsService,
-      private auth_service: AuthService
+      private _auth_service: AuthService,
+      private _router: Router
   ) { }
 
   is_field_invalid(field: string): boolean {
@@ -44,10 +50,17 @@ export class LoginComponent {
 
     const { email, password } = this.form.value;
 
-    console.log(email, password);
-
-    this.auth_service.login(email, password);
-
+    this._auth_service.login(email, password)
+      .subscribe(resp => {
+        if(resp === true) {
+          this._router.navigateByUrl('/chat');
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: resp.toString()
+          })
+        }
+      });
   }
-
 }

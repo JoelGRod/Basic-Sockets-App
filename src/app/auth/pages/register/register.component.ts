@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+// Sweet Alert
+import Swal from 'sweetalert2'
+// Custom validators
 import { FormValidatorsService } from 'src/app/shared/validators/form-validators.service';
+// Services
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +23,7 @@ export class RegisterComponent {
       Validators.minLength(3)
     ]],
     email: ['test@test.com', [
-      Validators.required, 
+      Validators.required,
       Validators.pattern(this._fvalidators.email_pattern)
     ]],
     password: ['123456', [
@@ -27,17 +33,19 @@ export class RegisterComponent {
   });
 
   constructor(
-      private _fb: FormBuilder,
-      private _fvalidators: FormValidatorsService
+    private _fb: FormBuilder,
+    private _fvalidators: FormValidatorsService,
+    private _auth_service: AuthService,
+    private _router: Router
   ) { }
 
   is_field_valid(field: string): boolean {
-    return this.form.get(field)?.invalid! 
+    return this.form.get(field)?.invalid!
       && this.form.get(field)?.touched!;
   }
 
   login(): void {
-    if(this.form.invalid) {
+    if (this.form.invalid) {
       this.form.markAllAsTouched();
       return;
     }
@@ -46,8 +54,23 @@ export class RegisterComponent {
 
     const { name, email, password } = this.form.value;
 
-    console.log(name, email, password);
-
+    this._auth_service.register(name, email, password)
+      .subscribe(resp => {
+        if (resp === true) {
+          this._router.navigateByUrl('/auth/login');
+          Swal.fire({
+            icon: 'success',
+            title: '',
+            text: 'User created successfully'
+          })
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: resp.toString()
+          })
+        }
+      });
   }
 
 }
