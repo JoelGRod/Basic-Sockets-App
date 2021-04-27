@@ -18,11 +18,11 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
 
   public form: FormGroup = this._fb.group({
-    email: ['test@test.com', [
+    email: ['', [
       Validators.required, 
       Validators.pattern(this._fvalidators.email_pattern)] 
     ],
-    password: ['123456', [
+    password: ['', [
       Validators.required,
       Validators.minLength(6)
     ] ]

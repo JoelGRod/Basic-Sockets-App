@@ -15,10 +15,9 @@
         placeholder="Enter your Email">
         <span class="focus-input100"></span>
         <span class="form-text text-danger float-end"
-            error-msg
-            [error]="form.get('email')?.errors"
-            [show_error]="is_field_invalid('email')">
-            Email not valid
+                error-msg
+                [error]="form.get('email')?.errors"
+                [show_error]="is_field_invalid('email')">
         </span>
     </div>
 
@@ -30,8 +29,9 @@
         placeholder="Enter your Password">
         <span class="focus-input100"></span>
         <span class="form-text text-danger float-end"
-            *ngIf="is_field_invalid('password')">
-            Password not valid
+                error-msg
+                [error]="form.get('password')?.errors"
+                [show_error]="is_field_invalid('password')">
         </span>
     </div>
     
