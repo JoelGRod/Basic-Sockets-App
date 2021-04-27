@@ -7,6 +7,7 @@ import Swal from 'sweetalert2'
 import { FormValidatorsService } from 'src/app/shared/validators/form-validators.service';
 // Services
 import { AuthService } from '../../services/auth.service';
+import { EmailValidatorService } from 'src/app/shared/validators/email-validator.service';
 
 @Component({
   selector: 'app-register',
@@ -18,15 +19,17 @@ import { AuthService } from '../../services/auth.service';
 export class RegisterComponent {
 
   public form: FormGroup = this._fb.group({
-    name: ['test', [
+    name: ['', [
       Validators.required,
       Validators.minLength(3)
     ]],
-    email: ['test@test.com', [
+    email: ['joel@mail.com', [
       Validators.required,
       Validators.pattern(this._fvalidators.email_pattern)
+    ], [
+      this._email_validator
     ]],
-    password: ['123456', [
+    password: ['', [
       Validators.required,
       Validators.minLength(6)
     ]]
@@ -36,7 +39,8 @@ export class RegisterComponent {
     private _fb: FormBuilder,
     private _fvalidators: FormValidatorsService,
     private _auth_service: AuthService,
-    private _router: Router
+    private _router: Router,
+    private _email_validator: EmailValidatorService
   ) { }
 
   is_field_valid(field: string): boolean {
