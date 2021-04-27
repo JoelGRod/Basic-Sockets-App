@@ -7,11 +7,15 @@ import { ValidationErrors } from '@angular/forms';
 export class ErrMsgDirective {
 
   private _error: string = '';
-  @Input() set error(error: ValidationErrors) {
+  @Input() set error(error: ValidationErrors | null | undefined) {
     if(error?.required) {
       this._el.nativeElement.innerText = "This field is required";
     } else if(error?.pattern) {
       this._el.nativeElement.innerText = "Invalid Input";
+    } else if(error?.email_exists) {
+      this._el.nativeElement.innerText = "Email already exists";
+    } else if(error?.minlength) {
+      this._el.nativeElement.innerText = `Field min length is: ${error?.minlength.requiredLength}`;
     }
   }
 

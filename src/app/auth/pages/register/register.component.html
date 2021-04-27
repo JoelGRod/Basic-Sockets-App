@@ -1,4 +1,6 @@
-<form class="login100-form" (ngSubmit)="login()" [formGroup]="form" autocomplete="off">
+<form class="login100-form" (ngSubmit)="login()" 
+        [formGroup]="form" 
+        autocomplete="off">
 
     <span class="login100-form-title p-b-49">
         New User
@@ -12,7 +14,9 @@
                 placeholder="Enter your Name">
         <span class="focus-input100"></span>
         <span class="form-text text-danger float-end"
-            *ngIf="is_field_valid('name')">
+                error-msg
+                [show_error]="is_field_invalid('name')"
+                [error]="form.get('name')?.errors">
             Name not valid
         </span>
     </div>
@@ -25,7 +29,9 @@
                 placeholder="Enter your Email">
         <span class="focus-input100"></span>
         <span class="form-text text-danger float-end"
-            *ngIf="is_field_valid('email')">
+                error-msg
+                [show_error]="is_field_invalid('email')"
+                [error]="form.get('email')?.errors">
             Email not valid
         </span>
     </div>
@@ -38,7 +44,9 @@
                 placeholder="Enter your Password">
         <span class="focus-input100"></span>
         <span class="form-text text-danger float-end"
-            *ngIf="is_field_valid('password')">
+                error-msg
+                [show_error]="is_field_invalid('password')"
+                [error]="form.get('password')?.errors">
             Password not valid
         </span>
     </div>

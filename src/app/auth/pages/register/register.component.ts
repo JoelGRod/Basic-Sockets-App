@@ -23,7 +23,7 @@ export class RegisterComponent {
       Validators.required,
       Validators.minLength(3)
     ]],
-    email: ['joel@mail.com', [
+    email: ['', [
       Validators.required,
       Validators.pattern(this._fvalidators.email_pattern)
     ], [
@@ -43,7 +43,7 @@ export class RegisterComponent {
     private _email_validator: EmailValidatorService
   ) { }
 
-  is_field_valid(field: string): boolean {
+  is_field_invalid(field: string): boolean {
     return this.form.get(field)?.invalid!
       && this.form.get(field)?.touched!;
   }
