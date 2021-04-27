@@ -2,11 +2,11 @@
         [formGroup]="form" 
         autocomplete="off">
 
-    <span class="login100-form-title p-b-49">
+    <span class="login100-form-title p-b-23">
         New User
     </span>
 
-    <div class="wrap-input100 m-b-23">
+    <div class="wrap-input100 m-b-20">
         <span class="label-input100">Name</span>
         <input class="input100" 
                 type="text" 
@@ -20,7 +20,7 @@
         </span>
     </div>
 
-    <div class="wrap-input100 m-b-23">
+    <div class="wrap-input100 m-b-20">
         <span class="label-input100">Email</span>
         <input class="input100" 
                 type="email" 
@@ -34,7 +34,7 @@
         </span>
     </div>
 
-    <div class="wrap-input100">
+    <div class="wrap-input100 m-b-20">
         <span class="label-input100">Password</span>
         <input class="input100" 
                 type="password" 
@@ -45,6 +45,20 @@
                 error-msg
                 [show_error]="is_field_invalid('password')"
                 [error]="form.get('password')?.errors">
+        </span>
+    </div>
+
+    <div class="wrap-input100">
+        <span class="label-input100">Confirm Password</span>
+        <input class="input100" 
+                type="password" 
+                formControlName="password2" 
+                placeholder="Confirm Password">
+        <span class="focus-input100"></span>
+        <span class="form-text text-danger float-end"
+                error-msg
+                [show_error]="is_field_invalid('password2')"
+                [error]="form.get('password2')?.errors">
         </span>
     </div>
 

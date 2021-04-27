@@ -16,6 +16,8 @@ export class ErrMsgDirective {
       this._el.nativeElement.innerText = "Email already exists";
     } else if(error?.minlength) {
       this._el.nativeElement.innerText = `Field min length is: ${error?.minlength.requiredLength}`;
+    } else if(error?.not_equals) {
+      this._el.nativeElement.innerText = `Passwords do not match`;
     }
   }
 

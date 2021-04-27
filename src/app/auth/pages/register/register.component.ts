@@ -32,7 +32,13 @@ export class RegisterComponent {
     password: ['', [
       Validators.required,
       Validators.minLength(6)
+    ]],
+    password2: ['', [
+      Validators.required,
+      Validators.minLength(6)
     ]]
+  }, {
+    validators: [this._fvalidators.compare_passwords('password', 'password2')]
   });
 
   constructor(
