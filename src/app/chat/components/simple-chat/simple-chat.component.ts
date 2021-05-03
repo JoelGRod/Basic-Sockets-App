@@ -21,23 +21,21 @@ export class SimpleChatComponent implements OnInit, OnDestroy {
   
   public messages: any[] = [];
   public my_form: FormGroup = this.fb.group({
-    from: [ '', [ Validators.required ] ],
     msg: [ '', [ Validators.required ] ]
   });
 
-  constructor( private chat_service: ChatService,
-    private fb: FormBuilder ) { }
+  constructor( 
+        private chat_service: ChatService,
+        private fb: FormBuilder 
+  ) { }
 
   ngOnInit(): void {
-    this.my_form.get('from')!.setValue(this.user_name);
-     // this.chat_service.send_message('Hello from angular');
      this._subscription = this.chat_service.get_messages()
      .pipe(
        tap( msg => this.messages.push(msg) ),
        delay( 100 )
      )
      .subscribe( msg => {
-       // console.log(msg);
        this.chat_msg.nativeElement.scrollTop = this.chat_msg.nativeElement.scrollHeight;
      });
   }
@@ -53,14 +51,9 @@ export class SimpleChatComponent implements OnInit, OnDestroy {
       return;
     }
 
-    let { from, msg } = this.my_form.value;
-    this.my_form.reset({
-      from: this.user_name
-    });
-
+    let { msg } = this.my_form.value;
     msg = msg.trim();
-
-    this.chat_service.send_message(from, msg);
+    this.chat_service.send_message(this.user_name, msg);
   }
 
 }

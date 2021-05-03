@@ -7,6 +7,8 @@ import { AuthResponse, User } from '../interfaces/interfaces';
 // RXJS
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+// Services
+import { WebsocketService } from 'src/app/shared/services/websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +77,7 @@ export class AuthService {
           name: resp.name!,
           email: resp.email!
         };
+        // Guard response
         return resp.ok;
       }),
       catchError( err => {
