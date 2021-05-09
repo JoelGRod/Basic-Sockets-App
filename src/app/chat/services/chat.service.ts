@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { WebsocketService } from 'src/app/shared/services/websocket.service';
-import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -21,7 +19,7 @@ export class ChatService {
     const payload = {
       room_id: '6096b63c0e43d310013a8586',
       token: localStorage.getItem('token'),
-      nickname: 'chatuser1 test',
+      nickname: 'chatuser2 test2',
       msg,
     };
 
@@ -30,12 +28,16 @@ export class ChatService {
     });
   }
 
-  // This not going here
+  get_messages(room_name: string) {
+    return this.ws_service.listen(`${room_name}-new-message`);
+  }
+
+  // TEST PURPOSES
   login_room() {
     const payload = {
       token: localStorage.getItem('token'),
       room_id: '6096b63c0e43d310013a8586',
-      nickname: 'chatuser1 test',
+      nickname: 'chatuser2 test2',
       password: 'no password mod'
     };
 
@@ -47,7 +49,7 @@ export class ChatService {
     const payload = {
       token: localStorage.getItem('token'),
       room_id: '6096b63c0e43d310013a8586',
-      nickname: 'chatuser1 test'
+      nickname: 'chatuser2 test2'
     };
 
     this.ws_service.emit('logout-user', payload, (resp: any) => {
@@ -55,7 +57,4 @@ export class ChatService {
     });
   }
 
-  get_messages(room_name: string) {
-    return this.ws_service.listen(`${room_name}-new-message`);
-  }
 }
