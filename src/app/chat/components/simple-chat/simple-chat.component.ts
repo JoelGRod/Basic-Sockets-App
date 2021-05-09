@@ -17,6 +17,9 @@ export class SimpleChatComponent implements OnInit, OnDestroy {
   @ViewChild('chat_msg') chat_msg!: ElementRef<HTMLElement>;
   @Input() user_name: string = '';
 
+  // TEMP, modify this
+  private room_name: string = 'Room 1 test mod';
+
   private _subscription!: Subscription;
   
   public messages: any[] = [];
@@ -30,7 +33,7 @@ export class SimpleChatComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-     this._subscription = this.chat_service.get_messages()
+     this._subscription = this.chat_service.get_messages(this.room_name)
      .pipe(
        tap( msg => this.messages.push(msg) ),
        delay( 100 )
