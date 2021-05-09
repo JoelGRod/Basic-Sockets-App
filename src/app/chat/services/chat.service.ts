@@ -30,6 +30,31 @@ export class ChatService {
     });
   }
 
+  // This not going here
+  login_room() {
+    const payload = {
+      token: localStorage.getItem('token'),
+      room_id: '6096b63c0e43d310013a8586',
+      nickname: 'chatuser1 test',
+      password: 'no password mod'
+    };
+
+    this.ws_service.emit('login-user', payload, (resp: any) => {
+      console.log(resp);
+    });
+  }
+  logout_room() {
+    const payload = {
+      token: localStorage.getItem('token'),
+      room_id: '6096b63c0e43d310013a8586',
+      nickname: 'chatuser1 test'
+    };
+
+    this.ws_service.emit('logout-user', payload, (resp: any) => {
+      console.log(resp);
+    });
+  }
+
   get_messages(room_name: string) {
     return this.ws_service.listen(`${room_name}-new-message`);
   }

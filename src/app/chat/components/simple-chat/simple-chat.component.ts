@@ -59,4 +59,12 @@ export class SimpleChatComponent implements OnInit, OnDestroy {
     this.chat_service.send_message(this.user_name, msg);
   }
 
+  // TEST PURPOSES
+  login(): void {
+    this.chat_service.login_room();
+  }
+  logout(): void {
+    this.chat_service.logout_room();
+  }
+
 }
