@@ -17,7 +17,6 @@ export class MainComponent implements OnInit {
   constructor( private _auth_service: AuthService ) { }
 
   ngOnInit(): void {
-   
   }
 
 }

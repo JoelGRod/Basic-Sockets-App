@@ -19,7 +19,7 @@ export class ChatService {
     const payload = {
       room_id: '6096b63c0e43d310013a8586',
       token: localStorage.getItem('token'),
-      nickname: 'chatuser2 test2',
+      nickname: 'chatuser1 test',
       msg,
     };
 
@@ -37,7 +37,7 @@ export class ChatService {
     const payload = {
       token: localStorage.getItem('token'),
       room_id: '6096b63c0e43d310013a8586',
-      nickname: 'chatuser2 test2',
+      nickname: 'chatuser1 test',
       password: 'no password mod'
     };
 
@@ -49,7 +49,7 @@ export class ChatService {
     const payload = {
       token: localStorage.getItem('token'),
       room_id: '6096b63c0e43d310013a8586',
-      nickname: 'chatuser2 test2'
+      nickname: 'chatuser1 test'
     };
 
     this.ws_service.emit('logout-user', payload, (resp: any) => {
