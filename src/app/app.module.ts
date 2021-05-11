@@ -14,7 +14,6 @@ const config: SocketIoConfig = {
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // Modules
-import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -26,8 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SocketIoModule.forRoot(config),
     HttpClientModule,
     AppRoutingModule,
-    SharedModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

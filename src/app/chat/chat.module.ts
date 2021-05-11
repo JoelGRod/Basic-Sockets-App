@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChatRoutingModule } from './chat-routing.module';
 // Custom modules (components library)
-import { MaterialModule } from '../material/material.module';
+// import { MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module';
 // Components
 import { MainComponent } from './pages/main/main.component';
 import { MenuComponent } from './pages/menu/menu.component';
@@ -35,7 +36,8 @@ import { SimpleChatComponent } from './components/simple-chat/simple-chat.compon
     CommonModule,
     ChatRoutingModule,
     ReactiveFormsModule,
-    MaterialModule
+    // MaterialModule,
+    SharedModule
   ]
 })
 export class ChatModule { }

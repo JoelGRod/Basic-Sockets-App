@@ -11,10 +11,9 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 })
 export class MainComponent implements OnInit {
 
-  // You get this info from auth service (auth module)
-  public user_name: string = this._auth_service.user.name;
+  // TODO Menu List for main menu input
 
-  constructor( private _auth_service: AuthService ) { }
+  constructor( ) { }
 
   ngOnInit(): void {
   }
