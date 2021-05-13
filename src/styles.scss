@@ -1,17 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 footer.my-footer {
     position: fixed;
     bottom: 0px;
     width: 100%;
     z-index: 1;
-}
-
-.chat-messages {
-    height: 300px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    overflow-y: scroll;
 }
 
 .hidden {
@@ -22,6 +17,3 @@ footer.my-footer {
     flex: 1 1 auto;
 }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
