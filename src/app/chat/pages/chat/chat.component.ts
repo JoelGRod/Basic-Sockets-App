@@ -53,7 +53,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     },
   ];
   username: string = "test";
-  temp_user: string = "test";
+  temp_user: string = "";
 
   public my_form: FormGroup = this._fb.group({
     msg: ['', [ Validators.required ] ]
@@ -90,7 +90,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   changeTemp(nickname: string): void {
     this.temp_user = nickname;
-
+    console.log("ENTER");
   }
 
 }

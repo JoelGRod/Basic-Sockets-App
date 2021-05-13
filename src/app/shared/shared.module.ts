@@ -10,9 +10,11 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
+    // Components
     FooterComponent,
-    ErrMsgDirective,
-    MainMenuComponent
+    MainMenuComponent,
+    // Directives
+    ErrMsgDirective
   ],
   imports: [
     CommonModule,
@@ -20,9 +22,11 @@ import { RouterModule } from '@angular/router';
     RouterModule
   ],
   exports: [
+    // Components
     FooterComponent,
-    ErrMsgDirective,
-    MainMenuComponent
+    MainMenuComponent,
+    // Directives
+    ErrMsgDirective
   ]
 })
 export class SharedModule { }
