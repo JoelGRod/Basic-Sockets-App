@@ -33,20 +33,26 @@
 
     </mat-sidenav>
 
-    <mat-toolbar>
-        <button mat-icon-button 
-                (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
+    <!-- Mat Sidenav external Content -->
 
-        <span class="spacer"></span>
-
-        <span class="mx-3">{{ user_name }}</span>
-
-        <button mat-flat-button>
-            logout
-        </button>
-    </mat-toolbar>
+    <div class="row">
+        <div class="col pe-0">
+            <mat-toolbar class="pe-4">
+                <button mat-icon-button 
+                        (click)="sidenav.toggle()">
+                    <mat-icon>menu</mat-icon>
+                </button>
+        
+                <span class="spacer"></span>
+        
+                <span class="mx-3">{{ user_name }}</span>
+        
+                <button mat-flat-button>
+                    logout
+                </button>
+            </mat-toolbar>
+        </div>
+    </div>
     
     <router-outlet></router-outlet>
     

@@ -4,8 +4,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 @Component({
   selector: 'app-main-menu',
   templateUrl: './main-menu.component.html',
-  styles: [
-  ]
+  styleUrls: ['./main-menu.component.scss']
 })
 export class MainMenuComponent implements OnInit {
 
