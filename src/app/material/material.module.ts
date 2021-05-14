@@ -10,6 +10,9 @@ import {MatListModule} from '@angular/material/list';
 
 import {MatCardModule} from '@angular/material/card';
 
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 @NgModule({
   exports: [
@@ -20,7 +23,10 @@ import {MatCardModule} from '@angular/material/card';
     MatIconModule,
     MatListModule,
     // Chat
-    MatCardModule
+    MatCardModule,
+    // Menu
+    MatButtonToggleModule,
+    MatDividerModule
 
   ]
 })

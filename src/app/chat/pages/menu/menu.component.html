@@ -1,1 +1,41 @@
-<p>menu works!</p>
+<div class="row">
+    <div class="col">
+        <app-chat-list></app-chat-list>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <app-user-list></app-user-list>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+        <mat-toolbar class="menu-toolbar row">
+            
+            <mat-button-toggle-group #group="matButtonToggleGroup" class="button-group">
+
+                <div class="col-4">
+                    <mat-button-toggle value="my-chats" aria-label="Text align left" class="py-3 button-toggle">
+                        <mat-icon>question_answer</mat-icon>
+                    </mat-button-toggle>
+                </div>
+                <div class="col-4">
+                    <mat-button-toggle value="gral-chats" aria-label="Text align center" class="py-3 button-toggle">
+                        <mat-icon>view_headline</mat-icon>
+                    </mat-button-toggle>
+                </div>
+                <div class="col-4">
+                    <mat-button-toggle value="my-profiles" aria-label="Text align right" class="py-3 button-toggle">
+                        <mat-icon>supervisor_account</mat-icon>
+                    </mat-button-toggle>
+                </div>
+
+            </mat-button-toggle-group>
+            
+        </mat-toolbar>
+    </div>
+</div>

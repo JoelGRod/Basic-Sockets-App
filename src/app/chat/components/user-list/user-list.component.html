@@ -1,1 +1,9 @@
-<p>user-list works!</p>
+<mat-list>
+    <div mat-subheader>Profiles</div>
+    <mat-list-item *ngFor="let folder of folders">
+      <mat-icon mat-list-icon>face</mat-icon>
+      <div mat-line>{{folder.name}}</div>
+      <div mat-line> {{folder.updated | date}} </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+</mat-list>
