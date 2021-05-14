@@ -1,5 +1,5 @@
 <mat-list>
-    <div mat-subheader>Profiles</div>
+    <div mat-subheader>{{user_list_type}}</div>
     <mat-list-item *ngFor="let folder of folders">
       <mat-icon mat-list-icon>face</mat-icon>
       <div mat-line>{{folder.name}}</div>

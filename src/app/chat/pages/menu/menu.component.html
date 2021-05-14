@@ -1,13 +1,19 @@
-<div class="row">
+<div class="row" *ngIf="group.value === 'my-chats'">
     <div class="col">
-        <app-chat-list></app-chat-list>
+        <app-chat-list [chat_list_type] = "'My Chats'"></app-chat-list>
+    </div>
+</div>
+
+<div class="row" *ngIf="group.value === 'gral-chats'">
+    <div class="col">
+        <app-chat-list [chat_list_type] = "'General Chats'"></app-chat-list>
     </div>
 </div>
 
 
-<div class="row">
+<div class="row" *ngIf="group.value === 'my-profiles'">
     <div class="col">
-        <app-user-list></app-user-list>
+        <app-user-list [user_list_type] = "'My Profiles'"></app-user-list>
     </div>
 </div>
 
@@ -19,17 +25,17 @@
             <mat-button-toggle-group #group="matButtonToggleGroup" class="button-group">
 
                 <div class="col-4">
-                    <mat-button-toggle value="my-chats" aria-label="Text align left" class="py-3 button-toggle">
+                    <mat-button-toggle checked="true" value="my-chats" aria-label="Show user connected chats" class="py-3 button-toggle">
                         <mat-icon>question_answer</mat-icon>
                     </mat-button-toggle>
                 </div>
                 <div class="col-4">
-                    <mat-button-toggle value="gral-chats" aria-label="Text align center" class="py-3 button-toggle">
+                    <mat-button-toggle value="gral-chats" aria-label="Show all chats" class="py-3 button-toggle">
                         <mat-icon>view_headline</mat-icon>
                     </mat-button-toggle>
                 </div>
                 <div class="col-4">
-                    <mat-button-toggle value="my-profiles" aria-label="Text align right" class="py-3 button-toggle">
+                    <mat-button-toggle value="my-profiles" aria-label="Show user profiles" class="py-3 button-toggle">
                         <mat-icon>supervisor_account</mat-icon>
                     </mat-button-toggle>
                 </div>

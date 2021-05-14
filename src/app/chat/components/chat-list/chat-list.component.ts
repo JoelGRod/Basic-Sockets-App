@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 export interface Section {
   name: string;
@@ -12,6 +12,8 @@ export interface Section {
   ]
 })
 export class ChatListComponent implements OnInit {
+
+  @Input() chat_list_type: string = "";
 
   folders: Section[] = [
     {

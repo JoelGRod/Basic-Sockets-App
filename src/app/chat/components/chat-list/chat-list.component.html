@@ -1,5 +1,5 @@
 <mat-list>
-    <div mat-subheader>Chats</div>
+    <div mat-subheader>{{chat_list_type}}</div>
     <mat-list-item *ngFor="let folder of folders">
       <mat-icon mat-list-icon>question_answer</mat-icon>
       <div mat-line>{{folder.name}}</div>
