@@ -1,9 +1,20 @@
+.flex-container {
+    height: calc(100% - 92px);
+}
+
+.chat-content {
+    flex: 1 1 auto;
+    overflow-y: scroll;
+}
+
+.chat-footer {
+    flex-shrink: 0;
+}
 
 .chat-window {
-    height: 60vh;
+    height: auto;
     border: 1px solid gray;
     border-radius: 5px;
-    overflow-y: scroll;
 }
 
 .avatar {
@@ -39,7 +50,7 @@
 }
 
 @media (min-width: 600px) {
-    .chat-window {
-        height: 68vh;
+    .flex-container {
+        height: calc(100% - 100px);
     }
 }

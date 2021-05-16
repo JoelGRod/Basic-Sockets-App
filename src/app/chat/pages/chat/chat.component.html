@@ -1,56 +1,48 @@
-<div class="row">
-    <div class="col-12 col-md-8">
-        <mat-card>
-            <mat-card-header>
-                <div mat-card-avatar>room img</div>
-                <mat-card-title>Room name</mat-card-title>
-                <mat-card-subtitle>Room desc</mat-card-subtitle>
-            </mat-card-header>
+<mat-card class="flex-container d-flex flex-column">
+    <mat-card-header>
+        <div mat-card-avatar>room img</div>
+        <mat-card-title>Room name</mat-card-title>
+        <mat-card-subtitle>Room desc</mat-card-subtitle>
+    </mat-card-header>
 
-            <mat-card-content>
-                <div class="chat-window" #chat_window>
-                    <mat-list role="list">
-                        <div *ngFor="let msg of messages">
-                            <div *ngIf="temp_user !== msg.nickname" class="avatar"
-                                [ngClass]="{ 'right-avatar': msg.nickname == username}">
-                                <!-- <img class="avatar-img" [src]="msg.img" alt="..."> -->
-                                {{ msg.nickname }}
-                                {{ changeTemp(msg.nickname) }}
-                            </div>
-                            <mat-list-item class="chat-message" role="listitem"
-                                [ngClass]="{ 'right-message': msg.nickname == username}">
-                                {{ msg.msg }}
-                            </mat-list-item>
-                        </div>
-                    </mat-list>
-                </div>
-            </mat-card-content>
-
-            <mat-card-actions>
-                <form (ngSubmit)="send_message()" [formGroup]="my_form" autocomplete="false">
-                    <div class="row gx-2">
-                        <div class="col-10">
-                            <input type="text" class="form-control" formControlName="msg">
-                        </div>
-                        <div class="col-2">
-                            <button type="submit" class="btn btn-primary w-100" [disabled]="my_form.invalid">
-                                Send
-                            </button>
-                        </div>
+    <mat-card-content class="chat-content" #chat_window>
+        <div class="chat-window">
+            <mat-list role="list">
+                <div *ngFor="let msg of messages">
+                    <div *ngIf="temp_user !== msg.nickname" class="avatar"
+                        [ngClass]="{ 'right-avatar': msg.nickname == username}">
+                        <!-- <img class="avatar-img" [src]="msg.img" alt="..."> -->
+                        {{ msg.nickname }}
+                        {{ changeTemp(msg.nickname) }}
                     </div>
-                </form>
-            </mat-card-actions>
-
-            <mat-card-footer>
-                <div class="row">
-                    <div class="col">
-                        <button class="btn btn-primary w-100" routerLink="menu">
-                            Go Back
-                        </button>
-                    </div>
+                    <mat-list-item class="chat-message" role="listitem"
+                        [ngClass]="{ 'right-message': msg.nickname == username}">
+                        {{ msg.msg }}
+                    </mat-list-item>
                 </div>
-            </mat-card-footer>
+            </mat-list>
+        </div>
+    </mat-card-content>
 
-        </mat-card>
-    </div>
-</div>
+    <mat-card-actions>
+        <form (ngSubmit)="send_message()" [formGroup]="my_form" autocomplete="false">
+            <div class="row gx-2">
+                <div class="col-10">
+                    <input type="text" class="form-control" formControlName="msg">
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="my_form.invalid">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </form>
+    </mat-card-actions>
+
+    <mat-card-footer class="chat-footer">
+        <button class="btn btn-primary w-100" routerLink="menu">
+            Go Back
+        </button>
+    </mat-card-footer>
+
+</mat-card>

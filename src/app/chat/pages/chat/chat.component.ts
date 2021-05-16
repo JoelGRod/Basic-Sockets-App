@@ -90,7 +90,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   changeTemp(nickname: string): void {
     this.temp_user = nickname;
-    console.log("ENTER");
   }
 
 }
