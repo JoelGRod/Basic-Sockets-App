@@ -1,47 +1,44 @@
-<div class="row" *ngIf="group.value === 'my-chats'">
-    <div class="col">
-        <app-chat-list [chat_list_type] = "'My Chats'"></app-chat-list>
+<div class="flex-container d-flex flex-column">
+
+  <div class="content">
+    <div *ngIf="view === 'my-chats'">
+        <app-chat-list [chat_list_type]="'My Chats'"></app-chat-list>
     </div>
-</div>
 
-<div class="row" *ngIf="group.value === 'gral-chats'">
-    <div class="col">
-        <app-chat-list [chat_list_type] = "'General Chats'"></app-chat-list>
+    <div *ngIf="view === 'gral-chats'">
+        <app-chat-list [chat_list_type]="'General Chats'"></app-chat-list>
     </div>
-</div>
 
-
-<div class="row" *ngIf="group.value === 'my-profiles'">
-    <div class="col">
-        <app-user-list [user_list_type] = "'My Profiles'"></app-user-list>
+    <div *ngIf="view === 'my-profiles'">
+        <app-user-list [user_list_type]="'My Profiles'"></app-user-list>
     </div>
-</div>
+  </div>
 
+  <div class="footer">
+    <mat-toolbar class="row">
+      <mat-button-toggle-group #group="matButtonToggleGroup" class="button-group" (click)="change_view(group)">
 
-<div class="row">
-    <div class="col">
-        <mat-toolbar class="menu-toolbar row">
-            
-            <mat-button-toggle-group #group="matButtonToggleGroup" class="button-group">
+        <div class="col-4">
+          <mat-button-toggle value="my-chats" aria-label="Show user connected chats"
+            class="py-3 button-toggle">
+            <mat-icon>question_answer</mat-icon>
+          </mat-button-toggle>
+        </div>
 
-                <div class="col-4">
-                    <mat-button-toggle checked="true" value="my-chats" aria-label="Show user connected chats" class="py-3 button-toggle">
-                        <mat-icon>question_answer</mat-icon>
-                    </mat-button-toggle>
-                </div>
-                <div class="col-4">
-                    <mat-button-toggle value="gral-chats" aria-label="Show all chats" class="py-3 button-toggle">
-                        <mat-icon>view_headline</mat-icon>
-                    </mat-button-toggle>
-                </div>
-                <div class="col-4">
-                    <mat-button-toggle value="my-profiles" aria-label="Show user profiles" class="py-3 button-toggle">
-                        <mat-icon>supervisor_account</mat-icon>
-                    </mat-button-toggle>
-                </div>
+        <div class="col-4">
+          <mat-button-toggle value="gral-chats" aria-label="Show all chats" class="py-3 button-toggle">
+            <mat-icon>view_headline</mat-icon>
+          </mat-button-toggle>
+        </div>
 
-            </mat-button-toggle-group>
-            
-        </mat-toolbar>
-    </div>
+        <div class="col-4">
+          <mat-button-toggle value="my-profiles" aria-label="Show user profiles" class="py-3 button-toggle">
+            <mat-icon>supervisor_account</mat-icon>
+          </mat-button-toggle>
+        </div>
+
+      </mat-button-toggle-group>
+    </mat-toolbar>
+  </div>
+
 </div>

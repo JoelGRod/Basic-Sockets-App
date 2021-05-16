@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  public view: string = 'my-chats';
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  public change_view(group: MatButtonToggleGroup): void {
+    this.view = group.value;
+  } 
 
 }
