@@ -4,7 +4,7 @@ import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['../../chat-styles.scss','./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
 

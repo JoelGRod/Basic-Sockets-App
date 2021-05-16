@@ -1,6 +1,3 @@
-.flex-container {
-    height: calc(100% - 92px);
-}
 
 .content {
     flex: 1 1 auto;
@@ -17,11 +14,5 @@
 
 .button-toggle {
     background: none;
-}
-
-@media (min-width: 600px) {
-    .flex-container {
-        height: calc(100% - 100px);
-    }
 }
 

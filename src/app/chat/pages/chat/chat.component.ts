@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss'] 
+  styleUrls: ['../../chat-styles.scss','./chat.component.scss'] 
 })
 export class ChatComponent implements OnInit, AfterViewInit {
 
