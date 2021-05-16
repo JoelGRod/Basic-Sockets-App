@@ -2,19 +2,21 @@
     height: calc(100% - 92px);
 }
 
+.chat-users {
+    min-width: 30%;
+    display: none;
+}
+
 .chat-content {
     flex: 1 1 auto;
+    border: 2px solid gray;
+    border-radius: 5px;
+    height: auto;
     overflow-y: scroll;
 }
 
 .chat-footer {
     flex-shrink: 0;
-}
-
-.chat-window {
-    height: auto;
-    border: 1px solid gray;
-    border-radius: 5px;
 }
 
 .avatar {
@@ -52,5 +54,9 @@
 @media (min-width: 600px) {
     .flex-container {
         height: calc(100% - 100px);
+    }
+
+    .chat-users {
+        display: block;
     }
 }
