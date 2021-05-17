@@ -12,10 +12,6 @@ export class ChatService {
   ) { }
 
   send_message(nickname: string, msg: string) {
-    // const payload = {
-    //   from: from,
-    //   msg: msg
-    // };
     const payload = {
       room_id: '6096b63c0e43d310013a8586',
       token: localStorage.getItem('token'),
@@ -45,6 +41,7 @@ export class ChatService {
       console.log(resp);
     });
   }
+  
   logout_room() {
     const payload = {
       token: localStorage.getItem('token'),
