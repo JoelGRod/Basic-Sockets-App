@@ -15,7 +15,7 @@ const routes: Routes = [
     children: [
       { path: 'menu', component: MenuComponent },
       { path: 'room', component: ChatComponent },
-      { path: 'room-users', component: ChatUsersComponent },
+      { path: 'users', component: ChatUsersComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'room-config', component: ChatConfigComponent },
       { path: '**', redirectTo: 'menu' },

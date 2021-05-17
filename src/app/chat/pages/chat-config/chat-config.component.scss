@@ -3,6 +3,22 @@
     overflow-y: scroll;
 }
 
+// Card
+.profile-card {
+    max-width: 400px;
+}
+  
+.profile-image {
+    background-size: cover;
+}
+
+// Form
+.input-full-width {
+    min-width: 100%;   
+}
+
+// Chat list
+
 .footer {
     flex-shrink: 0;
 }

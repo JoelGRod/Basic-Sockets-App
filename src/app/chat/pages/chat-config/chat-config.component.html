@@ -1,42 +1,66 @@
 <div class="flex-container d-flex flex-column">
-    <div class="bg-danger content">
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
+    <div class="content d-flex flex-row flex-wrap">
+
+        <mat-card class="profile-card m-md-3">
+            <mat-card-header>
+                <div mat-card-avatar class="profile-image pe-3">
+                    <img mat-card-image
+                        src="https://staticfilesprod.musicworldcupdevelopment.com/backend/images/profile-no-img.png?v=1.0.40"
+                        alt="Profile Image">
+                </div>
+                <mat-card-title>Room name</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image
+                src="https://staticfilesprod.musicworldcupdevelopment.com/backend/images/profile-no-img.png?v=1.0.40"
+                alt="Profile Image">
+            <mat-card-content>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, ducimus dolor, repellat aspernatur
+                    modi asperiores, molestias quaerat similique provident maiores deserunt corrupti! Error tempora
+                    minus earum consectetur excepturi. Illo, perspiciatis?
+                </p>
+            </mat-card-content>
+        </mat-card>
+
+
+        <div class="p-3 pe-md-5 flex-grow-1">
+            <form class="pb-2">
+                <p>
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Room name</mat-label>
+                        <input matInput placeholder="The Room name goes here">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Room password goes here">
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput placeholder="Describe the chat room"></textarea>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field class="input-full-width">
+                        <mat-label>Photo URL</mat-label>
+                        <input matInput placeholder="https://some-domain.com/...">
+                    </mat-form-field>
+                </p>
+            </form>
+
+            <mat-divider class="mx-2 pb-4"></mat-divider>
+
+            <h3>Connected Profiles:</h3>
+            <mat-list role="list">
+                <mat-list-item role="listitem">Chat room 1: things</mat-list-item>
+                <mat-list-item role="listitem">Chat room 1: things</mat-list-item>
+                <mat-list-item role="listitem">Chat room 1: things</mat-list-item>
+            </mat-list>
+
+        </div>
     </div>
 
     <div class="bg-success footer py-3">

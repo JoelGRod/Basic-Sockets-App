@@ -9,6 +9,7 @@ export interface Section {
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styles: [
+    
   ]
 })
 export class UserListComponent implements OnInit {
@@ -17,26 +18,16 @@ export class UserListComponent implements OnInit {
 
   folders: Section[] = [
     {
-      name: 'Photos',
+      name: 'User 1',
       updated: new Date('1/1/16'),
     },
     {
-      name: 'Recipes',
+      name: 'User 2',
       updated: new Date('1/17/16'),
     },
     {
-      name: 'Work',
+      name: 'User 3',
       updated: new Date('1/28/16'),
-    }
-  ];
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
     }
   ];
 

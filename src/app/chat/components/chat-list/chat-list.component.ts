@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 export interface Section {
-  name: string;
+  room: string;
   updated: Date;
 }
 
@@ -9,34 +9,25 @@ export interface Section {
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
   styles: [
+
   ]
 })
 export class ChatListComponent implements OnInit {
 
   @Input() chat_list_type: string = "";
 
-  folders: Section[] = [
+  rooms: Section[] = [
     {
-      name: 'Photos',
+      room: 'Room 1',
       updated: new Date('1/1/16'),
     },
     {
-      name: 'Recipes',
+      room: 'Room 2',
       updated: new Date('1/17/16'),
     },
     {
-      name: 'Work',
+      room: 'Room 3',
       updated: new Date('1/28/16'),
-    }
-  ];
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
     }
   ];
 
