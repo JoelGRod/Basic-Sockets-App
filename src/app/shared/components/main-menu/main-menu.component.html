@@ -10,22 +10,12 @@
         </mat-toolbar>
 
         <mat-nav-list>
-            <a mat-list-item routerLink="./chat/menu" (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon>label</mat-icon>
-                <span>Chat</span>
+            <a *ngFor="let item of menu_items" mat-list-item 
+                [routerLink]="item.route" 
+                (click)="sidenav.toggle()">
+                    <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+                    <span>{{item.name}}</span>
             </a>
-            <!-- <a mat-list-item 
-                routerLink="./add" 
-                (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon>add</mat-icon>
-                <span>Add</span>
-            </a> -->
-            <!-- <a mat-list-item 
-                routerLink="./search" 
-                (click)="sidenav.toggle()">
-                <mat-icon mat-list-icon>search</mat-icon>
-                <span>Search</span>
-            </a> -->
         </mat-nav-list>
 
     </mat-sidenav>
@@ -42,7 +32,7 @@
 
         <span class="mx-3">{{ user_name }}</span>
 
-        <button mat-flat-button>
+        <button mat-flat-button (click)="logout()">
             logout
         </button>
 

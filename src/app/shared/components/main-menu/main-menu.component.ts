@@ -1,23 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/auth/services/auth.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+// Interfaces
+import { MenuItem } from '../../interfaces/shared-interfaces';
 
 @Component({
   selector: 'app-main-menu',
   templateUrl: './main-menu.component.html',
   styleUrls: ['./main-menu.component.scss']
 })
-export class MainMenuComponent implements OnInit {
+export class MainMenuComponent {
 
-  // You get this info from auth service (auth module)
-  public user_name: string = this._auth_service.user.name;
+  @Input() user_name: string = "";
+  @Input() menu_items: MenuItem[] = [
+    {
+      route: './chat/menu',
+      icon: 'label',
+      name: 'Chat'
+    }
+  ];
+  @Output() onLogout: EventEmitter<string> = new EventEmitter<string>();
 
-  // TODO INPUT for menu items array
+  constructor( ) {  }
 
-  constructor( private _auth_service: AuthService ) {  }
-
-  ngOnInit(): void {
+  public logout() {
+    this.onLogout.emit('logout');
   }
-
-  // TODO logout()
 
 }

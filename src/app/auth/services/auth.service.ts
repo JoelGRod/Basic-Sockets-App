@@ -7,8 +7,6 @@ import { AuthResponse, User } from '../interfaces/interfaces';
 // RXJS
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-// Services
-import { WebsocketService } from 'src/app/shared/services/websocket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -84,5 +82,16 @@ export class AuthService {
         return of(false);
       })
     );    
+  }
+
+  public logout(): void {
+    this._user = {
+      uid: '',
+      name: '',
+      email: ''
+    };
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('name');
   }
 }

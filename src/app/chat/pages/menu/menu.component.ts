@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
+import { ChatService } from '../../services/chat.service';
 
 @Component({
   selector: 'app-menu',
@@ -10,7 +11,7 @@ export class MenuComponent implements OnInit {
 
   public view: string = 'my-chats';
 
-  constructor() { }
+  constructor( private _chat_service: ChatService ) { }
 
   ngOnInit(): void {
   }

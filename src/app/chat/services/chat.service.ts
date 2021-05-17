@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../auth/services/auth.service';
 import { WebsocketService } from 'src/app/shared/services/websocket.service';
+// Environments
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -7,8 +11,12 @@ import { WebsocketService } from 'src/app/shared/services/websocket.service';
 })
 export class ChatService {
 
+  private _base_url: string = environment.base_url;
+
   constructor(
-    private ws_service: WebsocketService // This means socket-server connection
+    private ws_service: WebsocketService, // This means socket-server connection
+    private _http: HttpClient,
+    private _auth_service: AuthService
   ) { }
 
   send_message(nickname: string, msg: string) {
@@ -41,7 +49,7 @@ export class ChatService {
       console.log(resp);
     });
   }
-  
+
   logout_room() {
     const payload = {
       token: localStorage.getItem('token'),

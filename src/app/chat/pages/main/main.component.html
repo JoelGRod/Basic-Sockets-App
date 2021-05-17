@@ -1,3 +1,7 @@
-<app-main-menu></app-main-menu>
+<app-main-menu [user_name]="user_name"
+                [menu_items]="menu_items"
+                (onLogout)="logout()">
+
+</app-main-menu>
 
 <app-footer></app-footer>
