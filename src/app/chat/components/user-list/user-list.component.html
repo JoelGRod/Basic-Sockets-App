@@ -1,11 +1,21 @@
 <mat-list>
-    <div mat-subheader>{{user_list_type}}</div>
-    <mat-list-item *ngFor="let folder of folders"
-      routerLink="/chat/profile"
-      class="app-link">
-      <mat-icon mat-list-icon>face</mat-icon>
-      <div mat-line>{{folder.name}}</div>
-      <div mat-line> {{folder.updated | date}} </div>
-    </mat-list-item>
-    <mat-divider></mat-divider>
+  <div mat-subheader>{{user_list_type}}</div>
+  <mat-list-item *ngFor="let folder of folders">
+    <mat-icon mat-list-icon>face</mat-icon>
+    <div mat-line>{{folder.name}}</div>
+    <div mat-line> {{folder.updated | date}} </div>
+
+    <!-- Action buttons -->
+    <button mat-mini-fab aria-label="Example icon button with a vertical three dot icon" 
+            color="primary"
+            class="mx-2 mx-md-4" 
+            routerLink="/chat/profile">
+      <mat-icon>view_list</mat-icon>
+    </button>
+    <button mat-mini-fab aria-label="Example icon button with a vertical three dot icon" 
+            color="warn">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-list-item>
+  <mat-divider></mat-divider>
 </mat-list>
