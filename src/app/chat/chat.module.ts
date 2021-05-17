@@ -14,8 +14,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ChatConfigComponent } from './pages/chat-config/chat-config.component';
 import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
-import { ChatTestComponent } from './components/chat-test/chat-test.component'; // Delete
-import { SimpleChatComponent } from './components/simple-chat/simple-chat.component'; // Delete
 
 
 @NgModule({
@@ -27,10 +25,7 @@ import { SimpleChatComponent } from './components/simple-chat/simple-chat.compon
     ProfileComponent,
     ChatConfigComponent,
     ChatListComponent,
-    UserListComponent,
-    // Delete
-    ChatTestComponent,
-    SimpleChatComponent
+    UserListComponent
   ],
   imports: [
     CommonModule,
