@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-chat-users',
   templateUrl: './chat-users.component.html',
-  styles: [
-  ]
+  styleUrls: ['../../chat-styles.scss', './chat-users.component.scss']
 })
 export class ChatUsersComponent implements OnInit {
 

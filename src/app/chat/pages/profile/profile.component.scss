@@ -1,8 +1,26 @@
+// Content (Item 1)
 .content {
     flex: 1 1 auto;
     overflow-y: scroll;
 }
 
+// Card
+.profile-card {
+    max-width: 400px;
+}
+  
+.profile-image {
+    background-size: cover;
+}
+
+// Form
+.input-full-width {
+    min-width: 100%;   
+}
+
+// Chat list
+
+// Footer (item 2)
 .footer {
     flex-shrink: 0;
 }
