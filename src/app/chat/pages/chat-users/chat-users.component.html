@@ -2,11 +2,10 @@
     <div class="content p-3">
         <h2>Room name</h2>
         <mat-divider></mat-divider>
-        <mat-list role="list">
-            <mat-list-item class="profile-link" role="listitem" routerLink="/chat/profile">User profile</mat-list-item>
-            <mat-list-item class="profile-link" role="listitem" routerLink="/chat/profile">User profile</mat-list-item>
-            <mat-list-item class="profile-link" role="listitem" routerLink="/chat/profile">User profile</mat-list-item>
-        </mat-list>
+        <app-user-list 
+          [user_list_type] = "'Room users'"
+          [profiles] = "room_users">
+        </app-user-list>
     </div>
 
     <div class="footer">

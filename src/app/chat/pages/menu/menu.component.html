@@ -19,7 +19,8 @@
     <div *ngIf="view === 'my-profiles'">
         <app-user-list 
           [user_list_type] = "'My Profiles'"
-          [profiles] = "user_profiles">
+          [profiles] = "user_profiles"
+          [is_general] = "false">
         </app-user-list>
     </div>
   </div>

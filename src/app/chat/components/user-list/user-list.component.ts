@@ -17,6 +17,7 @@ export class UserListComponent implements OnInit {
 
   @Input() user_list_type: string = "";
   @Input() profiles: Profile[] = [];
+  @Input() is_general: boolean = true;
 
   constructor() { }
 
