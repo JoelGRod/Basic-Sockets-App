@@ -1,9 +1,9 @@
 <mat-list>
   <div mat-subheader>{{user_list_type}}</div>
-  <mat-list-item *ngFor="let folder of folders">
+  <mat-list-item *ngFor="let profile of profiles">
     <mat-icon mat-list-icon>face</mat-icon>
-    <div mat-line>{{folder.name}}</div>
-    <div mat-line> {{folder.updated | date}} </div>
+    <div mat-line>{{profile.nickname}}</div>
+    <div mat-line> {{profile.created_at | date}} </div>
 
     <!-- Action buttons -->
     <button mat-mini-fab aria-label="Example icon button with a vertical three dot icon" 

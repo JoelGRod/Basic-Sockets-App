@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../auth/services/auth.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { WebsocketService } from 'src/app/shared/services/websocket.service';
 // Environments
 import { environment } from 'src/environments/environment';
+// Interfaces
+import { Room } from 'src/app/auth/interfaces/interfaces';
+import { ChatResponse } from '../interfaces/chat-interface';
 
 
 @Injectable({
@@ -13,12 +15,17 @@ export class ChatService {
 
   private _base_url: string = environment.base_url;
 
+  private _all_rooms: Room[] = [];
+  public get all_rooms(): Room[] {
+    return this._all_rooms;
+  }
+
   constructor(
     private ws_service: WebsocketService, // This means socket-server connection
     private _http: HttpClient,
-    private _auth_service: AuthService
   ) { }
 
+  // Sockets
   send_message(nickname: string, msg: string) {
     const payload = {
       room_id: '6096b63c0e43d310013a8586',
@@ -61,5 +68,16 @@ export class ChatService {
       console.log(resp);
     });
   }
+
+  // HTTP requests
+  public get_all_rooms(): void {
+    const url: string = `${this._base_url}/chat/rooms`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+
+    this._http.get<ChatResponse>(url, {headers: headers}).subscribe( resp => {
+      this._all_rooms = resp.rooms!;
+    });
+  }
+
 
 }

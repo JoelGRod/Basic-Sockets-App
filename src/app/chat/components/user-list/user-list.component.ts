@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Profile } from 'src/app/auth/interfaces/interfaces';
 
 export interface Section {
   name: string;
@@ -15,21 +16,7 @@ export interface Section {
 export class UserListComponent implements OnInit {
 
   @Input() user_list_type: string = "";
-
-  folders: Section[] = [
-    {
-      name: 'User 1',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'User 2',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'User 3',
-      updated: new Date('1/28/16'),
-    }
-  ];
+  @Input() profiles: Profile[] = [];
 
   constructor() { }
 

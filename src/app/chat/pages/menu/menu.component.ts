@@ -2,8 +2,9 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 // Services
 import { AuthService } from '../../../auth/services/auth.service';
+import { ChatService } from '../../services/chat.service';
 // Interfaces
-import { Room } from 'src/app/auth/interfaces/interfaces';
+import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
 
 @Component({
   selector: 'app-menu',
@@ -18,9 +19,19 @@ export class MenuComponent implements OnInit {
     return this._auth_service.user.rooms;
   }
 
-  constructor( private _auth_service: AuthService ) { }
+  public get user_profiles(): Profile[] {
+    return this._auth_service.user.profiles;
+  }
+
+  public get all_rooms(): Room[] {
+    return this._chat_service.all_rooms;
+  }
+
+  constructor( private _auth_service: AuthService,
+                private _chat_service: ChatService ) { }
 
   ngOnInit(): void {
+    this._chat_service.get_all_rooms();
   }
 
   public change_view(group: MatButtonToggleGroup): void {

@@ -3,17 +3,23 @@
   <div class="content">
     <div *ngIf="view === 'my-chats'">
         <app-chat-list 
-          [chat_list_type]="'My Chats'" 
-          [rooms]="user_rooms">
+          [chat_list_type] = "'My Chats'" 
+          [rooms] = "user_rooms">
         </app-chat-list>
     </div>
 
     <div *ngIf="view === 'gral-chats'">
-        <app-chat-list [chat_list_type]="'General Chats'"></app-chat-list>
+        <app-chat-list 
+          [chat_list_type]="'General Chats'"
+          [rooms]="all_rooms">
+        </app-chat-list>
     </div>
 
     <div *ngIf="view === 'my-profiles'">
-        <app-user-list [user_list_type]="'My Profiles'"></app-user-list>
+        <app-user-list 
+          [user_list_type] = "'My Profiles'"
+          [profiles] = "user_profiles">
+        </app-user-list>
     </div>
   </div>
 
