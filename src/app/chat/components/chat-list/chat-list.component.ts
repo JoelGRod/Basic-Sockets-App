@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Room } from 'src/app/auth/interfaces/interfaces';
 
 export interface Section {
   room: string;
@@ -15,21 +16,7 @@ export interface Section {
 export class ChatListComponent implements OnInit {
 
   @Input() chat_list_type: string = "";
-
-  rooms: Section[] = [
-    {
-      room: 'Room 1',
-      updated: new Date('1/1/16'),
-    },
-    {
-      room: 'Room 2',
-      updated: new Date('1/17/16'),
-    },
-    {
-      room: 'Room 3',
-      updated: new Date('1/28/16'),
-    }
-  ];
+  @Input() rooms: Room[] = [];
 
   constructor() { }
 

@@ -2,7 +2,10 @@
 
   <div class="content">
     <div *ngIf="view === 'my-chats'">
-        <app-chat-list [chat_list_type]="'My Chats'"></app-chat-list>
+        <app-chat-list 
+          [chat_list_type]="'My Chats'" 
+          [rooms]="user_rooms">
+        </app-chat-list>
     </div>
 
     <div *ngIf="view === 'gral-chats'">

@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
-import { ChatService } from '../../services/chat.service';
+// Services
+import { AuthService } from '../../../auth/services/auth.service';
+// Interfaces
+import { Room } from 'src/app/auth/interfaces/interfaces';
 
 @Component({
   selector: 'app-menu',
@@ -11,7 +14,11 @@ export class MenuComponent implements OnInit {
 
   public view: string = 'my-chats';
 
-  constructor( private _chat_service: ChatService ) { }
+  public get user_rooms(): Room[] {
+    return this._auth_service.user.rooms;
+  }
+
+  constructor( private _auth_service: AuthService ) { }
 
   ngOnInit(): void {
   }

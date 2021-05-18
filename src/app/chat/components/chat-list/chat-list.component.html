@@ -1,9 +1,9 @@
 <mat-list>
   <div mat-subheader>{{chat_list_type}}</div>
-  <mat-list-item *ngFor="let folder of rooms">
+  <mat-list-item *ngFor="let room of rooms">
     <mat-icon mat-list-icon>question_answer</mat-icon>
-    <div mat-line>{{folder.room}}</div>
-    <div mat-line> {{folder.updated | date}} </div>
+    <div mat-line>{{room.name}}</div>
+    <div mat-line> {{room.created_at | date}} </div>
 
     <!-- Action buttons -->
     <button mat-mini-fab aria-label="Example icon button with a vertical three dot icon" 

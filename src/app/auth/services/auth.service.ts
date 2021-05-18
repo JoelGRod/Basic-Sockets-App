@@ -73,7 +73,9 @@ export class AuthService {
         this._user = {
           uid: resp.uid!,
           name: resp.name!,
-          email: resp.email!
+          email: resp.email!,
+          rooms: resp.rooms!,
+          profiles: resp.profiles!
         };
         // Guard response
         return resp.ok;
@@ -88,7 +90,9 @@ export class AuthService {
     this._user = {
       uid: '',
       name: '',
-      email: ''
+      email: '',
+      rooms: [],
+      profiles: []
     };
 
     localStorage.removeItem('token');
