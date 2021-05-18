@@ -4,7 +4,8 @@
     <div *ngIf="view === 'my-chats'">
         <app-chat-list 
           [chat_list_type] = "'My Chats'" 
-          [rooms] = "user_rooms">
+          [rooms] = "user_rooms"
+          [is_general] =  "false" >
         </app-chat-list>
     </div>
 

@@ -17,6 +17,7 @@ export class ChatListComponent implements OnInit {
 
   @Input() chat_list_type: string = "";
   @Input() rooms: Room[] = [];
+  @Input() is_general: boolean = true;
 
   constructor() { }
 

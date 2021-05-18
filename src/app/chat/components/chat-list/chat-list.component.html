@@ -6,18 +6,18 @@
     <div mat-line> {{room.created_at | date}} </div>
 
     <!-- Action buttons -->
-    <button mat-mini-fab aria-label="Example icon button with a vertical three dot icon" 
+    <button mat-mini-fab aria-label="Enter room button" 
             color="basic"
             routerLink="/chat/room">
       <mat-icon>login</mat-icon>
     </button>
-    <button mat-mini-fab aria-label="Example icon button with a vertical three dot icon" 
+    <button mat-mini-fab aria-label="View room info button" 
             color="primary"
             class="mx-2 mx-md-4"
             routerLink="/chat/room-config">
       <mat-icon>view_list</mat-icon>
     </button>
-    <button mat-mini-fab aria-label="Example icon button with a vertical three dot icon" 
+    <button *ngIf="!is_general" mat-mini-fab aria-label="Delete chat room button" 
             color="warn">
       <mat-icon>delete</mat-icon>
     </button>
