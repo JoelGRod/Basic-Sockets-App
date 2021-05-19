@@ -22,6 +22,7 @@ export interface Room {
     name: string;
     desc: string;
     photo: string;
+    has_password: boolean;
     created_at: Date;
     modified_at?: Date;
 }

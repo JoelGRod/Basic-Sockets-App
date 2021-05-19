@@ -26,6 +26,14 @@
   </div>
 
   <div class="footer">
+    <button *ngIf="view === 'my-chats'" 
+      mat-raised-button
+      (click)="create_room()"
+      color="primary" 
+      class="float-end me-3 mb-3">
+      New Room
+    </button>
+
     <mat-toolbar class="row">
       <mat-button-toggle-group #group="matButtonToggleGroup" class="button-group" (click)="change_view(group)">
 

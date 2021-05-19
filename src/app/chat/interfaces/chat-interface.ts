@@ -10,3 +10,10 @@ export interface ChatResponse {
     msg: string;
     rooms?: Room[];
 }
+
+export interface ChatSocketResponse {
+    ok: boolean;
+    msg: string;
+    room?: Room;
+    rooms?: Room[];
+}
