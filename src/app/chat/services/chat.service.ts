@@ -5,7 +5,7 @@ import { WebsocketService } from 'src/app/shared/services/websocket.service';
 import { environment } from 'src/environments/environment';
 // Interfaces
 import { Room } from 'src/app/auth/interfaces/interfaces';
-import { ChatResponse, ChatSocketResponse } from '../interfaces/chat-interface';
+import { ChatResponse, ChatSocketResponse, RoomPayload } from '../interfaces/chat-interface';
 // RXJS
 import { Observable, of } from 'rxjs';
 
@@ -25,14 +25,10 @@ export class ChatService {
   // Sockets
 
   // Create Room
-  public create_room(): Promise<ChatSocketResponse | Room> {
-    const payload = {
-      room_name: 'room sockets 10',
-      desc: 'Room sockets',
-      photo: 'Room photo',
-      password: '',
-      has_password: false,
-      token: localStorage.getItem('token')
+  public create_room(payload: RoomPayload): Promise<ChatSocketResponse | Room> {
+    payload = {
+      ...payload,
+      token: localStorage.getItem('token')!
     };
 
     // I use a promise because emit does not return an observable

@@ -15,6 +15,9 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { MatInputModule } from '@angular/material/input';
     MatDividerModule,
     // Forms
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule,
+    // Dialogs
+    MatDialogModule
   ]
 })
 export class MaterialModule { }

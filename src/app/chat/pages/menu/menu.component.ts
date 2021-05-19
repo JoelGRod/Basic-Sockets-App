@@ -3,11 +3,13 @@ import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 // Services
 import { AuthService } from '../../../auth/services/auth.service';
 import { ChatService } from '../../services/chat.service';
+import { MatDialog } from '@angular/material/dialog';
 // Interfaces
 import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
+import { RoomPayload } from '../../interfaces/chat-interface';
 // RXJS
 import { Subscription } from 'rxjs';
-import { ChatSocketResponse } from '../../interfaces/chat-interface';
+import { CreateRoomDialogComponent } from '../../components/create-room-dialog/create-room-dialog.component';
 
 @Component({
   selector: 'app-menu',
@@ -26,8 +28,9 @@ export class MenuComponent implements OnInit, OnDestroy {
   private _all_rooms_subs!: Subscription;
   private _new_rooms_subs!: Subscription;
 
-  constructor(private _auth_service: AuthService,
-    private _chat_service: ChatService) { }
+  constructor( private _auth_service: AuthService,
+               private _chat_service: ChatService, 
+               private _dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.user_rooms = this._auth_service.user.rooms;
@@ -53,8 +56,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.view = group.value;
   }
 
-  public create_room() {
-    this._chat_service.create_room()
+  public create_room(payload: RoomPayload) {
+    this._chat_service.create_room(payload)
       .then( room => {
         this.user_rooms.push(room as Room);
       })
@@ -62,5 +65,20 @@ export class MenuComponent implements OnInit, OnDestroy {
         console.log(resp);
       });
   }
+
+  openRoomDialog(): void {
+    const dialogRef = this._dialog.open(CreateRoomDialogComponent, {
+      width: '300px',
+      height: '400px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result !== undefined) {
+        this.create_room(result);
+      }
+    });
+  }
+
+
 
 }

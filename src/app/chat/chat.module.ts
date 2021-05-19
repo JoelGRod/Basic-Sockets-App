@@ -14,6 +14,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ChatConfigComponent } from './pages/chat-config/chat-config.component';
 import { ChatListComponent } from './components/chat-list/chat-list.component';
 import { UserListComponent } from './components/user-list/user-list.component';
+// Dialogs
+import { CreateRoomDialogComponent } from './components/create-room-dialog/create-room-dialog.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { UserListComponent } from './components/user-list/user-list.component';
     ProfileComponent,
     ChatConfigComponent,
     ChatListComponent,
-    UserListComponent
+    UserListComponent,
+    // Dialog
+    CreateRoomDialogComponent
   ],
   imports: [
     CommonModule,

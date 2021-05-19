@@ -17,3 +17,12 @@ export interface ChatSocketResponse {
     room?: Room;
     rooms?: Room[];
 }
+
+export interface RoomPayload {
+    room_name: string;
+    desc: string;
+    photo: string;
+    password: string;
+    has_password: boolean;
+    token?: string;
+}

@@ -14,7 +14,7 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     MainMenuComponent,
     // Directives
-    ErrMsgDirective
+    ErrMsgDirective,
   ],
   imports: [
     CommonModule,
