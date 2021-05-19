@@ -35,7 +35,7 @@ export class ChatService {
       token: localStorage.getItem('token')
     };
 
-    // I use a promise because emit does not return an observable ()
+    // I use a promise because emit does not return an observable
     return new Promise((resolve, reject) => {
       this.ws_service.emit('create-room', payload, (resp: ChatSocketResponse) => {
         if (resp.ok) {
