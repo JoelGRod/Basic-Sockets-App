@@ -47,6 +47,7 @@ export class MenuComponent implements OnInit, OnDestroy {
         if (resp.ok) this.all_rooms = resp.rooms!;
       });
 
+    // Sockets subscriptions
     this._new_rooms_subs = this._chat_service.get_new_rooms()
       .subscribe(resp => {
         this.all_rooms.push(resp as Room);
