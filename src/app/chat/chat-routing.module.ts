@@ -14,10 +14,10 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: 'menu', component: MenuComponent },
-      { path: 'room', component: ChatComponent },
-      { path: 'users', component: ChatUsersComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'room-config', component: ChatConfigComponent },
+      { path: 'room/:id', component: ChatComponent },
+      { path: 'users/:id', component: ChatUsersComponent },
+      { path: 'profile/:id', component: ProfileComponent },
+      { path: 'room-config/:id', component: ChatConfigComponent },
       { path: '**', redirectTo: 'menu' },
     ]
   }

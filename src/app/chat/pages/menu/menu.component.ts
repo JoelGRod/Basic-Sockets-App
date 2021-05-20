@@ -62,7 +62,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   // Room
-  public create_room(payload: RoomPayload) {
+  private create_room(payload: RoomPayload) {
     this._chat_service.create_room(payload)
       .then( room => {
         this.user_rooms.push(room as Room);
@@ -73,7 +73,7 @@ export class MenuComponent implements OnInit, OnDestroy {
       });
   }
 
-  openRoomDialog(): void {
+  public openRoomDialog(): void {
     const dialogRef = this._dialog.open(CreateRoomDialogComponent, {
       width: '300px',
       height: '400px'
@@ -86,8 +86,19 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
+  public delete_room(id: string): void {
+    this._chat_service.delete_room(id).subscribe( (resp: ChatResponse) => {
+      if(resp.ok) {
+        this.user_rooms = this.delete_room_from_array(this.user_rooms, resp.room!);
+        this.all_rooms = this.delete_room_from_array(this.all_rooms, resp.room!);
+      } else {
+        this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
+      }
+    });
+  }
+
   // Profile
-  public create_profile(profile: ProfilePayload) {
+  private create_profile(profile: ProfilePayload) {
     this._chat_service.create_user_profile(profile).subscribe( (resp: ChatResponse) => {
       if( resp.ok ) {
         this.user_profiles.push(resp.profile!);
@@ -97,7 +108,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
-  openProfileDialog(): void {
+  public openProfileDialog(): void {
     const dialogRef = this._dialog.open(CreateProfileDialogComponent, {
       width: '300px',
       height: '325px'
@@ -110,13 +121,20 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
-  openGeneralDialog(data: DialogData): void {
+
+  // Gral Dialog
+  public openGeneralDialog(data: DialogData): void {
     const dialogRef = this._dialog.open(GralDialogComponent, {
       width: '250px',
       data
     });
   }
 
-
+  private delete_room_from_array(array_to_filter: Room[], room_to_delete: Room): Room[] {
+    array_to_filter = array_to_filter.filter( (room: Room) => {
+      return room._id !== room_to_delete._id;
+    });
+    return array_to_filter;
+  }
 
 }

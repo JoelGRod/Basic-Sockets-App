@@ -115,7 +115,10 @@ export class ChatService {
     const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
     const params = new HttpParams().set('room_id', room_id);
 
-    return this._http.delete<ChatResponse>(url, { params, headers });
+    return this._http.delete<ChatResponse>(url, { params, headers })
+      .pipe(
+        catchError( resp => of(resp.error) )
+      );
   }
 
 
