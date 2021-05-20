@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { WebsocketService } from 'src/app/shared/services/websocket.service';
 // Environments
 import { environment } from 'src/environments/environment';
@@ -108,6 +108,14 @@ export class ChatService {
       .pipe(
         catchError( resp => of(resp.error) )
       );
+  }
+
+  public delete_room(room_id: string): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/delete-chat-room`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+    const params = new HttpParams().set('room_id', room_id);
+
+    return this._http.delete<ChatResponse>(url, { params, headers });
   }
 
 
