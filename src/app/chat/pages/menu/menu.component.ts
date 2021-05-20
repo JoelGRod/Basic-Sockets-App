@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import { CreateRoomDialogComponent } from '../../components/create-room-dialog/create-room-dialog.component';
 import { CreateProfileDialogComponent } from '../../components/create-profile-dialog/create-profile-dialog.component';
 import { GralDialogComponent } from 'src/app/shared/components/gral-dialog/gral-dialog.component';
+import { DialogData } from '../../../shared/interfaces/shared-interfaces';
 
 
 @Component({
@@ -68,10 +69,7 @@ export class MenuComponent implements OnInit, OnDestroy {
       })
       .catch( resp => {
         // Dialog
-        const dialogRef = this._dialog.open(GralDialogComponent, {
-          width: '250px',
-          data: {title: 'Error', icon: 'warning_amber', msg: resp.msg }
-        });
+        this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
       });
   }
 
@@ -84,7 +82,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined) {
         this.create_room(result);
-      }
+      };
     });
   }
 
@@ -94,8 +92,8 @@ export class MenuComponent implements OnInit, OnDestroy {
       if( resp.ok ) {
         this.user_profiles.push(resp.profile!);
       } else {
-        console.log(resp);
-      }
+        this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
+      };
     });
   }
 
@@ -108,7 +106,14 @@ export class MenuComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined) {
         this.create_profile(result);
-      }
+      };
+    });
+  }
+
+  openGeneralDialog(data: DialogData): void {
+    const dialogRef = this._dialog.open(GralDialogComponent, {
+      width: '250px',
+      data
     });
   }
 
