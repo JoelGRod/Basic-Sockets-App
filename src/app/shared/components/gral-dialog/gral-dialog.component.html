@@ -1,11 +1,15 @@
-<h1 mat-dialog-title>Hi {{data.title}}</h1>
+<div class="d-flex justify-content-center pb-3">
+    <mat-icon color ="warn" aria-hidden="false" aria-label="Dialog icon" class="icon">{{ data.icon }}</mat-icon>
+</div>
+
+<h1 mat-dialog-title class="d-flex justify-content-center">{{data.title}}</h1>
+
+<mat-divider></mat-divider>
 
 <div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-  <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
-  </mat-form-field>
+    <p class="d-flex justify-content-center pt-4"> {{ data.msg }} </p>
 </div>
-<div mat-dialog-actions>
-  <button mat-button (click)="exit()">Ok, Thanks...</button>
+
+<div mat-dialog-actions class="d-flex justify-content-center pb-4">
+    <button mat-raised-button color="primary" (click)="exit()">Ok, thanks...</button>
 </div>
