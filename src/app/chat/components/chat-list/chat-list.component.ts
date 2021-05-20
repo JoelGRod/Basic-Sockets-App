@@ -1,27 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Room } from 'src/app/auth/interfaces/interfaces';
 
-export interface Section {
-  room: string;
-  updated: Date;
-}
 
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
-  styles: [
-
-  ]
+  styles: []
 })
-export class ChatListComponent implements OnInit {
+export class ChatListComponent {
 
   @Input() chat_list_type: string = "";
   @Input() rooms: Room[] = [];
   @Input() is_general: boolean = true;
+  @Output() on_emit: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
-  ngOnInit(): void {
+  public emit_id(id: string): void {
+    this.on_emit.emit(id);
   }
 
 }

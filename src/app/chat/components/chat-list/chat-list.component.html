@@ -8,17 +8,20 @@
     <!-- Action buttons -->
     <button mat-mini-fab aria-label="Enter room button" 
             color="basic"
-            routerLink="/chat/room">
+            [routerLink]="'/chat/room/' + room._id">
       <mat-icon>login</mat-icon>
     </button>
     <button mat-mini-fab aria-label="View room info button" 
             color="primary"
             class="mx-2 mx-md-4"
-            routerLink="/chat/room-config">
+            [routerLink]="'/chat/room-config/' + room._id">
       <mat-icon>view_list</mat-icon>
     </button>
-    <button *ngIf="!is_general" mat-mini-fab aria-label="Delete chat room button" 
-            color="warn">
+    <button *ngIf="!is_general" 
+            mat-mini-fab 
+            aria-label="Delete chat room button" 
+            color="warn"
+            (click)="emit_id(room._id)">
       <mat-icon>delete</mat-icon>
     </button>
 
