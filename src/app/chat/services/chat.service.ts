@@ -5,7 +5,11 @@ import { WebsocketService } from 'src/app/shared/services/websocket.service';
 import { environment } from 'src/environments/environment';
 // Interfaces
 import { Room } from 'src/app/auth/interfaces/interfaces';
-import { ChatResponse, ChatSocketResponse, RoomPayload, ProfilePayload } from '../interfaces/chat-interface';
+import { 
+  ChatResponse, 
+  ChatSocketResponse, 
+  RoomPayload, 
+  ProfilePayload } from '../interfaces/chat-interface';
 // RXJS
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -23,9 +27,10 @@ export class ChatService {
     private _http: HttpClient,
   ) { }
 
-  // Sockets
+  /* ---------------------------------- Sockets ---------------------------------- */
 
   // Create Room
+  // Emit
   public create_room(payload: RoomPayload): Promise<ChatSocketResponse | Room> {
     payload = {
       ...payload,
@@ -43,12 +48,37 @@ export class ChatService {
       });
     });
   }
-
+  // Listen
   public get_new_rooms() {
     return this.ws_service.listen('new-room-created');
   }
+  
+  // Delete Room
+  // Emit
+  public delete_room_sockets(room_id: string): Promise<ChatSocketResponse | Room> {
+    const payload = {
+      room_id,
+      token: localStorage.getItem('token')!
+    };
 
+    // I use a promise because emit does not return an observable
+    return new Promise((resolve, reject) => {
+      this.ws_service.emit('delete-room', payload, (resp: ChatSocketResponse) => {
+        if (resp.ok) {
+          resolve(resp.room!);
+        } else {
+          reject(resp);
+        }
+      });
+    });
+  }
+  // Listen
+  public update_deleted_rooms() {
+    return this.ws_service.listen('room-deleted');
+  }
 
+  // Send Message
+  // Emit
   send_message(nickname: string, msg: string) {
     const payload = {
       room_id: '6096b63c0e43d310013a8586',
@@ -61,7 +91,7 @@ export class ChatService {
       console.log(resp);
     });
   }
-
+  // Listen
   get_messages(room_name: string) {
     return this.ws_service.listen(`${room_name}-new-message`);
   }
@@ -92,7 +122,7 @@ export class ChatService {
     });
   }
 
-  // HTTP requests
+  /* ---------------------------------- HTTP --------------------------------------- */
   public get_all_rooms(): Observable<ChatResponse> {
     const url: string = `${this._base_url}/chat/rooms`;
     const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);

@@ -32,6 +32,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   // Subscriptions
   private _all_rooms_subs!: Subscription;
   private _new_rooms_subs!: Subscription;
+  private _deleted_rooms_subs!: Subscription;
 
   constructor( private _auth_service: AuthService,
                private _chat_service: ChatService, 
@@ -50,11 +51,17 @@ export class MenuComponent implements OnInit, OnDestroy {
       .subscribe(resp => {
         this.all_rooms.push(resp as Room);
       });
+    
+    this._deleted_rooms_subs = this._chat_service.update_deleted_rooms()
+      .subscribe(room => {
+        this.all_rooms = this.delete_room_from_array(this.all_rooms, room as Room)
+      });
   }
 
   ngOnDestroy(): void {
     this._all_rooms_subs.unsubscribe();
     this._new_rooms_subs.unsubscribe();
+    this._deleted_rooms_subs.unsubscribe();
   }
 
   public change_view(group: MatButtonToggleGroup): void {
@@ -62,7 +69,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   // Room
-  private create_room(payload: RoomPayload) {
+  private create_room(payload: RoomPayload): void {
     this._chat_service.create_room(payload)
       .then( room => {
         this.user_rooms.push(room as Room);
@@ -87,14 +94,22 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   public delete_room(id: string): void {
-    this._chat_service.delete_room(id).subscribe( (resp: ChatResponse) => {
-      if(resp.ok) {
-        this.user_rooms = this.delete_room_from_array(this.user_rooms, resp.room!);
-        this.all_rooms = this.delete_room_from_array(this.all_rooms, resp.room!);
-      } else {
+    // this._chat_service.delete_room(id).subscribe( (resp: ChatResponse) => {
+    //   if(resp.ok) {
+    //     this.user_rooms = this.delete_room_from_array(this.user_rooms, resp.room!);
+    //     this.all_rooms = this.delete_room_from_array(this.all_rooms, resp.room!);
+    //   } else {
+    //     this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
+    //   }
+    // });
+    this._chat_service.delete_room_sockets(id)
+      .then( room => {
+        this.user_rooms = this.delete_room_from_array(this.user_rooms, room as Room);
+      })
+      .catch( resp => {
+        // Dialog
         this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
-      }
-    });
+      });
   }
 
   // Profile
