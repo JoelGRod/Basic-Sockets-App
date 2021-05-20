@@ -1,4 +1,4 @@
-import { Room } from "src/app/auth/interfaces/interfaces";
+import { Profile, Room } from "src/app/auth/interfaces/interfaces";
 
 export interface Msg {
     from: string;
@@ -8,7 +8,11 @@ export interface Msg {
 export interface ChatResponse {
     ok: boolean;
     msg: string;
+    room?: Room;
     rooms?: Room[];
+    profile?: Profile;
+    profiles?: Profile[];
+
 }
 
 export interface ChatSocketResponse {
@@ -25,4 +29,10 @@ export interface RoomPayload {
     password: string;
     has_password: boolean;
     token?: string;
+}
+
+export interface ProfilePayload {
+    nickname: string;
+    desc: string;
+    photo: string;
 }

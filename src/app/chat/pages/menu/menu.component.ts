@@ -6,10 +6,13 @@ import { ChatService } from '../../services/chat.service';
 import { MatDialog } from '@angular/material/dialog';
 // Interfaces
 import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
-import { RoomPayload } from '../../interfaces/chat-interface';
+import { RoomPayload, ProfilePayload, ChatResponse } from '../../interfaces/chat-interface';
 // RXJS
 import { Subscription } from 'rxjs';
+// Dialogs
 import { CreateRoomDialogComponent } from '../../components/create-room-dialog/create-room-dialog.component';
+import { CreateProfileDialogComponent } from '../../components/create-profile-dialog/create-profile-dialog.component';
+
 
 @Component({
   selector: 'app-menu',
@@ -37,7 +40,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.user_profiles = this._auth_service.user.profiles;
 
     this._all_rooms_subs = this._chat_service.get_all_rooms()
-      .subscribe(resp => {
+      .subscribe( (resp: ChatResponse) => {
         if (resp.ok) this.all_rooms = resp.rooms!;
       });
 
@@ -56,6 +59,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     this.view = group.value;
   }
 
+  // Room
   public create_room(payload: RoomPayload) {
     this._chat_service.create_room(payload)
       .then( room => {
@@ -75,6 +79,30 @@ export class MenuComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined) {
         this.create_room(result);
+      }
+    });
+  }
+
+  // Profile
+  public create_profile(profile: ProfilePayload) {
+    this._chat_service.create_user_profile(profile).subscribe( (resp: ChatResponse) => {
+      if( resp.ok ) {
+        this.user_profiles.push(resp.profile!);
+      } else {
+        console.log(resp);
+      }
+    });
+  }
+
+  openProfileDialog(): void {
+    const dialogRef = this._dialog.open(CreateProfileDialogComponent, {
+      width: '300px',
+      height: '325px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result !== undefined) {
+        this.create_profile(result);
       }
     });
   }

@@ -5,9 +5,10 @@ import { WebsocketService } from 'src/app/shared/services/websocket.service';
 import { environment } from 'src/environments/environment';
 // Interfaces
 import { Room } from 'src/app/auth/interfaces/interfaces';
-import { ChatResponse, ChatSocketResponse, RoomPayload } from '../interfaces/chat-interface';
+import { ChatResponse, ChatSocketResponse, RoomPayload, ProfilePayload } from '../interfaces/chat-interface';
 // RXJS
 import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 
 @Injectable({
@@ -97,6 +98,16 @@ export class ChatService {
     const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
 
     return this._http.get<ChatResponse>(url, { headers: headers });
+  }
+
+  public create_user_profile(profile: ProfilePayload): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/create-chat-user`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+
+    return this._http.post<ChatResponse>(url, profile, { headers })
+      .pipe(
+        catchError( resp => of(resp.error) )
+      );
   }
 
 

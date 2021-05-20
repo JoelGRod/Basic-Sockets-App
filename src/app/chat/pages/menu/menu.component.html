@@ -27,11 +27,18 @@
 
   <div class="footer">
     <button *ngIf="view === 'my-chats'" 
-      mat-raised-button
+      mat-mini-fab
       (click)="openRoomDialog()"
       color="primary" 
-      class="float-end me-3 my-2">
-      New Room
+      class="float-end me-2 my-2">
+      <mat-icon>add</mat-icon>
+    </button>
+    <button *ngIf="view === 'my-profiles'" 
+      mat-mini-fab
+      (click)="openProfileDialog()"
+      color="primary" 
+      class="float-end me-2 my-2">
+      <mat-icon>add</mat-icon>
     </button>
 
     <mat-toolbar class="row">

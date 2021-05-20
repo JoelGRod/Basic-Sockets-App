@@ -3,22 +3,20 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-create-room-dialog',
-  templateUrl: './create-room-dialog.component.html',
-  styleUrls: ['./create-room-dialog.component.scss']
+  selector: 'app-create-profile-dialog',
+  templateUrl: './create-profile-dialog.component.html',
+  styleUrls: ['./create-profile-dialog.component.scss']
 })
-export class CreateRoomDialogComponent {
+export class CreateProfileDialogComponent {
 
   public form: FormGroup = this._fb.group({
-    room_name:    ['', [Validators.required]],
-    desc:         ['One more room', [Validators.required]],
-    photo:        ['A room photo...', [Validators.required]],
-    password:     [''],
-    has_password: [false]
+    nickname:     ['', [Validators.required]],
+    desc:         ['One more profile', [Validators.required]],
+    photo:        ['A profile photo...', [Validators.required]]
   });
 
   constructor(
-    private _dialogRef: MatDialogRef<CreateRoomDialogComponent>,
+    private _dialogRef: MatDialogRef<CreateProfileDialogComponent>,
     private _fb: FormBuilder
   ) {}
 
