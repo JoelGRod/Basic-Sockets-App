@@ -3,3 +3,9 @@ export interface MenuItem {
     icon: string;
     name: string;
 }
+
+export interface DialogData {
+    title: string;
+    icon: string;
+    msg: string;
+}

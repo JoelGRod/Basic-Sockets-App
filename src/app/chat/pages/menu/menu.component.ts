@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 // Dialogs
 import { CreateRoomDialogComponent } from '../../components/create-room-dialog/create-room-dialog.component';
 import { CreateProfileDialogComponent } from '../../components/create-profile-dialog/create-profile-dialog.component';
+import { GralDialogComponent } from 'src/app/shared/components/gral-dialog/gral-dialog.component';
 
 
 @Component({
@@ -66,7 +67,11 @@ export class MenuComponent implements OnInit, OnDestroy {
         this.user_rooms.push(room as Room);
       })
       .catch( resp => {
-        console.log(resp);
+        // Dialog
+        const dialogRef = this._dialog.open(GralDialogComponent, {
+          width: '250px',
+          data: {title: 'Error', icon: 'warning_amber', msg: resp.msg }
+        });
       });
   }
 
