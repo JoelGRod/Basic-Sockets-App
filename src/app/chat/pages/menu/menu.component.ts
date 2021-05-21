@@ -96,7 +96,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   // Delete Room
-  public delete_room(id: string): void {
+  private delete_room(id: string): void {
     this._chat_service.delete_room_sockets(id)
       .then(room => {
         this.user_rooms = this.delete_element_from_array(this.user_rooms, room as Room);
@@ -122,7 +122,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   // Login
-  public login_room(room_id: string): void {
+  public login_checks(room_id: string): void {
 
     for (let profile of this.user_profiles) {
       if (profile.rooms!.find(room => room === room_id) !== undefined) {
@@ -156,29 +156,25 @@ export class MenuComponent implements OnInit, OnDestroy {
 
           dialogPassword.afterClosed().subscribe(result => {
             payload.password = result.password;
-            this._chat_service.login_room(payload)
-              .then(server_room_id => {
-                let connected_profile = this.user_profiles.find(profile => profile.nickname === payload.nickname);
-                connected_profile?.rooms?.push(server_room_id as string);
-                this._router.navigate(['/chat/room', server_room_id, connected_profile?._id]);
-              })
-              .catch(resp => {
-                this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
-              });
+            this.login_room(payload);
           })
         } else {
-          this._chat_service.login_room(payload)
-            .then(server_room_id => {
-              let connected_profile = this.user_profiles.find(profile => profile.nickname === payload.nickname);
-              connected_profile?.rooms?.push(server_room_id as string);
-              this._router.navigate(['/chat/room', server_room_id, connected_profile?._id]);
-            })
-            .catch(resp => {
-              this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
-            });
+          this.login_room(payload);
         }
       } else return;
     });
+  }
+
+  public login_room(payload: LoginPayload): void {
+    this._chat_service.login_room(payload)
+      .then(server_room_id => {
+        let connected_profile = this.user_profiles.find(profile => profile.nickname === payload.nickname);
+        connected_profile?.rooms?.push(server_room_id as string);
+        this._router.navigate(['/chat/room', server_room_id, connected_profile?._id]);
+      })
+      .catch(resp => {
+        this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
+      });
   }
 
 
@@ -220,7 +216,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   /* ---------------------------------------- Gral -------------------------------------------- */
   public get_actions(ac: ActionObject): void {
-    if (ac.subject === 'room' && ac.action === 'login') this.login_room(ac.id);
+    if (ac.subject === 'room' && ac.action === 'login') this.login_checks(ac.id);
     if (ac.subject === 'room' && ac.action === 'delete') this.delete_room_dialog(ac.id);
   }
 
