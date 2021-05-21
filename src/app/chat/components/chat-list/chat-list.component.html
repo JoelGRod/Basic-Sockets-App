@@ -21,7 +21,7 @@
             mat-mini-fab 
             aria-label="Delete chat room button" 
             color="warn"
-            (click)="emit_id(room._id)">
+            (click)="emit_object('delete', 'room', room._id)">
       <mat-icon>delete</mat-icon>
     </button>
 

@@ -13,14 +13,9 @@ export class ChatListComponent {
   @Input() chat_list_type: string = "";
   @Input() rooms: Room[] = [];
   @Input() is_general: boolean = true;
-  @Output() on_emit: EventEmitter<string> = new EventEmitter<string>();
   @Output() on_emit_object: EventEmitter<ActionObject> = new EventEmitter<ActionObject>();
 
   constructor() { }
-
-  public emit_id(id: string): void {
-    this.on_emit.emit(id);
-  }
 
   public emit_object(action: string, subject: string, id: string): void {
     this.on_emit_object.emit(

@@ -221,6 +221,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   /* ---------------------------------------- Gral -------------------------------------------- */
   public get_actions(ac: ActionObject): void {
     if (ac.subject === 'room' && ac.action === 'login') this.login_room(ac.id);
+    if (ac.subject === 'room' && ac.action === 'delete') this.delete_room_dialog(ac.id);
   }
 
   public openGeneralDialog(data: DialogData): void {
