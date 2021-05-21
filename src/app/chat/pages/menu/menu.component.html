@@ -14,7 +14,8 @@
     <div *ngIf="view === 'gral-chats'">
         <app-chat-list 
           [chat_list_type]="'General Chats'"
-          [rooms]="all_rooms">
+          [rooms]="all_rooms"
+          (on_emit_object)="get_actions($event)">
         </app-chat-list>
     </div>
 

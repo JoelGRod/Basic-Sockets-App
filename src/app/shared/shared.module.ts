@@ -5,6 +5,7 @@ import { ErrMsgDirective } from './directives/err-msg.directive';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
+// Dialogs
 import { GralDialogComponent } from './components/gral-dialog/gral-dialog.component';
 
 
@@ -17,7 +18,7 @@ import { GralDialogComponent } from './components/gral-dialog/gral-dialog.compon
     // Directives
     ErrMsgDirective,
     // Dialogs
-    GralDialogComponent,
+    GralDialogComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +32,7 @@ import { GralDialogComponent } from './components/gral-dialog/gral-dialog.compon
     // Directives
     ErrMsgDirective,
     // Dialogs
-    GralDialogComponent,
+    GralDialogComponent
   ]
 })
 export class SharedModule { }

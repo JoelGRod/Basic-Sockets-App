@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 // Services
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../../../auth/services/auth.service';
 import { ChatService } from '../../services/chat.service';
-import { MatDialog } from '@angular/material/dialog';
 // Interfaces
 import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
 import { RoomPayload, ProfilePayload, ChatResponse, ActionObject } from '../../interfaces/chat-interface';
@@ -14,6 +15,7 @@ import { CreateRoomDialogComponent } from '../../components/create-room-dialog/c
 import { CreateProfileDialogComponent } from '../../components/create-profile-dialog/create-profile-dialog.component';
 import { GralDialogComponent } from 'src/app/shared/components/gral-dialog/gral-dialog.component';
 import { DialogData } from '../../../shared/interfaces/shared-interfaces';
+import { SelectDialogComponent } from '../../components/select-dialog/select-dialog.component';
 
 
 @Component({
@@ -36,7 +38,8 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   constructor( private _auth_service: AuthService,
                private _chat_service: ChatService, 
-               private _dialog: MatDialog) { }
+               private _dialog: MatDialog,
+               private _router: Router) { }
 
   ngOnInit(): void {
     this.user_rooms = this._auth_service.user.rooms;
@@ -113,12 +116,33 @@ export class MenuComponent implements OnInit, OnDestroy {
       });
   }
 
-  public login_room(): void {
-    // TODO
+  public login_room(room_id: string): void {
+    // there is a profile connected to room? if yes enter directly -> login room if not...
+    for(let profile of this.user_profiles) {
+      for(let profile_room_id of profile.rooms!) {
+        if(profile_room_id === room_id) {
+          this._router.navigate(['/chat/room', room_id]);
+          return;
+        }
+      }
+    }
+    // which profile do you want to enter room
+    const dialogRef = this._dialog.open(SelectDialogComponent, {
+      width: '300px',
+      height: '325px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result !== undefined) {
+        this.create_profile(result);
+      };
+    });
+    // Room has password?
+    // Login room
   }
 
-  public get_actions(action_object: ActionObject): void {
-    console.log(action_object);
+  public get_actions(ac: ActionObject): void {
+    if(ac.subject === 'room' && ac.action === 'login') this.login_room(ac.id);
   }
 
   // Profile

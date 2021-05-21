@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Select profile</h1>
+
+<div mat-dialog-content>
+    <form [formGroup]="form">
+        
+        <mat-form-field>
+            <mat-label>Room name</mat-label>
+            <input matInput formControlName="room_name">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="desc">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Photo URL</mat-label>
+            <input matInput formControlName="photo">
+        </mat-form-field>
+
+        <mat-checkbox formControlName="has_password">I want a password!</mat-checkbox>
+
+        <mat-form-field *ngIf="form.get('has_password')!.value">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password">
+        </mat-form-field>
+
+    </form>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button 
+        (click)="exit()">
+        Go out!
+    </button>
+    <button mat-button 
+        (click)="send_data()" 
+        cdkFocusInitial>
+        Create Room
+    </button>
+</div>
