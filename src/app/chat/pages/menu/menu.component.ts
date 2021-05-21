@@ -6,7 +6,7 @@ import { ChatService } from '../../services/chat.service';
 import { MatDialog } from '@angular/material/dialog';
 // Interfaces
 import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
-import { RoomPayload, ProfilePayload, ChatResponse } from '../../interfaces/chat-interface';
+import { RoomPayload, ProfilePayload, ChatResponse, ActionObject } from '../../interfaces/chat-interface';
 // RXJS
 import { Subscription } from 'rxjs';
 // Dialogs
@@ -111,6 +111,14 @@ export class MenuComponent implements OnInit, OnDestroy {
         // Dialog
         this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
       });
+  }
+
+  public login_room(): void {
+    // TODO
+  }
+
+  public get_actions(action_object: ActionObject): void {
+    console.log(action_object);
   }
 
   // Profile

@@ -6,7 +6,8 @@
           [chat_list_type]="'My Chats'" 
           [rooms]="user_rooms"
           [is_general]="false" 
-          (on_emit)="delete_room($event)">
+          (on_emit)="delete_room($event)"
+          (on_emit_object)="get_actions($event)">
         </app-chat-list>
     </div>
 

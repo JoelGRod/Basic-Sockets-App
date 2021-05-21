@@ -36,3 +36,9 @@ export interface ProfilePayload {
     desc: string;
     photo: string;
 }
+
+export interface ActionObject {
+    id: string;
+    action: string;
+    subject: string;
+}

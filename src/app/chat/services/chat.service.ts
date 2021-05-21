@@ -102,7 +102,7 @@ export class ChatService {
       token: localStorage.getItem('token'),
       room_id: '6096b63c0e43d310013a8586',
       nickname: 'chatuser1 test',
-      password: 'no password mod'
+      password: ''
     };
 
     this.ws_service.emit('login-user', payload, (resp: any) => {
