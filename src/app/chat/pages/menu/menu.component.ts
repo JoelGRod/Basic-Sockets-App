@@ -106,7 +106,7 @@ export class MenuComponent implements OnInit, OnDestroy {
         this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
       });
   }
-  // Delete Room Dialog TODO
+  // Delete Room Dialog
   public delete_room_dialog(id: string): void {
     const data = {
       title: 'Are you sure?',
@@ -181,9 +181,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
-  public get_actions(ac: ActionObject): void {
-    if (ac.subject === 'room' && ac.action === 'login') this.login_room(ac.id);
-  }
+
 
   /* ---------------------------------------- Profile -------------------------------------------- */
   private create_profile(profile: ProfilePayload) {
@@ -220,7 +218,11 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
 
-  /* ---------------------------------------- Gral Dialog -------------------------------------------- */
+  /* ---------------------------------------- Gral -------------------------------------------- */
+  public get_actions(ac: ActionObject): void {
+    if (ac.subject === 'room' && ac.action === 'login') this.login_room(ac.id);
+  }
+
   public openGeneralDialog(data: DialogData): void {
     const dialogRef = this._dialog.open(GralDialogComponent, {
       width: '250px',
