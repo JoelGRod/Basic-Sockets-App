@@ -16,6 +16,7 @@ import { CreateProfileDialogComponent } from '../../components/create-profile-di
 import { GralDialogComponent } from 'src/app/shared/components/gral-dialog/gral-dialog.component';
 import { DialogData } from '../../../shared/interfaces/shared-interfaces';
 import { SelectDialogComponent } from '../../components/select-dialog/select-dialog.component';
+import { PasswordDialogComponent } from '../../components/password-dialog/password-dialog.component';
 
 
 @Component({
@@ -36,17 +37,17 @@ export class MenuComponent implements OnInit, OnDestroy {
   private _new_rooms_subs!: Subscription;
   private _deleted_rooms_subs!: Subscription;
 
-  constructor( private _auth_service: AuthService,
-               private _chat_service: ChatService, 
-               private _dialog: MatDialog,
-               private _router: Router) { }
+  constructor(private _auth_service: AuthService,
+    private _chat_service: ChatService,
+    private _dialog: MatDialog,
+    private _router: Router) { }
 
   ngOnInit(): void {
     this.user_rooms = this._auth_service.user.rooms;
     this.user_profiles = this._auth_service.user.profiles;
 
     this._all_rooms_subs = this._chat_service.get_all_rooms()
-      .subscribe( (resp: ChatResponse) => {
+      .subscribe((resp: ChatResponse) => {
         if (resp.ok) this.all_rooms = resp.rooms!;
       });
 
@@ -55,7 +56,7 @@ export class MenuComponent implements OnInit, OnDestroy {
       .subscribe(resp => {
         this.all_rooms.push(resp as Room);
       });
-    
+
     this._deleted_rooms_subs = this._chat_service.update_deleted_rooms()
       .subscribe(room => {
         this.all_rooms = this.delete_element_from_array(this.all_rooms, room as Room)
@@ -75,12 +76,12 @@ export class MenuComponent implements OnInit, OnDestroy {
   // Room
   private create_room(payload: RoomPayload): void {
     this._chat_service.create_room(payload)
-      .then( room => {
+      .then(room => {
         this.user_rooms.push(room as Room);
       })
-      .catch( resp => {
+      .catch(resp => {
         // Dialog
-        this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
+        this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
       });
   }
 
@@ -91,7 +92,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined) {
+      if (result !== undefined) {
         this.create_room(result);
       };
     });
@@ -107,23 +108,21 @@ export class MenuComponent implements OnInit, OnDestroy {
     //   }
     // });
     this._chat_service.delete_room_sockets(id)
-      .then( room => {
+      .then(room => {
         this.user_rooms = this.delete_element_from_array(this.user_rooms, room as Room);
       })
-      .catch( resp => {
+      .catch(resp => {
         // Dialog
-        this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
+        this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
       });
   }
 
   public login_room(room_id: string): void {
-    // there is a profile connected to room? if yes enter directly -> login room if not...
-    for(let profile of this.user_profiles) {
-      for(let profile_room_id of profile.rooms!) {
-        if(profile_room_id === room_id) {
-          this._router.navigate(['/chat/room', room_id, profile._id ]);
-          return;
-        }
+
+    for (let profile of this.user_profiles) {
+      if (profile.rooms!.find(room => room === room_id) !== undefined) {
+        this._router.navigate(['/chat/room', room_id, profile._id]);
+        return;
       }
     }
 
@@ -133,34 +132,45 @@ export class MenuComponent implements OnInit, OnDestroy {
       password: ''
     };
     // which profile do you want to enter room
-    const dialogRef = this._dialog.open(SelectDialogComponent, {
+    const dialogProfile = this._dialog.open(SelectDialogComponent, {
       width: '300px',
       height: '500px',
       data: this.user_profiles
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined) payload.nickname = result.nickname;
-      else return;
+    dialogProfile.afterClosed().subscribe(result => {
+      if (result !== undefined) {
+        payload.nickname = result.nickname
+        // Room has password?
+        const room = this.all_rooms.find(room => room._id === room_id);
+        if(room?.has_password) {
+          const dialogPassword = this._dialog.open(PasswordDialogComponent, {
+            width: '300px',
+            height: '300px'
+          });
+      
+          dialogPassword.afterClosed().subscribe(result => {
+            payload.password = result.password;
+            this._chat_service.login_room(payload);
+          })
+        } else {
+          this._chat_service.login_room(payload);
+        }
+      } else return;
     });
-
-    console.log(payload);
-    // Room has password?
-    console.log(this.all_rooms);
-    // Login room
   }
 
   public get_actions(ac: ActionObject): void {
-    if(ac.subject === 'room' && ac.action === 'login') this.login_room(ac.id);
+    if (ac.subject === 'room' && ac.action === 'login') this.login_room(ac.id);
   }
 
   // Profile
   private create_profile(profile: ProfilePayload) {
-    this._chat_service.create_user_profile(profile).subscribe( (resp: ChatResponse) => {
-      if( resp.ok ) {
+    this._chat_service.create_user_profile(profile).subscribe((resp: ChatResponse) => {
+      if (resp.ok) {
         this.user_profiles.push(resp.profile!);
       } else {
-        this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
+        this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
       };
     });
   }
@@ -172,18 +182,18 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined) {
+      if (result !== undefined) {
         this.create_profile(result);
       };
     });
   }
 
   public delete_profile(id: string): void {
-    this._chat_service.delete_profile(id).subscribe( (resp: ChatResponse) => {
-      if(resp.ok) {
+    this._chat_service.delete_profile(id).subscribe((resp: ChatResponse) => {
+      if (resp.ok) {
         this.user_profiles = this.delete_element_from_array(this.user_profiles, resp.profile);
       } else {
-        this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
+        this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
       }
     });
   }
@@ -198,7 +208,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   private delete_element_from_array(array_to_filter: any[], element_to_delete: any): any[] {
-    array_to_filter = array_to_filter.filter( (element: any) => {
+    array_to_filter = array_to_filter.filter((element: any) => {
       return element._id !== element_to_delete._id;
     });
     return array_to_filter;

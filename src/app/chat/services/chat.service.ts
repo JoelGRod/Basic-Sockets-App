@@ -9,7 +9,8 @@ import {
   ChatResponse, 
   ChatSocketResponse, 
   RoomPayload, 
-  ProfilePayload } from '../interfaces/chat-interface';
+  ProfilePayload,
+  LoginPayload } from '../interfaces/chat-interface';
 // RXJS
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -97,12 +98,10 @@ export class ChatService {
   }
 
   // TEST PURPOSES
-  login_room() {
-    const payload = {
-      token: localStorage.getItem('token'),
-      room_id: '6096b63c0e43d310013a8586',
-      nickname: 'chatuser1 test',
-      password: ''
+  login_room(payload: LoginPayload) {
+    payload = {
+      ...payload,
+      token: localStorage.getItem('token')!
     };
 
     this.ws_service.emit('login-user', payload, (resp: any) => {
