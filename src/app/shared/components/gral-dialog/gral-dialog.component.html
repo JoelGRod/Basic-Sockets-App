@@ -14,7 +14,9 @@
     <button mat-raised-button color="primary" (click)="exit()">Ok, thanks...</button>
 </div>
 
-<ng-template #withresponse mat-dialog-actions class="d-flex flex-row justify-content-center pb-4">
-    <button mat-raised-button color="primary" (click)="exit_response(false)">No</button>
-    <button mat-raised-button color="warn" (click)="exit_response(true)">Yes, Continue</button>
+<ng-template #withresponse>
+    <div mat-dialog-actions class="d-flex flex-row justify-content-center mb-2">
+        <button mat-raised-button color="primary" (click)="exit_response(false)">No</button>
+        <button mat-raised-button color="warn" (click)="exit_response(true)">Yes, Continue</button>
+    </div>
 </ng-template>
