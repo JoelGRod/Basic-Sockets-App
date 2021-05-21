@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Profile } from 'src/app/auth/interfaces/interfaces';
 
 @Component({
   selector: 'app-select-dialog',
@@ -10,15 +11,12 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class SelectDialogComponent {
 
   public form: FormGroup = this._fb.group({
-    room_name:    ['', [Validators.required]],
-    desc:         ['One more room', [Validators.required]],
-    photo:        ['A room photo...', [Validators.required]],
-    password:     [''],
-    has_password: [false]
+    nickname: ['', [Validators.required]]
   });
 
   constructor(
     private _dialogRef: MatDialogRef<SelectDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public profiles: Profile[],
     private _fb: FormBuilder
   ) {}
 

@@ -37,6 +37,13 @@ export interface ProfilePayload {
     photo: string;
 }
 
+export interface LoginPayload {
+    room_id: string;
+    nickname: string;
+    password: string;
+    token?: string;
+}
+
 export interface ActionObject {
     id: string;
     action: string;

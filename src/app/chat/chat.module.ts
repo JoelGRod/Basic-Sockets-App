@@ -18,6 +18,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { CreateRoomDialogComponent } from './components/create-room-dialog/create-room-dialog.component';
 import { CreateProfileDialogComponent } from './components/create-profile-dialog/create-profile-dialog.component';
 import { SelectDialogComponent } from './components/select-dialog/select-dialog.component';
+import { PasswordDialogComponent } from './components/password-dialog/password-dialog.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { SelectDialogComponent } from './components/select-dialog/select-dialog.
     // Dialog
     CreateRoomDialogComponent,
     CreateProfileDialogComponent,
-    SelectDialogComponent
+    SelectDialogComponent,
+    PasswordDialogComponent
   ],
   imports: [
     CommonModule,

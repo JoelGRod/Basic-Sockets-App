@@ -7,7 +7,7 @@ import { AuthService } from '../../../auth/services/auth.service';
 import { ChatService } from '../../services/chat.service';
 // Interfaces
 import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
-import { RoomPayload, ProfilePayload, ChatResponse, ActionObject } from '../../interfaces/chat-interface';
+import { RoomPayload, ProfilePayload, ChatResponse, ActionObject, LoginPayload } from '../../interfaces/chat-interface';
 // RXJS
 import { Subscription } from 'rxjs';
 // Dialogs
@@ -121,23 +121,32 @@ export class MenuComponent implements OnInit, OnDestroy {
     for(let profile of this.user_profiles) {
       for(let profile_room_id of profile.rooms!) {
         if(profile_room_id === room_id) {
-          this._router.navigate(['/chat/room', room_id]);
+          this._router.navigate(['/chat/room', room_id, profile._id ]);
           return;
         }
       }
     }
+
+    let payload: LoginPayload = {
+      room_id,
+      nickname: '',
+      password: ''
+    };
     // which profile do you want to enter room
     const dialogRef = this._dialog.open(SelectDialogComponent, {
       width: '300px',
-      height: '325px'
+      height: '500px',
+      data: this.user_profiles
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined) {
-        this.create_profile(result);
-      };
+      if(result !== undefined) payload.nickname = result.nickname;
+      else return;
     });
+
+    console.log(payload);
     // Room has password?
+    console.log(this.all_rooms);
     // Login room
   }
 

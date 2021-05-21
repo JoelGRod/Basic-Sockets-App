@@ -1,41 +1,28 @@
-<h1 mat-dialog-title>Select profile</h1>
+<h1 mat-dialog-title>Select a profile</h1>
 
 <div mat-dialog-content>
     <form [formGroup]="form">
-        
-        <mat-form-field>
-            <mat-label>Room name</mat-label>
-            <input matInput formControlName="room_name">
-        </mat-form-field>
-        
-        <mat-form-field>
-            <mat-label>Description</mat-label>
-            <input matInput formControlName="desc">
-        </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Photo URL</mat-label>
-            <input matInput formControlName="photo">
-        </mat-form-field>
-
-        <mat-checkbox formControlName="has_password">I want a password!</mat-checkbox>
-
-        <mat-form-field *ngIf="form.get('has_password')!.value">
-            <mat-label>Password</mat-label>
-            <input matInput formControlName="password">
-        </mat-form-field>
+            <mat-radio-group 
+                aria-labelledby="Nickname radio froup"
+                formControlName="nickname"
+                class="d-flex flex-column mb-3">
+                <mat-radio-button 
+                    *ngFor="let profile of profiles" 
+                    [value]="profile.nickname"
+                    class="m-1">
+                    {{profile.nickname}}
+                </mat-radio-button>
+            </mat-radio-group>
 
     </form>
 </div>
 
 <div mat-dialog-actions>
-    <button mat-button 
-        (click)="exit()">
+    <button mat-button (click)="exit()">
         Go out!
     </button>
-    <button mat-button 
-        (click)="send_data()" 
-        cdkFocusInitial>
-        Create Room
+    <button mat-button (click)="send_data()" cdkFocusInitial>
+        Ok
     </button>
 </div>

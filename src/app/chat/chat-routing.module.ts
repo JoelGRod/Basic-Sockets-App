@@ -14,7 +14,7 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: 'menu', component: MenuComponent },
-      { path: 'room/:id', component: ChatComponent },
+      { path: 'room/:id/:profile_id', component: ChatComponent },
       { path: 'users/:id', component: ChatUsersComponent },
       { path: 'profile/:id', component: ProfileComponent },
       { path: 'room-config/:id', component: ChatConfigComponent },
