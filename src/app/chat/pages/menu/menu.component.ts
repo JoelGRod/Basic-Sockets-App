@@ -121,7 +121,7 @@ export class MenuComponent implements OnInit, OnDestroy {
       });
   }
 
-  // Login
+  // Login Checks
   public login_checks(room_id: string): void {
 
     for (let profile of this.user_profiles) {
@@ -165,6 +165,11 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Select profile TODO
+
+  // enter password TODO
+
+  // Login Room
   public login_room(payload: LoginPayload): void {
     this._chat_service.login_room(payload)
       .then(server_room_id => {
@@ -176,8 +181,6 @@ export class MenuComponent implements OnInit, OnDestroy {
         this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
       });
   }
-
-
 
   /* ---------------------------------------- Profile -------------------------------------------- */
   private create_profile(profile: ProfilePayload) {
