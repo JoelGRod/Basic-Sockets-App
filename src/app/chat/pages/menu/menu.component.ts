@@ -55,7 +55,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     
     this._deleted_rooms_subs = this._chat_service.update_deleted_rooms()
       .subscribe(room => {
-        this.all_rooms = this.delete_room_from_array(this.all_rooms, room as Room)
+        this.all_rooms = this.delete_element_from_array(this.all_rooms, room as Room)
       });
   }
 
@@ -105,7 +105,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     // });
     this._chat_service.delete_room_sockets(id)
       .then( room => {
-        this.user_rooms = this.delete_room_from_array(this.user_rooms, room as Room);
+        this.user_rooms = this.delete_element_from_array(this.user_rooms, room as Room);
       })
       .catch( resp => {
         // Dialog
@@ -137,6 +137,16 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
+  public delete_profile(id: string): void {
+    this._chat_service.delete_profile(id).subscribe( (resp: ChatResponse) => {
+      if(resp.ok) {
+        this.user_profiles = this.delete_element_from_array(this.user_profiles, resp.profile);
+      } else {
+        this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
+      }
+    });
+  }
+
 
   // Gral Dialog
   public openGeneralDialog(data: DialogData): void {
@@ -146,9 +156,9 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
-  private delete_room_from_array(array_to_filter: Room[], room_to_delete: Room): Room[] {
-    array_to_filter = array_to_filter.filter( (room: Room) => {
-      return room._id !== room_to_delete._id;
+  private delete_element_from_array(array_to_filter: any[], element_to_delete: any): any[] {
+    array_to_filter = array_to_filter.filter( (element: any) => {
+      return element._id !== element_to_delete._id;
     });
     return array_to_filter;
   }

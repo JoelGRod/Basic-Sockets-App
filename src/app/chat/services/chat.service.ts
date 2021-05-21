@@ -151,5 +151,16 @@ export class ChatService {
       );
   }
 
+  public delete_profile(chat_user_id: string): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/delete-chat-user`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+    const params = new HttpParams().set('chat_user_id', chat_user_id);
+
+    return this._http.delete<ChatResponse>(url, {params, headers})
+      .pipe(
+        catchError( resp => of(resp.error) )
+      );
+  }
+
 
 }

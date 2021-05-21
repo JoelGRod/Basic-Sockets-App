@@ -20,19 +20,19 @@ export interface User {
 export interface Room {
     _id: string;
     name: string;
-    desc: string;
-    photo: string;
-    has_password: boolean;
-    created_at: Date;
+    desc?: string;
+    photo?: string;
+    has_password?: boolean;
+    created_at?: Date;
     modified_at?: Date;
 }
 
 export interface Profile {
-    rooms: string[];
     _id: string;
     nickname: string;
-    desc: string;
-    photo: string;
-    created_at: Date;
+    desc?: string;
+    photo?: string;
+    rooms?: string[];
+    created_at?: Date;
     modified_at?: Date;
 }

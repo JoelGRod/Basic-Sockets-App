@@ -1,27 +1,22 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Profile } from 'src/app/auth/interfaces/interfaces';
-
-export interface Section {
-  name: string;
-  updated: Date;
-}
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styles: [
-    
-  ]
+  styles: []
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
 
   @Input() user_list_type: string = "";
   @Input() profiles: Profile[] = [];
   @Input() is_general: boolean = true;
+  @Output() on_emit: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
-  ngOnInit(): void {
+  public emit_id(id: string): void {
+    this.on_emit.emit(id);
   }
 
 }
