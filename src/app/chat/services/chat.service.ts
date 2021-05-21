@@ -5,12 +5,13 @@ import { WebsocketService } from 'src/app/shared/services/websocket.service';
 import { environment } from 'src/environments/environment';
 // Interfaces
 import { Room } from 'src/app/auth/interfaces/interfaces';
-import { 
-  ChatResponse, 
-  ChatSocketResponse, 
-  RoomPayload, 
+import {
+  ChatResponse,
+  ChatSocketResponse,
+  RoomPayload,
   ProfilePayload,
-  LoginPayload } from '../interfaces/chat-interface';
+  LoginPayload
+} from '../interfaces/chat-interface';
 // RXJS
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -53,7 +54,7 @@ export class ChatService {
   public get_new_rooms() {
     return this.ws_service.listen('new-room-created');
   }
-  
+
   // Delete Room
   // Emit
   public delete_room_sockets(room_id: string): Promise<ChatSocketResponse | Room> {
@@ -98,14 +99,20 @@ export class ChatService {
   }
 
   // TEST PURPOSES
-  login_room(payload: LoginPayload) {
+  login_room(payload: LoginPayload): Promise<ChatResponse | string> {
     payload = {
       ...payload,
       token: localStorage.getItem('token')!
     };
 
-    this.ws_service.emit('login-user', payload, (resp: any) => {
-      console.log(resp);
+    return new Promise((resolve, reject) => {
+      this.ws_service.emit('login-user', payload, (resp: ChatResponse) => {
+        if(resp.ok) {
+          resolve(resp.room?._id!);
+        } else {
+          reject(resp);
+        }
+      });
     });
   }
 
@@ -135,7 +142,7 @@ export class ChatService {
 
     return this._http.post<ChatResponse>(url, profile, { headers })
       .pipe(
-        catchError( resp => of(resp.error) )
+        catchError(resp => of(resp.error))
       );
   }
 
@@ -146,7 +153,7 @@ export class ChatService {
 
     return this._http.delete<ChatResponse>(url, { params, headers })
       .pipe(
-        catchError( resp => of(resp.error) )
+        catchError(resp => of(resp.error))
       );
   }
 
@@ -155,9 +162,9 @@ export class ChatService {
     const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
     const params = new HttpParams().set('chat_user_id', chat_user_id);
 
-    return this._http.delete<ChatResponse>(url, {params, headers})
+    return this._http.delete<ChatResponse>(url, { params, headers })
       .pipe(
-        catchError( resp => of(resp.error) )
+        catchError(resp => of(resp.error))
       );
   }
 

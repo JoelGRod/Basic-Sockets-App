@@ -143,18 +143,34 @@ export class MenuComponent implements OnInit, OnDestroy {
         payload.nickname = result.nickname
         // Room has password?
         const room = this.all_rooms.find(room => room._id === room_id);
-        if(room?.has_password) {
+        if (room?.has_password) {
           const dialogPassword = this._dialog.open(PasswordDialogComponent, {
             width: '300px',
             height: '300px'
           });
-      
+
           dialogPassword.afterClosed().subscribe(result => {
             payload.password = result.password;
-            this._chat_service.login_room(payload);
+            this._chat_service.login_room(payload)
+              .then(server_room_id => {
+                let connected_profile = this.user_profiles.find(profile => profile.nickname === payload.nickname);
+                connected_profile?.rooms?.push(server_room_id as string);
+                this._router.navigate(['/chat/room', server_room_id, connected_profile?._id]);
+              })
+              .catch(resp => {
+                this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
+              });
           })
         } else {
-          this._chat_service.login_room(payload);
+          this._chat_service.login_room(payload)
+            .then(server_room_id => {
+              let connected_profile = this.user_profiles.find(profile => profile.nickname === payload.nickname);
+              connected_profile?.rooms?.push(server_room_id as string);
+              this._router.navigate(['/chat/room', server_room_id, connected_profile?._id]);
+            })
+            .catch(resp => {
+              this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
+            });
         }
       } else return;
     });
