@@ -8,4 +8,5 @@ export interface DialogData {
     title: string;
     icon: string;
     msg: string;
+    response?: boolean;
 }

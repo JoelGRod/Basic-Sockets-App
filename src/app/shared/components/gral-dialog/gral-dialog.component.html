@@ -10,6 +10,11 @@
     <p class="d-flex justify-content-center pt-4"> {{ data.msg }} </p>
 </div>
 
-<div mat-dialog-actions class="d-flex justify-content-center pb-4">
+<div *ngIf="!data.response; else withresponse" mat-dialog-actions class="d-flex justify-content-center pb-4">
     <button mat-raised-button color="primary" (click)="exit()">Ok, thanks...</button>
 </div>
+
+<ng-template #withresponse mat-dialog-actions class="d-flex flex-row justify-content-center pb-4">
+    <button mat-raised-button color="primary" (click)="exit_response(false)">No</button>
+    <button mat-raised-button color="warn" (click)="exit_response(true)">Yes, Continue</button>
+</ng-template>

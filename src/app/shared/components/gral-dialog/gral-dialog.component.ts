@@ -18,4 +18,8 @@ export class GralDialogComponent {
     this.dialogRef.close();
   }
 
+  public exit_response(resp: boolean): void {
+    this.dialogRef.close(resp);
+  }
+
 }

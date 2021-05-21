@@ -8,15 +8,15 @@ import { ChatService } from '../../services/chat.service';
 // Interfaces
 import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
 import { RoomPayload, ProfilePayload, ChatResponse, ActionObject, LoginPayload } from '../../interfaces/chat-interface';
+import { DialogData } from '../../../shared/interfaces/shared-interfaces';
 // RXJS
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 // Dialogs
 import { CreateRoomDialogComponent } from '../../components/create-room-dialog/create-room-dialog.component';
 import { CreateProfileDialogComponent } from '../../components/create-profile-dialog/create-profile-dialog.component';
-import { GralDialogComponent } from 'src/app/shared/components/gral-dialog/gral-dialog.component';
-import { DialogData } from '../../../shared/interfaces/shared-interfaces';
 import { SelectDialogComponent } from '../../components/select-dialog/select-dialog.component';
 import { PasswordDialogComponent } from '../../components/password-dialog/password-dialog.component';
+import { GralDialogComponent } from 'src/app/shared/components/gral-dialog/gral-dialog.component';
 
 
 @Component({
@@ -69,11 +69,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     this._deleted_rooms_subs.unsubscribe();
   }
 
-  public change_view(group: MatButtonToggleGroup): void {
-    this.view = group.value;
-  }
-
-  // Room
+  /* ---------------------------------------- Room ------------------------------------ */
+  // Create Room
   private create_room(payload: RoomPayload): void {
     this._chat_service.create_room(payload)
       .then(room => {
@@ -84,7 +81,7 @@ export class MenuComponent implements OnInit, OnDestroy {
         this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
       });
   }
-
+  // Create Room Dialog
   public openRoomDialog(): void {
     const dialogRef = this._dialog.open(CreateRoomDialogComponent, {
       width: '300px',
@@ -98,15 +95,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Delete Room
   public delete_room(id: string): void {
-    // this._chat_service.delete_room(id).subscribe( (resp: ChatResponse) => {
-    //   if(resp.ok) {
-    //     this.user_rooms = this.delete_room_from_array(this.user_rooms, resp.room!);
-    //     this.all_rooms = this.delete_room_from_array(this.all_rooms, resp.room!);
-    //   } else {
-    //     this.openGeneralDialog({title: 'Error', icon: 'warning_amber', msg: resp.msg });
-    //   }
-    // });
     this._chat_service.delete_room_sockets(id)
       .then(room => {
         this.user_rooms = this.delete_element_from_array(this.user_rooms, room as Room);
@@ -116,7 +106,22 @@ export class MenuComponent implements OnInit, OnDestroy {
         this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
       });
   }
+  // Delete Room Dialog TODO
+  public delete_room_dialog(id: string): void {
+    const data = {
+      title: 'Are you sure?',
+      icon: 'warning_amber',
+      msg: 'You are about to delete a room...',
+      response: true
+    };
 
+    this.openGeneralDialogResponse(data)
+      .subscribe((result: boolean) => {
+        if (result) this.delete_room(id);
+      });
+  }
+
+  // Login
   public login_room(room_id: string): void {
 
     for (let profile of this.user_profiles) {
@@ -180,7 +185,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     if (ac.subject === 'room' && ac.action === 'login') this.login_room(ac.id);
   }
 
-  // Profile
+  /* ---------------------------------------- Profile -------------------------------------------- */
   private create_profile(profile: ProfilePayload) {
     this._chat_service.create_user_profile(profile).subscribe((resp: ChatResponse) => {
       if (resp.ok) {
@@ -215,12 +220,25 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
 
-  // Gral Dialog
+  /* ---------------------------------------- Gral Dialog -------------------------------------------- */
   public openGeneralDialog(data: DialogData): void {
     const dialogRef = this._dialog.open(GralDialogComponent, {
       width: '250px',
       data
     });
+  }
+
+  public openGeneralDialogResponse(data: DialogData): Observable<boolean> {
+    const dialogRef = this._dialog.open(GralDialogComponent, {
+      width: '250px',
+      data
+    });
+
+    return dialogRef.afterClosed();
+  }
+
+  public change_view(group: MatButtonToggleGroup): void {
+    this.view = group.value;
   }
 
   private delete_element_from_array(array_to_filter: any[], element_to_delete: any): any[] {

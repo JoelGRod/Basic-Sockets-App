@@ -98,7 +98,8 @@ export class ChatService {
     return this.ws_service.listen(`${room_name}-new-message`);
   }
 
-  // TEST PURPOSES
+  // Login
+  // Emit
   login_room(payload: LoginPayload): Promise<ChatResponse | string> {
     payload = {
       ...payload,
@@ -115,7 +116,9 @@ export class ChatService {
       });
     });
   }
+  // Listen TODO
 
+  // Logout TODO
   logout_room() {
     const payload = {
       token: localStorage.getItem('token'),
@@ -127,6 +130,7 @@ export class ChatService {
       console.log(resp);
     });
   }
+  // Listen
 
   /* ---------------------------------- HTTP --------------------------------------- */
   public get_all_rooms(): Observable<ChatResponse> {
