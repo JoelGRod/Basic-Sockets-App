@@ -116,6 +116,9 @@ export class ChatService {
     });
   }
   // Listen TODO
+  public listen_logout_users(room_name: string) {
+    return this.ws_service.listen(`${room_name}-logout-user`);
+  }
 
 
   // Send Message
