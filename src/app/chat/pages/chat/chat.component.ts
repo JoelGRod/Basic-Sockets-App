@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// Services
+import { ActivatedRoute } from '@angular/router';
+import { ChatService } from '../../services/chat.service';
 // Interfaces
 import { Profile } from 'src/app/auth/interfaces/interfaces';
+import { Room } from '../../../auth/interfaces/interfaces';
 
 @Component({
   selector: 'app-chat',
@@ -12,7 +16,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   @ViewChild('chat_window') chat_window!: ElementRef<HTMLElement>;
 
-  messages: any[] = [
+  public room!: Room;
+  public messages: any[] = [
     {
       nickname: 'user1',
       msg: 'hola que tal 1',
@@ -54,8 +59,8 @@ export class ChatComponent implements OnInit, AfterViewInit {
       img: "https://images-na.ssl-images-amazon.com/images/I/81PohdE46lL.jpg"
     },
   ];
-  username: string = "test";
-  temp_user: string = "";
+  public username: string = "test";
+  public temp_user: string = "";
   public room_users: Profile[] = [
     {
       rooms: [],
@@ -87,9 +92,15 @@ export class ChatComponent implements OnInit, AfterViewInit {
     msg: ['', [ Validators.required ] ]
   });
 
-  constructor( private _fb: FormBuilder ) { }
+  constructor( private _fb: FormBuilder,
+    private _activ_route: ActivatedRoute,
+    private _chat_service: ChatService
+  ) { }
 
   ngOnInit(): void {
+    this._activ_route.params.subscribe(resp => {
+      console.log(resp);
+    })
   }
 
   // DELETE THIS
