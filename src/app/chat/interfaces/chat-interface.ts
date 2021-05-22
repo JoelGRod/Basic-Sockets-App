@@ -14,7 +14,7 @@ export interface ChatResponse {
     profiles?: Profile[];
 
 }
-
+// Dulicated, delete
 export interface ChatSocketResponse {
     ok: boolean;
     msg: string;

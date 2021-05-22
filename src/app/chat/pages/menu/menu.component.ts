@@ -3,7 +3,6 @@ import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 // Services
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { AuthService } from '../../../auth/services/auth.service';
 import { ChatService } from '../../services/chat.service';
 // Interfaces
 import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
@@ -33,18 +32,27 @@ export class MenuComponent implements OnInit, OnDestroy {
   public all_rooms: Room[] = [];
 
   // Subscriptions
+  private _user_rooms_subs!: Subscription;
+  private _user_profiles_subs!: Subscription;
   private _all_rooms_subs!: Subscription;
   private _new_rooms_subs!: Subscription;
   private _deleted_rooms_subs!: Subscription;
 
-  constructor(private _auth_service: AuthService,
-    private _chat_service: ChatService,
+  constructor(private _chat_service: ChatService,
     private _dialog: MatDialog,
     private _router: Router) { }
 
   ngOnInit(): void {
-    this.user_rooms = this._auth_service.user.rooms;
-    this.user_profiles = this._auth_service.user.profiles;
+    // HTTP Subscriptions
+    this._user_rooms_subs = this._chat_service.get_user_rooms()
+      .subscribe((resp: ChatResponse) => {
+        if (resp.ok) this.user_rooms = resp.rooms!;    
+      });
+
+    this._user_profiles_subs = this._chat_service.get_user_profiles()
+      .subscribe((resp: ChatResponse) => {
+        if (resp.ok) this.user_profiles = resp.profiles!;
+      });
 
     this._all_rooms_subs = this._chat_service.get_all_rooms()
       .subscribe((resp: ChatResponse) => {
@@ -64,7 +72,11 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    // HTTP Unsubscribe
+    this._user_rooms_subs.unsubscribe();
+    this._user_profiles_subs.unsubscribe();
     this._all_rooms_subs.unsubscribe();
+    // Sockets Unsubscribe
     this._new_rooms_subs.unsubscribe();
     this._deleted_rooms_subs.unsubscribe();
   }
@@ -222,6 +234,10 @@ export class MenuComponent implements OnInit, OnDestroy {
     if (ac.subject === 'room' && ac.action === 'login') this.login_checks(ac.id);
     if (ac.subject === 'room' && ac.action === 'delete') this.delete_room_dialog(ac.id);
   }
+  
+  public change_view(group: MatButtonToggleGroup): void {
+    this.view = group.value;
+  }
 
   public openGeneralDialog(data: DialogData): void {
     const dialogRef = this._dialog.open(GralDialogComponent, {
@@ -237,10 +253,6 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
 
     return dialogRef.afterClosed();
-  }
-
-  public change_view(group: MatButtonToggleGroup): void {
-    this.view = group.value;
   }
 
   private delete_element_from_array(array_to_filter: any[], element_to_delete: any): any[] {

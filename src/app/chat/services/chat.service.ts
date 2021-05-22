@@ -33,7 +33,7 @@ export class ChatService {
 
   // Create Room
   // Emit
-  public create_room(payload: RoomPayload): Promise<ChatSocketResponse | Room> {
+  public create_room(payload: RoomPayload): Promise<ChatResponse | Room> {
     payload = {
       ...payload,
       token: localStorage.getItem('token')!
@@ -57,7 +57,7 @@ export class ChatService {
 
   // Delete Room
   // Emit
-  public delete_room_sockets(room_id: string): Promise<ChatSocketResponse | Room> {
+  public delete_room_sockets(room_id: string): Promise<ChatResponse | Room> {
     const payload = {
       room_id,
       token: localStorage.getItem('token')!
@@ -133,6 +133,20 @@ export class ChatService {
   // Listen
 
   /* ---------------------------------- HTTP --------------------------------------- */
+  public get_user_profiles(): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/user-chat-users`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+
+    return this._http.get<ChatResponse>(url, { headers: headers });
+  }
+
+  public get_user_rooms(): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/rooms-user`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+
+    return this._http.get<ChatResponse>(url, { headers: headers });
+  }
+
   public get_all_rooms(): Observable<ChatResponse> {
     const url: string = `${this._base_url}/chat/rooms`;
     const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
@@ -171,6 +185,5 @@ export class ChatService {
         catchError(resp => of(resp.error))
       );
   }
-
 
 }
