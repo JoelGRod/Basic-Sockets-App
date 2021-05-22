@@ -115,11 +115,10 @@ export class ChatService {
       console.log(resp);
     });
   }
-  // Listen TODO
+  // Listen
   public listen_logout_users(room_name: string) {
     return this.ws_service.listen(`${room_name}-logout-user`);
   }
-
 
   // Send Message
   // Emit TODO
@@ -135,7 +134,7 @@ export class ChatService {
       console.log(resp);
     });
   }
-  // Listen TODO
+  // Listen
   get_messages(room_name: string) {
     return this.ws_service.listen(`${room_name}-new-message`);
   }
