@@ -254,7 +254,6 @@ export class MenuComponent implements OnInit, OnDestroy {
       });
   }
 
-
   /* ---------------------------------------- Gral -------------------------------------------- */
   public get_actions(ac: ActionObject): void {
     if (ac.subject === 'room' && ac.action === 'login') this.login_checks(ac.id);
