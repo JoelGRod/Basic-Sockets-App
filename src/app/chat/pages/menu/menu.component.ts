@@ -46,7 +46,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     // HTTP Subscriptions
     this._user_rooms_subs = this._chat_service.get_user_rooms()
       .subscribe((resp: ChatResponse) => {
-        if (resp.ok) this.user_rooms = resp.rooms!;    
+        if (resp.ok) this.user_rooms = resp.rooms!;
       });
 
     this._user_profiles_subs = this._chat_service.get_user_profiles()
@@ -148,41 +148,46 @@ export class MenuComponent implements OnInit, OnDestroy {
       nickname: '',
       password: ''
     };
-    // which profile do you want to enter room
+
+    // Select Profile
+    this.select_login_profile().subscribe(nickname => {
+      if (nickname === undefined) return;
+      payload.nickname = nickname;
+      // Room has password?
+      const room = this.all_rooms.find(room => room._id === room_id);
+      if (room?.has_password) {
+        // Enter password
+        this.enter_login_password().subscribe(password => {
+          if (password === undefined) return;
+          payload.password = password;
+          this.login_room(payload);
+        })
+      } else {
+        this.login_room(payload);
+      }
+    });
+  }
+  // Select profile
+  private select_login_profile(): Observable<string> {
     const dialogProfile = this._dialog.open(SelectDialogComponent, {
       width: '300px',
-      height: '500px',
+      height: 'auto',
       data: this.user_profiles
     });
 
-    dialogProfile.afterClosed().subscribe(result => {
-      if (result !== undefined) {
-        payload.nickname = result.nickname
-        // Room has password?
-        const room = this.all_rooms.find(room => room._id === room_id);
-        if (room?.has_password) {
-          const dialogPassword = this._dialog.open(PasswordDialogComponent, {
-            width: '300px',
-            height: '300px'
-          });
-
-          dialogPassword.afterClosed().subscribe(result => {
-            payload.password = result.password;
-            this.login_room(payload);
-          })
-        } else {
-          this.login_room(payload);
-        }
-      } else return;
-    });
+    return dialogProfile.afterClosed();
   }
+  // Enter password
+  private enter_login_password(): Observable<string> {
+    const dialogPassword = this._dialog.open(PasswordDialogComponent, {
+      width: '300px',
+      height: '300px'
+    });
 
-  // Select profile TODO
-
-  // enter password TODO
-
+    return dialogPassword.afterClosed();
+  }
   // Login Room
-  public login_room(payload: LoginPayload): void {
+  private login_room(payload: LoginPayload): void {
     this._chat_service.login_room(payload)
       .then(server_room_id => {
         let connected_profile = this.user_profiles.find(profile => profile.nickname === payload.nickname);
@@ -234,7 +239,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     if (ac.subject === 'room' && ac.action === 'login') this.login_checks(ac.id);
     if (ac.subject === 'room' && ac.action === 'delete') this.delete_room_dialog(ac.id);
   }
-  
+
   public change_view(group: MatButtonToggleGroup): void {
     this.view = group.value;
   }

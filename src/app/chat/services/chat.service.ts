@@ -79,28 +79,9 @@ export class ChatService {
     return this.ws_service.listen('room-deleted');
   }
 
-  // Send Message
-  // Emit
-  send_message(nickname: string, msg: string) {
-    const payload = {
-      room_id: '6096b63c0e43d310013a8586',
-      token: localStorage.getItem('token'),
-      nickname: 'chatuser1 test',
-      msg,
-    };
-
-    this.ws_service.emit('message', payload, (resp: any) => {
-      console.log(resp);
-    });
-  }
-  // Listen
-  get_messages(room_name: string) {
-    return this.ws_service.listen(`${room_name}-new-message`);
-  }
-
   // Login
   // Emit
-  login_room(payload: LoginPayload): Promise<ChatResponse | string> {
+  public login_room(payload: LoginPayload): Promise<ChatResponse | string> {
     payload = {
       ...payload,
       token: localStorage.getItem('token')!
@@ -118,7 +99,8 @@ export class ChatService {
   }
   // Listen TODO
 
-  // Logout TODO
+  // Logout
+  // Emit TODO
   logout_room() {
     const payload = {
       token: localStorage.getItem('token'),
@@ -130,7 +112,27 @@ export class ChatService {
       console.log(resp);
     });
   }
-  // Listen
+  // Listen TODO
+
+
+  // Send Message
+  // Emit TODO
+  send_message(nickname: string, msg: string) {
+    const payload = {
+      room_id: '6096b63c0e43d310013a8586',
+      token: localStorage.getItem('token'),
+      nickname: 'chatuser1 test',
+      msg,
+    };
+
+    this.ws_service.emit('message', payload, (resp: any) => {
+      console.log(resp);
+    });
+  }
+  // Listen TODO
+  get_messages(room_name: string) {
+    return this.ws_service.listen(`${room_name}-new-message`);
+  }
 
   /* ---------------------------------- HTTP --------------------------------------- */
   public get_user_profiles(): Observable<ChatResponse> {

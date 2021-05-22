@@ -28,7 +28,7 @@ export class PasswordDialogComponent {
       return;
     }
 
-    this._dialogRef.close(this.form.value);
+    this._dialogRef.close(this.form.get('password')!.value);
   }
 
 }
