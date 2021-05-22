@@ -186,7 +186,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   private enter_login_password(): Observable<string> {
     const dialogPassword = this._dialog.open(PasswordDialogComponent, {
       width: '300px',
-      height: '300px'
+      height: 'auto'
     });
 
     return dialogPassword.afterClosed();
