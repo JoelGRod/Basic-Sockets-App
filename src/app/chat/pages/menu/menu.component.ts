@@ -82,7 +82,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   /* ---------------------------------------- Room ------------------------------------ */
-  // Create Room
+  // ----------------- Create Room
   private create_room(payload: RoomPayload): void {
     this._chat_service.create_room(payload)
       .then(room => {
@@ -107,7 +107,7 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
-  // Delete Room
+  // ----------------- Delete Room
   private delete_room(id: string): void {
     this._chat_service.delete_room_sockets(id)
       .then(room => {
@@ -133,15 +133,10 @@ export class MenuComponent implements OnInit, OnDestroy {
       });
   }
 
-  // Login Checks
+  // ----------------- Login
   public login_checks(room_id: string): void {
 
-    for (let profile of this.user_profiles) {
-      if (profile.rooms!.find(room => room === room_id) !== undefined) {
-        this._router.navigate(['/chat/room', room_id, profile._id]);
-        return;
-      }
-    }
+    if(this.is_some_profile_connected(room_id)) return;
 
     let payload: LoginPayload = {
       room_id,
@@ -166,6 +161,16 @@ export class MenuComponent implements OnInit, OnDestroy {
         this.login_room(payload);
       }
     });
+  }
+  // A user profile is already connected?
+  private is_some_profile_connected(room_id: string): boolean {
+    for (let profile of this.user_profiles) {
+      if (profile.rooms!.find(room => room === room_id) !== undefined) {
+        this._router.navigate(['/chat/room', room_id, profile._id]);
+        return true;
+      }
+    }
+    return false;
   }
   // Select profile
   private select_login_profile(): Observable<string> {
