@@ -11,7 +11,7 @@ export class ChatUsersComponent implements OnInit {
   public room_users: Profile[] = [
     {
       rooms: [],
-      _id: 'dkfhdskghkjdshgksdk',
+      _id: 'this_is_a_profile_id',
       nickname: 'string',
       desc: 'string',
       photo: 'string',
@@ -19,7 +19,7 @@ export class ChatUsersComponent implements OnInit {
     },
     {
       rooms: [],
-      _id: 'dkfhdskghkjdshgksdk',
+      _id: 'this_is_a_profile_id',
       nickname: 'string',
       desc: 'string',
       photo: 'string',
@@ -27,7 +27,7 @@ export class ChatUsersComponent implements OnInit {
     },
     {
       rooms: [],
-      _id: 'dkfhdskghkjdshgksdk',
+      _id: 'this_is_a_profile_id',
       nickname: 'string',
       desc: 'string',
       photo: 'string',

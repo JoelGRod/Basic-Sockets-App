@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// Interfaces
+import { Profile } from 'src/app/auth/interfaces/interfaces';
 
 @Component({
   selector: 'app-chat',
@@ -54,6 +56,32 @@ export class ChatComponent implements OnInit, AfterViewInit {
   ];
   username: string = "test";
   temp_user: string = "";
+  public room_users: Profile[] = [
+    {
+      rooms: [],
+      _id: 'this_is_a_profile_id',
+      nickname: 'string',
+      desc: 'string',
+      photo: 'string',
+      created_at: new Date(),
+    },
+    {
+      rooms: [],
+      _id: 'this_is_a_profile_id',
+      nickname: 'string',
+      desc: 'string',
+      photo: 'string',
+      created_at: new Date(),
+    },
+    {
+      rooms: [],
+      _id: 'this_is_a_profile_id',
+      nickname: 'string',
+      desc: 'string',
+      photo: 'string',
+      created_at: new Date(),
+    },
+  ];
 
   public my_form: FormGroup = this._fb.group({
     msg: ['', [ Validators.required ] ]

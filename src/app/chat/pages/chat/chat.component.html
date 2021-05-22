@@ -10,7 +10,7 @@
 
             <button mat-mini-fab
                     color="accent"
-                    routerLink="/chat/users"
+                    routerLink="/chat/users/this-is-an-id"
                     class="me-2"
                     aria-label="Example icon button with a menu icon">
                 <mat-icon>people</mat-icon>
@@ -61,6 +61,10 @@
 
     </mat-card>
 
-    <app-user-list class="chat-users"></app-user-list>
+    <app-user-list
+        class="chat-users" 
+        [user_list_type] = "'Room users'"
+        [profiles]="room_users">
+    </app-user-list>
 
 </div>
