@@ -97,7 +97,10 @@ export class ChatService {
       });
     });
   }
-  // Listen TODO
+  // Listen
+  public listen_new_logged_users(room_name: string) {
+    return this.ws_service.listen(`${room_name}-login-user`);
+  }
 
   // Logout
   // Emit TODO
