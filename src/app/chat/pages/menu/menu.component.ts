@@ -205,6 +205,7 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   /* ---------------------------------------- Profile -------------------------------------------- */
+  // ----------------- Create Profile
   private create_profile(profile: ProfilePayload) {
     this._chat_service.create_user_profile(profile).subscribe((resp: ChatResponse) => {
       if (resp.ok) {
@@ -214,7 +215,7 @@ export class MenuComponent implements OnInit, OnDestroy {
       };
     });
   }
-
+  // Create profile dialog
   public openProfileDialog(): void {
     const dialogRef = this._dialog.open(CreateProfileDialogComponent, {
       width: '300px',
@@ -228,7 +229,8 @@ export class MenuComponent implements OnInit, OnDestroy {
     });
   }
 
-  public delete_profile(id: string): void {
+  // ----------------- Delete profile
+  private delete_profile(id: string): void {
     this._chat_service.delete_profile(id).subscribe((resp: ChatResponse) => {
       if (resp.ok) {
         this.user_profiles = this.delete_element_from_array(this.user_profiles, resp.profile);
@@ -236,6 +238,20 @@ export class MenuComponent implements OnInit, OnDestroy {
         this.openGeneralDialog({ title: 'Error', icon: 'warning_amber', msg: resp.msg });
       }
     });
+  }
+  // Delete profile Dialog
+  public delete_profile_dialog(id: string): void {
+    const data = {
+      title: 'Are you sure?',
+      icon: 'warning_amber',
+      msg: 'You are about to delete a profile...',
+      response: true
+    };
+
+    this.openGeneralDialogResponse(data)
+      .subscribe((result: boolean) => {
+        if (result) this.delete_profile(id);
+      });
   }
 
 
