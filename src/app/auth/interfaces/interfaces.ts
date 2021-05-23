@@ -24,6 +24,7 @@ export interface Room {
     photo?: string;
     has_password?: boolean;
     profiles?: Profile[];
+    msgs?: Msg[];
     created_at?: Date;
     modified_at?: Date;
 }
@@ -36,4 +37,11 @@ export interface Profile {
     rooms?: string[];
     created_at?: Date;
     modified_at?: Date;
+}
+
+export interface Msg {
+    _id: string;
+    msg: string;
+    created_at: Date;
+    chatuser: string;
 }
