@@ -5,7 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ChatService } from '../../services/chat.service';
 // Interfaces
 import { Profile } from 'src/app/auth/interfaces/interfaces';
-import { Room } from '../../../auth/interfaces/interfaces';
+import { Room, Msg } from '../../../auth/interfaces/interfaces';
+// RXJS
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-chat',
@@ -16,7 +18,35 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   @ViewChild('chat_window') chat_window!: ElementRef<HTMLElement>;
 
-  public room!: Room;
+  private _room!: Room;
+  private _profile!: Profile;
+
+  // Info Getters
+
+  public get room_id(): string {
+    return (this._room) ? this._room._id! : 'No id';
+  }
+  
+  public get room_photo(): string {
+    return (this._room) ? this._room.photo! : 'Room Image';
+  }
+
+  public get room_name(): string {
+    return (this._room) ? this._room.name!! : 'Room Name';
+  }
+
+  public get room_desc(): string {
+    return (this._room) ? this._room.desc! : 'Room Desc';
+  }
+
+  public get room_profiles(): Profile[] {
+    return (this._room) ? this._room.profiles! : [];
+  }
+
+  public get room_msgs(): Msg[] {
+    return (this._room) ? this._room.msgs! : [];
+  }
+
   public messages: any[] = [
     {
       nickname: 'user1',
@@ -61,32 +91,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
   ];
   public username: string = "test";
   public temp_user: string = "";
-  public room_users: Profile[] = [
-    {
-      rooms: [],
-      _id: 'this_is_a_profile_id',
-      nickname: 'string',
-      desc: 'string',
-      photo: 'string',
-      created_at: new Date(),
-    },
-    {
-      rooms: [],
-      _id: 'this_is_a_profile_id',
-      nickname: 'string',
-      desc: 'string',
-      photo: 'string',
-      created_at: new Date(),
-    },
-    {
-      rooms: [],
-      _id: 'this_is_a_profile_id',
-      nickname: 'string',
-      desc: 'string',
-      photo: 'string',
-      created_at: new Date(),
-    },
-  ];
 
   public my_form: FormGroup = this._fb.group({
     msg: ['', [ Validators.required ] ]
@@ -98,16 +102,28 @@ export class ChatComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this._activ_route.params.subscribe(resp => {
-      console.log(resp);
-    })
+    this._activ_route.params
+    .pipe(
+      switchMap( resp => this._chat_service.get_room(resp.room_id))
+    )
+    .subscribe( resp => {
+      this._room = resp.room!;
+    });
+
+    this._activ_route.params
+    .pipe(
+      switchMap( resp => this._chat_service.get_profile(resp.profile_id))
+    )
+    .subscribe( resp => {
+      this._profile = resp.profile!;
+    });
   }
 
   // DELETE THIS
   ngAfterViewInit(): void {
     setTimeout(() => {
       this.chat_window.nativeElement.scrollTop = this.chat_window.nativeElement.scrollHeight;
-    }, 5);
+    }, 1000);
     
   }
 

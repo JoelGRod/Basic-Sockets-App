@@ -2,23 +2,24 @@
 
     <mat-card class="d-flex flex-column">
         <mat-card-header>
-            <div mat-card-avatar>room img</div>
-            <mat-card-title>Room name</mat-card-title>
-            <mat-card-subtitle>Room desc</mat-card-subtitle>
-
+            
+            <div mat-card-avatar>{{ room_photo }}</div>
+            <mat-card-title>{{ room_name }}</mat-card-title>
+            <mat-card-subtitle> {{ room_desc }} </mat-card-subtitle>
+            
             <div class="spacer"></div>
 
             <button mat-mini-fab
                     color="accent"
-                    routerLink="/chat/users/this-is-an-id"
+                    [routerLink]="'/chat/users/' + room_id"
                     class="me-2"
-                    aria-label="Example icon button with a menu icon">
+                    aria-label="Button Room connected profiles">
                 <mat-icon>people</mat-icon>
             </button>
             <button mat-mini-fab
                     color="primary"
                     routerLink="/chat/menu"
-                    aria-label="Example icon button with a menu icon">
+                    aria-label="Go back to chat menu">
                 <mat-icon>logout</mat-icon>
             </button>
         </mat-card-header>
@@ -64,7 +65,7 @@
     <app-user-list
         class="chat-users" 
         [user_list_type] = "'Room users'"
-        [profiles]="room_users">
+        [profiles]="room_profiles">
     </app-user-list>
 
 </div>

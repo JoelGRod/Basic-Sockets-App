@@ -43,5 +43,5 @@ export interface Msg {
     _id: string;
     msg: string;
     created_at: Date;
-    chatuser: string;
+    chatuser: Profile;
 }
