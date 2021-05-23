@@ -26,7 +26,7 @@
 
         <mat-card-content class="chat-content" #chat_window>
             <mat-list role="list">
-                <div *ngFor="let msg of messages">
+                <div *ngFor="let msg of messages_test">
                     <div *ngIf="temp_user !== msg.nickname" class="avatar"
                         [ngClass]="{ 'right-avatar': msg.nickname == username}">
                         <!-- <img class="avatar-img" [src]="msg.img" alt="..."> -->

@@ -93,6 +93,13 @@ export class ChatComponent implements OnInit, AfterViewInit {
       img: "https://images-na.ssl-images-amazon.com/images/I/81PohdE46lL.jpg"
     },
   ];
+  public messages_test: any[] = [
+    {
+      nickname: 'user1',
+      msg: 'hola que tal 1',
+      img: "https://images-na.ssl-images-amazon.com/images/I/81PohdE46lL.jpg"
+    }
+  ];
   public username: string = "test";
   public temp_user: string = "";
 
