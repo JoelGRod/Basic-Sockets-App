@@ -2,24 +2,22 @@
 
     <mat-card class="flex-fill d-flex flex-column">
         <mat-card-header>
-            
+
             <div mat-card-avatar>{{ room_info.photo }}</div>
             <mat-card-title>{{ room_info.name }}</mat-card-title>
             <mat-card-subtitle> {{ room_info.desc }} </mat-card-subtitle>
-            
+
             <div class="spacer"></div>
 
-            <button mat-mini-fab
-                    color="accent"
-                    [routerLink]="'/chat/users/' + room_info.id"
-                    class="me-2"
-                    aria-label="Button Room connected profiles">
+            <button mat-mini-fab color="accent" 
+                [routerLink]="'/chat/users/' + room_info.id" 
+                class="me-2"
+                aria-label="Button Room connected profiles">
                 <mat-icon>people</mat-icon>
             </button>
-            <button mat-mini-fab
-                    color="primary"
-                    routerLink="/chat/menu"
-                    aria-label="Go back to chat menu">
+            <button mat-mini-fab color="primary" 
+                routerLink="/chat/menu" 
+                aria-label="Go back to chat menu">
                 <mat-icon>logout</mat-icon>
             </button>
         </mat-card-header>
@@ -27,7 +25,7 @@
         <mat-card-content class="chat-content" #chat_window>
             <mat-list role="list">
                 <div *ngFor="let msg of room_msgs">
-                    <div class="avatar"
+                    <div class="avatar" 
                         [ngClass]="{ 'right-avatar': msg.nickname == profile_info.nickname}">
                         <!-- <img class="avatar-img" [src]="msg.img" alt="..."> -->
                         {{ msg.nickname }}
@@ -35,7 +33,7 @@
                     <mat-list-item *ngFor="let single_msg of msg.msgs" 
                         class="chat-message break-word" 
                         role="listitem"
-                        [ngClass]="{ 'right-message': msg.nickname == profile_info.nickname}">
+                        [ngClass]="{'right-message': msg.nickname == profile_info.nickname}">
                         {{ single_msg }}
                     </mat-list-item>
                 </div>
@@ -43,17 +41,20 @@
         </mat-card-content>
 
         <mat-card-actions>
-            <form (ngSubmit)="send_message()" [formGroup]="my_form" autocomplete="false">
+            <form (ngSubmit)="send_message()" 
+                [formGroup]="form" 
+                autocomplete="false">
                 <div class="row gx-3">
                     <div class="col-10 col-md-11 ps-3">
-                        <input type="text" class="form-control" formControlName="msg">
+                        <input type="text" 
+                            class="form-control" 
+                            formControlName="msg">
                     </div>
                     <div class="col-2 col-md-1">
-                        <button mat-mini-fab
-                                type="submit"
-                                color="primary"
-                                [disabled]="my_form.invalid"
-                                aria-label="Send button">
+                        <button mat-mini-fab type="submit" 
+                            color="primary" 
+                            [disabled]="form.invalid"
+                            aria-label="Send button">
                             <mat-icon>send</mat-icon>
                         </button>
                     </div>
@@ -63,9 +64,8 @@
 
     </mat-card>
 
-    <app-user-list
-        class="chat-users" 
-        [user_list_type] = "'Room users'"
+    <app-user-list class="chat-users" 
+        [user_list_type]="'Room users'" 
         [profiles]="room_info.profiles">
     </app-user-list>
 

@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // Services
 import { ActivatedRoute } from '@angular/router';
 import { ChatService } from '../../services/chat.service';
 // Interfaces
-import { Profile } from 'src/app/auth/interfaces/interfaces';
-import { Room, Msg } from '../../../auth/interfaces/interfaces';
-import { ModMsg, ProfileInfo, RoomInfo } from '../../interfaces/chat-interface';
+import { Profile, Room, Msg } from '../../../auth/interfaces/interfaces';
+import { ModMsg, ProfileInfo, RoomInfo, MsgPayload } from '../../interfaces/chat-interface';
 // RXJS
-import { switchMap, tap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 
 @Component({
@@ -16,12 +16,15 @@ import { switchMap, tap } from 'rxjs/operators';
   templateUrl: './chat.component.html',
   styleUrls: ['../../chat-styles.scss', './chat.component.scss']
 })
-export class ChatComponent implements OnInit, AfterViewInit {
+export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('chat_window') chat_window!: ElementRef<HTMLElement>;
 
   private _room!: Room;
   private _profile!: Profile;
+
+  // Subscriptions
+  private _listen_message_subs!: Subscription;
 
   // Info Getters
   public get room_info(): RoomInfo {
@@ -60,7 +63,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public my_form: FormGroup = this._fb.group({
+  public form: FormGroup = this._fb.group({
     msg: ['', [Validators.required]]
   });
 
@@ -85,30 +88,40 @@ export class ChatComponent implements OnInit, AfterViewInit {
       .subscribe(resp => {
         this._profile = resp.profile!;
       });
+
+    // Sockets
+    this._listen_message_subs = this._activ_route.params
+      .pipe(
+        switchMap(resp => this._chat_service.get_messages(resp.room_id))
+      )
+      .subscribe(resp => {
+        this._room.msgs?.push(resp as Msg);
+        this.see_last_messages();
+      });
   }
 
-  // DELETE THIS
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.chat_window.nativeElement.scrollTop = this.chat_window.nativeElement.scrollHeight;
-    }, 1000);
-
+    this.see_last_messages();
   }
 
-  send_message(): void {
-    const msg = this.my_form.get('msg')!.value;
-    // this.messages.push({
-    //   nickname: this.username,
-    //   msg
-    // });
+  ngOnDestroy(): void {
+    this._listen_message_subs.unsubscribe();
+  }
 
-    this.my_form.reset();
+  public send_message(): void {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
 
-    // DELETE THIS
-    setTimeout(() => {
-      this.chat_window.nativeElement.scrollTop = this.chat_window.nativeElement.scrollHeight;
-    }, 5);
+    const payload: MsgPayload = {
+      room_id: this.room_info.id,
+      nickname: this.profile_info.nickname,
+      msg: this.form.get('msg')!.value
+    }
 
+    this._chat_service.send_message(payload);
+    this.form.reset();
   }
 
   private prepare_msg_data(room_msgs: Msg[]): ModMsg[] {
@@ -128,6 +141,12 @@ export class ChatComponent implements OnInit, AfterViewInit {
       mod_msgs.push(mod_msg);
     }
     return mod_msgs;
+  }
+
+  private see_last_messages(): void {
+    setTimeout(() => {
+      this.chat_window.nativeElement.scrollTop = this.chat_window.nativeElement.scrollHeight;
+    }, 500);
   }
 
 }

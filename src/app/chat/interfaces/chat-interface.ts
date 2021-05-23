@@ -63,3 +63,10 @@ export interface ProfileInfo {
     id: string;
     nickname: string;
 }
+
+export interface MsgPayload {
+    room_id: string;
+    nickname: string;
+    msg: string;
+    token?: string;
+}

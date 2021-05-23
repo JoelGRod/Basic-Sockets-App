@@ -10,7 +10,8 @@ import {
   ChatSocketResponse,
   RoomPayload,
   ProfilePayload,
-  LoginPayload
+  LoginPayload,
+  MsgPayload
 } from '../interfaces/chat-interface';
 // RXJS
 import { Observable, of } from 'rxjs';
@@ -121,22 +122,20 @@ export class ChatService {
   }
 
   // Send Message
-  // Emit TODO
-  send_message(nickname: string, msg: string) {
-    const payload = {
-      room_id: '6096b63c0e43d310013a8586',
-      token: localStorage.getItem('token'),
-      nickname: 'chatuser1 test',
-      msg,
-    };
+  // Emit
+  public send_message(payload: MsgPayload) {
+    payload = {
+      ...payload,
+      token: localStorage.getItem('token')!
+    }
 
     this.ws_service.emit('message', payload, (resp: any) => {
       console.log(resp);
     });
   }
   // Listen
-  get_messages(room_name: string) {
-    return this.ws_service.listen(`${room_name}-new-message`);
+  public get_messages(room_id: string) {
+    return this.ws_service.listen(`${room_id}-new-message`);
   }
 
   /* ---------------------------------- HTTP --------------------------------------- */
