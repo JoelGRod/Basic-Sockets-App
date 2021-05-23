@@ -26,7 +26,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
   public get room_id(): string {
     return (this._room) ? this._room._id! : 'No id';
   }
-  
+
   public get room_photo(): string {
     return (this._room) ? this._room.photo! : 'Room Image';
   }
@@ -45,6 +45,10 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
   public get room_msgs(): Msg[] {
     return (this._room) ? this._room.msgs! : [];
+  }
+
+  public get profile_name(): string {
+    return (this._profile) ? this._profile.nickname! : 'No Nickname';
   }
 
   public messages: any[] = [
@@ -108,6 +112,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     )
     .subscribe( resp => {
       this._room = resp.room!;
+      console.log(this._room.msgs!);
     });
 
     this._activ_route.params
