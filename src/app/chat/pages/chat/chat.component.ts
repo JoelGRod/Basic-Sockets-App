@@ -112,7 +112,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
     )
     .subscribe( resp => {
       this._room = resp.room!;
-      console.log(this._room.msgs!);
     });
 
     this._activ_route.params
