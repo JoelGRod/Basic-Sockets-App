@@ -44,6 +44,12 @@
     margin: 0rem 1rem 0.5rem 7rem;
 }
 
+.break-word {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
 @media (min-width: 600px) {
     .chat-users {
         display: block;

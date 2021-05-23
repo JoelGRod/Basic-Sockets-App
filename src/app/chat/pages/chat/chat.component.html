@@ -1,6 +1,6 @@
 <div class="flex-container d-flex flex-row">
 
-    <mat-card class="d-flex flex-column">
+    <mat-card class="flex-fill d-flex flex-column">
         <mat-card-header>
             
             <div mat-card-avatar>{{ room_photo }}</div>
@@ -26,16 +26,17 @@
 
         <mat-card-content class="chat-content" #chat_window>
             <mat-list role="list">
-                <div *ngFor="let msg of messages_test">
-                    <div *ngIf="temp_user !== msg.nickname" class="avatar"
-                        [ngClass]="{ 'right-avatar': msg.nickname == username}">
+                <div *ngFor="let msg of room_msgs">
+                    <div class="avatar"
+                        [ngClass]="{ 'right-avatar': msg.nickname == profile_name}">
                         <!-- <img class="avatar-img" [src]="msg.img" alt="..."> -->
                         {{ msg.nickname }}
-                        {{ changeTemp(msg.nickname) }}
                     </div>
-                    <mat-list-item class="chat-message" role="listitem"
-                        [ngClass]="{ 'right-message': msg.nickname == username}">
-                        {{ msg.msg }}
+                    <mat-list-item *ngFor="let single_msg of msg.msgs" 
+                        class="chat-message break-word" 
+                        role="listitem"
+                        [ngClass]="{ 'right-message': msg.nickname == profile_name}">
+                        {{ single_msg }}
                     </mat-list-item>
                 </div>
             </mat-list>

@@ -9,6 +9,11 @@ import { Room, Msg } from '../../../auth/interfaces/interfaces';
 // RXJS
 import { switchMap, tap } from 'rxjs/operators';
 
+interface ModMsg {
+  nickname: string;
+  msgs: string[];
+}
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -43,8 +48,27 @@ export class ChatComponent implements OnInit, AfterViewInit {
     return (this._room) ? this._room.profiles! : [];
   }
 
-  public get room_msgs(): Msg[] {
-    return (this._room) ? this._room.msgs! : [];
+  public get room_msgs(): ModMsg[] {
+    if(this._room) {
+      let mod_msgs: ModMsg[] = [];
+      for(let msg of this._room.msgs!) {
+
+        let last_item = mod_msgs[mod_msgs.length - 1];
+        if(last_item !== undefined && last_item.nickname == msg.chatuser.nickname) {
+          last_item.msgs.push(msg.msg);
+          continue;
+        }
+
+        let mod_msg: ModMsg = {
+          nickname: msg.chatuser.nickname,
+          msgs: [msg.msg]
+        };
+        mod_msgs.push(mod_msg);
+      }
+      return mod_msgs;
+    } else {
+      return [];
+    }
   }
 
   public get profile_name(): string {
@@ -96,9 +120,38 @@ export class ChatComponent implements OnInit, AfterViewInit {
   public messages_test: any[] = [
     {
       nickname: 'user1',
-      msg: 'hola que tal 1',
+      msgs: [
+        'hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1 hola que tal 1',
+        'hola que tal 2',
+        'hola que tal 3'
+      ],
       img: "https://images-na.ssl-images-amazon.com/images/I/81PohdE46lL.jpg"
-    }
+    },
+    {
+      nickname: 'test',
+      msgs: [
+        'hola que tal 1',
+        'hola que tal 2'
+      ],
+      img: "https://images-na.ssl-images-amazon.com/images/I/81PohdE46lL.jpg"
+    },
+    {
+      nickname: 'user1',
+      msgs: [
+        'hola que tal 1',
+        'hola que tal 2'
+      ],
+      img: "https://images-na.ssl-images-amazon.com/images/I/81PohdE46lL.jpg"
+    },
+    {
+      nickname: 'test',
+      msgs: [
+        'hola que tal 1',
+        'hola que tal 2',
+        'hola que tal 3'
+      ],
+      img: "https://images-na.ssl-images-amazon.com/images/I/81PohdE46lL.jpg"
+    },
   ];
   public username: string = "test";
   public temp_user: string = "";
@@ -119,6 +172,7 @@ export class ChatComponent implements OnInit, AfterViewInit {
     )
     .subscribe( resp => {
       this._room = resp.room!;
+      console.log(this._room);
     });
 
     this._activ_route.params
