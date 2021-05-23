@@ -1,10 +1,5 @@
 import { Profile, Room } from "src/app/auth/interfaces/interfaces";
 
-export interface Msg {
-    from: string;
-    body: string;
-}
-
 export interface ChatResponse {
     ok: boolean;
     msg: string;
@@ -48,4 +43,23 @@ export interface ActionObject {
     id: string;
     action: string;
     subject: string;
+}
+
+// Chat Component
+export interface ModMsg {
+    nickname: string;
+    msgs: string[];
+}
+
+export interface RoomInfo {
+    id: string;
+    name: string;
+    desc: string;
+    photo: string;
+    profiles: Profile[]
+}
+
+export interface ProfileInfo {
+    id: string;
+    nickname: string;
 }
