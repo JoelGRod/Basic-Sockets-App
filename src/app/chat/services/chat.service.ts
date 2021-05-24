@@ -15,7 +15,7 @@ import {
 } from '../interfaces/chat-interface';
 // RXJS
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -90,7 +90,7 @@ export class ChatService {
 
     return new Promise((resolve, reject) => {
       this.ws_service.emit('login-user', payload, (resp: ChatResponse) => {
-        if(resp.ok) {
+        if (resp.ok) {
           resolve(resp.room?._id!);
         } else {
           reject(resp);
@@ -205,6 +205,20 @@ export class ChatService {
     return this._http.delete<ChatResponse>(url, { params, headers })
       .pipe(
         catchError(resp => of(resp.error))
+      );
+  }
+
+  public check_if_profile_can_loggin(profile_id: string, room_id: string): Observable<boolean> {
+    const url: string = `${this._base_url}/chat/check-room-login`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+    const params = new HttpParams()
+      .set('room_id', room_id)
+      .set('profile_id', profile_id);
+
+    return this._http.get<boolean>(url, { headers, params })
+      .pipe(
+        map( resp => true ),
+        catchError (resp => of(false))
       );
   }
 
