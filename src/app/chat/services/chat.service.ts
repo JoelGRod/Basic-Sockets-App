@@ -123,14 +123,17 @@ export class ChatService {
 
   // Send Message
   // Emit
-  public send_message(payload: MsgPayload) {
+  public send_message(payload: MsgPayload): Promise<ChatResponse> {
     payload = {
       ...payload,
       token: localStorage.getItem('token')!
     }
 
-    this.ws_service.emit('message', payload, (resp: any) => {
-      console.log(resp);
+    return new Promise((resolve, reject) => {
+      this.ws_service.emit('message', payload, (resp: ChatResponse) => {
+        if (resp.ok) resolve( resp );
+        else reject(resp);
+      });
     });
   }
   // Listen
@@ -217,8 +220,8 @@ export class ChatService {
 
     return this._http.get<boolean>(url, { headers, params })
       .pipe(
-        map( resp => true ),
-        catchError (resp => of(false))
+        map(resp => true),
+        catchError(resp => of(false))
       );
   }
 
