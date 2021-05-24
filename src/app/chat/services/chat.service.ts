@@ -99,8 +99,8 @@ export class ChatService {
     });
   }
   // Listen
-  public listen_new_logged_users(room_name: string) {
-    return this.ws_service.listen(`${room_name}-login-user`);
+  public listen_new_logged_users(room_id: string) {
+    return this.ws_service.listen(`${room_id}-login-user`);
   }
 
   // Logout
@@ -112,7 +112,7 @@ export class ChatService {
     };
 
     this.ws_service.emit('logout-user', payload, (resp: any) => {
-      console.log(resp);
+      // Do something with response
     });
   }
   // Listen

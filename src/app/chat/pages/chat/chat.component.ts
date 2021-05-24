@@ -29,7 +29,7 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Subscriptions
   private _listen_message_subs!: Subscription;
-  private _listen_new_logged_users!: Subscription;
+  private _listen_new_logged_users_subs!: Subscription;
   private _listen_logout_user_subs!: Subscription;
 
   // Info Getters
@@ -114,7 +114,14 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
       this._room.profiles = this._room.profiles!.filter((profile: Profile) => {
         return profile.nickname !== resp.nickname;
       });
-    })
+    });
+
+    this._listen_new_logged_users_subs = this._activ_route.params.pipe(
+      switchMap( resp => this._chat_service.listen_new_logged_users(resp.room_id))
+    )
+    .subscribe( resp => {
+      this._room.profiles!.push(resp as Profile);
+    });
   }
 
   ngAfterViewInit(): void {
@@ -124,6 +131,7 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this._listen_message_subs.unsubscribe();
     this._listen_logout_user_subs.unsubscribe();
+    this._listen_new_logged_users_subs.unsubscribe();
   }
 
   public send_message(): void {
