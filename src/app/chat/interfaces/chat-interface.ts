@@ -35,7 +35,7 @@ export interface ProfilePayload {
 export interface LoginPayload {
     room_id: string;
     nickname: string;
-    password: string;
+    password?: string;
     token?: string;
 }
 

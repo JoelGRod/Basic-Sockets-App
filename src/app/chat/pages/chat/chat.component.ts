@@ -7,7 +7,7 @@ import { ChatService } from '../../services/chat.service';
 import { Profile, Room, Msg } from '../../../auth/interfaces/interfaces';
 import { ModMsg, ProfileInfo, RoomInfo, MsgPayload } from '../../interfaces/chat-interface';
 // RXJS
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 // Dialogs
 import { MatDialog } from '@angular/material/dialog';
@@ -29,6 +29,8 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // Subscriptions
   private _listen_message_subs!: Subscription;
+  private _listen_new_logged_users!: Subscription;
+  private _listen_logout_user_subs!: Subscription;
 
   // Info Getters
   public get room_info(): RoomInfo {
@@ -104,6 +106,15 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
         this._room.msgs?.push(resp as Msg);
         this.see_last_messages();
       });
+    
+    this._listen_logout_user_subs = this._activ_route.params.pipe(
+      switchMap( resp => this._chat_service.listen_logout_users(resp.room_id))
+    )
+    .subscribe( (resp: any) => {
+      this._room.profiles = this._room.profiles!.filter((profile: Profile) => {
+        return profile.nickname !== resp.nickname;
+      });
+    })
   }
 
   ngAfterViewInit(): void {
@@ -112,6 +123,7 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._listen_message_subs.unsubscribe();
+    this._listen_logout_user_subs.unsubscribe();
   }
 
   public send_message(): void {
@@ -140,6 +152,29 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
 
+  public logout_user(): void {
+    const payload = {
+      room_id: this._room._id,
+      nickname: this._profile.nickname,
+    };
+
+    const data = {
+      title: 'Are you sure?',
+      icon: 'priority_high',
+      msg: 'Proceed with Room logout?',
+      response: true
+    };
+
+    this.openGeneralDialogResponse(data)
+      .subscribe((result: boolean) => {
+        if (result) {
+          this._chat_service.logout_room(payload);
+          this._router.navigateByUrl('/chat/menu');
+        }
+      });
+  }
+
+  // Helpers?
   private prepare_msg_data(room_msgs: Msg[]): ModMsg[] {
     let mod_msgs: ModMsg[] = [];
     for (let msg of room_msgs) {
@@ -165,11 +200,21 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     }, 500);
   }
 
+  // Helpers (some are in menu too - Repetitive! clean this!!)
   public openGeneralDialog(data: DialogData): void {
     const dialogRef = this._dialog.open(GralDialogComponent, {
       width: '250px',
       data
     });
+  }
+
+  public openGeneralDialogResponse(data: DialogData): Observable<boolean> {
+    const dialogRef = this._dialog.open(GralDialogComponent, {
+      width: '250px',
+      data
+    });
+
+    return dialogRef.afterClosed();
   }
 
 }

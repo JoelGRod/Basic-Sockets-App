@@ -104,12 +104,11 @@ export class ChatService {
   }
 
   // Logout
-  // Emit TODO
-  logout_room() {
-    const payload = {
-      token: localStorage.getItem('token'),
-      room_id: '6096b63c0e43d310013a8586',
-      nickname: 'chatuser1 test'
+  // Emit
+  logout_room(payload: LoginPayload) {
+    payload = {
+      ...payload,
+      token: localStorage.getItem('token')!
     };
 
     this.ws_service.emit('logout-user', payload, (resp: any) => {
@@ -117,8 +116,8 @@ export class ChatService {
     });
   }
   // Listen
-  public listen_logout_users(room_name: string) {
-    return this.ws_service.listen(`${room_name}-logout-user`);
+  public listen_logout_users(room_id: string) {
+    return this.ws_service.listen(`${room_id}-logout-user`);
   }
 
   // Send Message
