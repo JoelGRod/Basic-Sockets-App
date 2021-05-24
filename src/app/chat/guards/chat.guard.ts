@@ -14,7 +14,7 @@ export class ChatGuard implements CanActivate {
   constructor(
     private _chat_service: ChatService,
     private _router: Router
-  ) {}
+  ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot
@@ -25,8 +25,10 @@ export class ChatGuard implements CanActivate {
 
     return this._chat_service.check_if_profile_can_loggin(profile_id!, room_id!)
       .pipe(
-        tap( resp => {
-          if(!resp) this._router.navigateByUrl('/chat/menu');
+        tap(resp => {
+          if (!resp) {
+            this._router.navigateByUrl('/chat/menu')
+          }
         })
       );
   }
