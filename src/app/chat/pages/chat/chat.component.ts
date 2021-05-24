@@ -127,18 +127,17 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     this._chat_service.send_message(payload)
-      .then(resp => console.log(resp.msg))
+      .then(resp => this.form.reset())
       .catch(resp => {
         this.openGeneralDialog(
           {
             title: resp.msg,
             icon: 'warning_amber',
-            msg: 'The room has been deleted by its creator, do not worry, we already left for you'
+            msg: 'The room has been deleted by its creator, do not worry, we already left the room for you'
           });
           this._router.navigateByUrl('/chat/menu');
       });
 
-    this.form.reset();
   }
 
   private prepare_msg_data(room_msgs: Msg[]): ModMsg[] {
