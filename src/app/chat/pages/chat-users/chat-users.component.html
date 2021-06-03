@@ -12,7 +12,7 @@
         <button mat-mini-fab
                 class="m-2 float-end"
                 color="primary"
-                routerLink="/chat/room/this-is-a-room-id/this-is-profile-id"
+                [routerLink]="'/chat/room/' + room_id + '/' + profile_id"
                 aria-label="Example icon button with a menu icon">
             <mat-icon>chat</mat-icon>
         </button>

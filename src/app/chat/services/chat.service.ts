@@ -155,6 +155,14 @@ export class ChatService {
     return this._http.get<ChatResponse>(url, { headers: headers });
   }
 
+  public get_room_profiles(room_id: string): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/room-chat-users`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+    const params = new HttpParams().set('room_id', room_id);
+
+    return this._http.get<ChatResponse>(url, { headers: headers, params: params });
+  }
+
   public get_all_rooms(): Observable<ChatResponse> {
     const url: string = `${this._base_url}/chat/rooms`;
     const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
