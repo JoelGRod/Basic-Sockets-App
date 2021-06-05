@@ -21,17 +21,17 @@ export class ProfileComponent implements OnInit {
   public is_user_profile: boolean = true;
   public profile: Profile = {
     _id: '',
-    nickname: 'test',
-    desc: 'test',
-    photo: 'test'
+    nickname: '',
+    desc: '',
+    photo: ''
   };
   public profile_rooms: Room[] = [];
   private _empty_photo: string = 'https://staticfilesprod.musicworldcupdevelopment.com/backend/images/profile-no-img.png?v=1.0.40';
 
   public form: FormGroup = this._fb.group({
-    nickname: [this.profile.nickname],
-    desc: [this.profile.desc],
-    photo: [this.profile.photo],
+    nickname: [''],
+    desc: [''],
+    photo: [''],
   });
 
   constructor(
@@ -48,7 +48,8 @@ export class ProfileComponent implements OnInit {
         switchMap( resp => this._chat_service.get_profile(resp.profile_id)),
         tap( resp => {
           this.is_user_profile = resp.ok;
-          this.profile = resp.profile!;  
+          this.profile = resp.profile!;
+          this.update_form_values();
         }),
         switchMap( resp => this._chat_service.get_profile_rooms(resp.profile!._id)),
         catchError( err => {
@@ -58,7 +59,16 @@ export class ProfileComponent implements OnInit {
       )
       .subscribe( resp => {
         if(resp.ok) this.profile_rooms = resp.rooms!;
+        // else -> Error dialog?
       })
+  }
+
+  private update_form_values(): void {
+    this.form.patchValue({
+      nickname: this.profile.nickname,
+      desc: this.profile.desc,
+      photo: this.profile.photo
+    });
   }
 
   public changeSource( event: any ): void {
