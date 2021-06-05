@@ -5,7 +5,7 @@
             <mat-card-header>
                 <mat-card-title>{{ profile.nickname }}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image [src]='profile.photo' (error) ="changeSource($event)" alt="Profile Image">
+            <img mat-card-image [src]='profile.photo' (error)="changeSource($event)" alt="Profile Image">
             <mat-card-content>
                 <p>
                     {{ profile.desc }}
@@ -14,28 +14,38 @@
         </mat-card>
 
 
-        <div class="p-3 pe-md-5 flex-grow-1">
-            <form class="pb-2" *ngIf="is_user_profile" [formGroup]="form" (ngSubmit)="send_form()">
-                <p>
-                    <mat-form-field class="input-full-width">
+        <div class="ps-3 pt-3 pe-md-3 flex-grow-1">
+            <form class="pb-2" *ngIf="is_user_profile" [formGroup]="form">
+                <p class="d-flex flex-row">
+                    <mat-form-field class="flex-grow-1">
                         <mat-label>Nickname</mat-label>
                         <input formControlName="nickname" matInput placeholder="Your nickname goes here">
                     </mat-form-field>
+                    <button mat-mini-fab class="m-2 float-end" color="primary" (click)="update_nickname()"
+                        aria-label="Back to last page menu">
+                        <mat-icon>refresh</mat-icon>
+                    </button>
                 </p>
-                <p>
-                    <mat-form-field class="input-full-width">
+                <p class="d-flex flex-row">
+                    <mat-form-field class="flex-grow-1">
                         <mat-label>Description</mat-label>
                         <textarea formControlName="desc" matInput placeholder="Describe your profile"></textarea>
                     </mat-form-field>
+                    <button mat-mini-fab class="m-2 float-end" color="primary" (click)="update_info()"
+                        aria-label="Back to last page menu">
+                        <mat-icon>refresh</mat-icon>
+                    </button>
                 </p>
-                <p>
-                    <mat-form-field class="input-full-width">
+                <p class="d-flex flex-row">
+                    <mat-form-field class="flex-grow-1">
                         <mat-label>Photo URL</mat-label>
                         <input formControlName="photo" matInput placeholder="https://some-domain.com/...">
                     </mat-form-field>
+                    <button mat-mini-fab class="m-2 float-end" color="primary" (click)="update_info()"
+                        aria-label="Back to last page menu">
+                        <mat-icon>refresh</mat-icon>
+                    </button>
                 </p>
-
-                <mat-divider class="mx-2 pb-4"></mat-divider>
             </form>
 
 

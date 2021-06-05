@@ -240,4 +240,17 @@ export class ChatService {
       );
   }
 
+  public update_profile_nickname(chat_user_id: string, new_nickname: string): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/update-chat-user-nickname`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+    const body = { new_nickname, chat_user_id };
+
+    return this._http.put<ChatResponse>(url, body, { headers })
+      .pipe(
+        catchError(resp => of(resp.error))
+      );
+  }
+
+
+
 }

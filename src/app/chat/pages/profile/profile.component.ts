@@ -79,7 +79,22 @@ export class ProfileComponent implements OnInit {
     this.location.back();
   }
 
-  public send_form(): void {
+  public update_nickname(): void {
+    const new_nickname = this.form.get('nickname')?.value;
+
+    this._chat_service.update_profile_nickname(this.profile._id, new_nickname)
+    .subscribe(resp => {
+      if(resp.ok) {
+        this.profile.nickname = resp.profile?.nickname!;
+        this.update_form_values();
+      } else {
+        // Error dialog
+        console.log(resp);
+      }
+    });
+  }
+
+  public update_info(): void {
 
   }
 
