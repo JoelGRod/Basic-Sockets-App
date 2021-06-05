@@ -43,7 +43,6 @@ export class ProfileComponent implements OnInit {
       .subscribe( resp => {
         this.is_user_profile = resp.ok;
         this.profile = resp.profile!;
-        console.log(this.profile);
       })
   }
 
