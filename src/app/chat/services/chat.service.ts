@@ -105,7 +105,7 @@ export class ChatService {
 
   // Logout
   // Emit
-  logout_room(payload: LoginPayload) {
+  public logout_room(payload: LoginPayload) {
     payload = {
       ...payload,
       token: localStorage.getItem('token')!
