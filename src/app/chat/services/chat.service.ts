@@ -186,6 +186,14 @@ export class ChatService {
     return this._http.get<ChatResponse>(url, { headers, params });
   }
 
+  public get_profile_rooms(profile_id: string): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/chat-user-rooms`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+    const params = new HttpParams().set('profile_id', profile_id);
+
+    return this._http.get<ChatResponse>(url, { headers, params });
+  }
+
   public create_user_profile(profile: ProfilePayload): Observable<ChatResponse> {
     const url: string = `${this._base_url}/chat/create-chat-user`;
     const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);

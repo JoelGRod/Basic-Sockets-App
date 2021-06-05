@@ -42,16 +42,16 @@
             <h3 class="ms-2">Connected Rooms</h3>
             <mat-divider class="mx-2 pb-1"></mat-divider>
             <mat-list role="list">
-                <mat-list-item role="listitem" *ngFor="let room of profile.rooms">{{room}}</mat-list-item>
+                <mat-list-item role="listitem" *ngFor="let room of profile_rooms">{{room.name}}</mat-list-item>
             </mat-list>
 
         </div>
     </div>
 
     <div class="footer">
-        <button mat-mini-fab class="m-2 float-end" color="primary" routerLink="/chat/menu"
-            aria-label="Example icon button with a menu icon">
-            <mat-icon>home</mat-icon>
+        <button mat-mini-fab class="m-2 float-end" color="primary" (click)="backToPreviousPage()"
+            aria-label="Back to last page menu">
+            <mat-icon>undo</mat-icon>
         </button>
     </div>
 </div>
