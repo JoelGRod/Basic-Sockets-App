@@ -95,7 +95,20 @@ export class ProfileComponent implements OnInit {
   }
 
   public update_info(): void {
+    const new_desc = this.form.get('desc')?.value;
+    const new_photo = this.form.get('photo')?.value;
 
+    this._chat_service.update_profile_info(this.profile._id, new_desc, new_photo)
+    .subscribe(resp => {
+      if(resp.ok) {
+        this.profile.desc = resp.profile?.desc!;
+        this.profile.photo = resp.profile?.photo!;
+        this.update_form_values();
+      } else {
+        // Error dialog
+        console.log(resp);
+      }
+    });
   }
 
 }
