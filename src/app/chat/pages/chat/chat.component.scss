@@ -12,6 +12,10 @@
     overflow-y: scroll;
 }
 
+.chat-description {
+    overflow: auto;
+}
+
 .avatar {
     display: inline-block;
     padding: 0.2rem 1rem;
