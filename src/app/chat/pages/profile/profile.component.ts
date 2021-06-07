@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 // Services
 import { ChatService } from '../../services/chat.service';
+import { DialogService } from 'src/app/shared/services/dialog.service';
 // Interfaces
 import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
 // RXJS
@@ -39,7 +40,8 @@ export class ProfileComponent implements OnInit {
     private _chat_service: ChatService,
     private _activated_route: ActivatedRoute,
     private _router: Router,
-    private location: Location
+    private location: Location,
+    private _dialog_service: DialogService
   ) { }
 
   ngOnInit(): void {
@@ -59,7 +61,9 @@ export class ProfileComponent implements OnInit {
       )
       .subscribe( resp => {
         if(resp.ok) this.profile_rooms = resp.rooms!;
-        // else -> Error dialog?
+        else this._dialog_service.openGeneralDialog(
+          { title: 'Error', icon: 'warning_amber', msg: resp.msg }
+        );
       })
   }
 
@@ -88,8 +92,9 @@ export class ProfileComponent implements OnInit {
         this.profile.nickname = resp.profile?.nickname!;
         this.update_form_values();
       } else {
-        // Error dialog
-        console.log(resp);
+        this._dialog_service.openGeneralDialog(
+          { title: 'Error', icon: 'warning_amber', msg: resp.msg }
+        );
       }
     });
   }
@@ -105,8 +110,9 @@ export class ProfileComponent implements OnInit {
         this.profile.photo = resp.profile?.photo!;
         this.update_form_values();
       } else {
-        // Error dialog
-        console.log(resp);
+        this._dialog_service.openGeneralDialog(
+          { title: 'Error', icon: 'warning_amber', msg: resp.msg }
+        );
       }
     });
   }

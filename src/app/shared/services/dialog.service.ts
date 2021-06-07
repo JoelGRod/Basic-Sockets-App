@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 // RXJS
 import { Observable } from 'rxjs';
 // Services
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 // Interfaces
 import { DialogData } from '../interfaces/shared-interfaces';
 // Dialogs

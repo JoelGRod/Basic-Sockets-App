@@ -7,6 +7,7 @@ import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 // Dialogs
 import { GralDialogComponent } from './components/gral-dialog/gral-dialog.component';
+import { DialogService } from './services/dialog.service';
 
 
 
@@ -33,6 +34,9 @@ import { GralDialogComponent } from './components/gral-dialog/gral-dialog.compon
     ErrMsgDirective,
     // Dialogs
     GralDialogComponent
+  ],
+  providers: [ 
+    DialogService 
   ]
 })
 export class SharedModule { }
