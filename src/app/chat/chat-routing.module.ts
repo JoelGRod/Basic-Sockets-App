@@ -19,7 +19,7 @@ const routes: Routes = [
       { path: 'room/:room_id/:profile_id', component: ChatComponent, canActivate: [ ChatGuard ] },
       { path: 'users/:room_id/:profile_id', component: ChatUsersComponent },
       { path: 'profile/:profile_id', component: ProfileComponent },
-      { path: 'room-config/:id', component: ChatConfigComponent },
+      { path: 'room-config/:room_id', component: ChatConfigComponent },
       { path: '**', redirectTo: 'menu' },
     ]
   }

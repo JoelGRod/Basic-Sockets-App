@@ -27,6 +27,7 @@ export interface Room {
     msgs?: Msg[];
     created_at?: Date;
     modified_at?: Date;
+    user?: string;
 }
 
 export interface Profile {
