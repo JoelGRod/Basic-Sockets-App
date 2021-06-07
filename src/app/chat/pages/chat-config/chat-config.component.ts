@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
 // Services
 import { ChatService } from '../../services/chat.service';
+import { DialogService } from 'src/app/shared/services/dialog.service';
 // RXJS
 import { switchMap } from 'rxjs/operators';
 
@@ -31,7 +32,8 @@ export class ChatConfigComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _activated_route: ActivatedRoute,
-    private _chat_service: ChatService
+    private _chat_service: ChatService,
+    private _dialog_service: DialogService
   ) { }
 
   ngOnInit(): void {
@@ -55,6 +57,44 @@ export class ChatConfigComponent implements OnInit {
 
   public changeSource( event: any ): void {
     event.target.src = this._empty_photo;
+  }
+
+  public update_room_name(): void {
+    const new_name = this.form.get('name')?.value;
+
+    this._chat_service.update_room_name(this.room._id, new_name)
+    .subscribe(resp => {
+      if(resp.ok) {
+        this.room.name = resp.room?.name!;
+        this.update_form_values();
+      } else {
+        this._dialog_service.openGeneralDialog(
+          { title: 'Error', icon: 'warning_amber', msg: resp.msg }
+        );
+      }
+    });
+  }
+
+  public update_room_info(): void {
+    const new_desc = this.form.get('desc')?.value;
+    const new_photo = this.form.get('photo')?.value;
+
+    this._chat_service.update_room_info(this.room._id, new_desc, new_photo)
+    .subscribe(resp => {
+      if(resp.ok) {
+        this.room.desc = resp.room?.desc!;
+        this.room.photo = resp.room?.photo!;
+        this.update_form_values();
+      } else {
+        this._dialog_service.openGeneralDialog(
+          { title: 'Error', icon: 'warning_amber', msg: resp.msg }
+        );
+      }
+    });
+  }
+
+  public update_room_password(): void {
+    console.log('jojojo');
   }
 
 }

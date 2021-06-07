@@ -262,6 +262,39 @@ export class ChatService {
       );
   }
 
+  public update_room_name(room_id: string, new_name: string): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/update-room-name`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+    const body = { new_name, room_id };
+
+    return this._http.put<ChatResponse>(url, body, { headers })
+      .pipe(
+        catchError(resp => of(resp.error))
+      );
+  }
+
+  public update_room_info(room_id: string, new_desc: string, new_photo: string): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/update-room-info`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+    const body = { new_desc, new_photo, room_id };
+
+    return this._http.put<ChatResponse>(url, body, { headers })
+      .pipe(
+        catchError(resp => of(resp.error))
+      );
+  }
+
+  public update_room_password(room_id: string, new_password: string, old_password: string): Observable<ChatResponse> {
+    const url: string = `${this._base_url}/chat/update-room-password`;
+    const headers = new HttpHeaders().set('x-token', localStorage.getItem('token')!);
+    const body = { new_password, old_password, room_id };
+
+    return this._http.put<ChatResponse>(url, body, { headers })
+      .pipe(
+        catchError(resp => of(resp.error))
+      );
+  }
+
 
 
 }

@@ -16,32 +16,55 @@
         </mat-card>
 
 
-        <div class="p-3 pe-md-5 flex-grow-1">
+        <div class="ps-3 pt-3 pe-md-3 flex-grow-1">
             <form class="pb-2" [formGroup]="form">
-                <p>
-                    <mat-form-field class="input-full-width">
+                <p class="d-flex flex-row">
+                    <mat-form-field class="flex-grow-1">
                         <mat-label>Room name</mat-label>
                         <input formControlName="name" matInput placeholder="The Room name goes here">
                     </mat-form-field>
+                    <button mat-mini-fab class="m-2 float-end" color="primary" (click)="update_room_name()"
+                        aria-label="Update room name">
+                        <mat-icon>refresh</mat-icon>
+                    </button>
                 </p>
-                <p>
-                    <mat-form-field class="input-full-width">
-                        <mat-label>Password</mat-label>
-                        <input matInput placeholder="Room password goes here">
-                    </mat-form-field>
-                </p>
-                <p>
-                    <mat-form-field class="input-full-width">
+                <p class="d-flex flex-row">
+                    <mat-form-field class="flex-grow-1">
                         <mat-label>Description</mat-label>
                         <textarea formControlName="desc" matInput placeholder="Describe the chat room"></textarea>
                     </mat-form-field>
+                    <button mat-mini-fab class="m-2 float-end" color="primary" (click)="update_room_info()"
+                        aria-label="Update room info - description">
+                        <mat-icon>refresh</mat-icon>
+                    </button>
                 </p>
-                <p>
-                    <mat-form-field class="input-full-width">
+                <p class="d-flex flex-row">
+                    <mat-form-field class="flex-grow-1">
                         <mat-label>Photo URL</mat-label>
                         <input formControlName="photo" matInput placeholder="https://some-domain.com/...">
                     </mat-form-field>
+                    <button mat-mini-fab class="m-2 float-end" color="primary" (click)="update_room_info()"
+                        aria-label="Update room info - description">
+                        <mat-icon>refresh</mat-icon>
+                    </button>
                 </p>
+                <p class="d-flex flex-row">
+                    <button *ngIf="!room.has_password; else haspassword" 
+                        mat-raised-button 
+                        color="primary"
+                        (click)="update_room_password()">
+                        Add Password
+                    </button>
+                    <ng-template #haspassword>
+                        <button 
+                            mat-raised-button 
+                            color="primary"
+                            (click)="update_room_password()">
+                            Change password
+                        </button>
+                    </ng-template>
+                </p>
+                    
             </form>
 
             <mat-divider class="mx-2 pb-4"></mat-divider>
