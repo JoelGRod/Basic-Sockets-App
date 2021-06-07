@@ -9,4 +9,5 @@ export interface DialogData {
     icon: string;
     msg: string;
     response?: boolean;
+    has_password?: boolean;
 }

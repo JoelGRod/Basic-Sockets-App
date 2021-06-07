@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-// INterfaces
-import { Profile, Room } from 'src/app/auth/interfaces/interfaces';
+// Interfaces
+import { Room } from 'src/app/auth/interfaces/interfaces';
+import { DialogData } from 'src/app/shared/interfaces/shared-interfaces';
 // Services
 import { ChatService } from '../../services/chat.service';
 import { DialogService } from 'src/app/shared/services/dialog.service';
@@ -94,7 +95,31 @@ export class ChatConfigComponent implements OnInit {
   }
 
   public update_room_password(): void {
-    console.log('jojojo');
+    const data: DialogData = {
+      title: 'Insert Password',
+      icon: 'help_outline',
+      msg: 'Insert the room pasword',
+      has_password: this.room.has_password
+    };
+    this._dialog_service.openPasswordDialog(data).subscribe( resp => {
+      if(resp === undefined) return;
+      else {
+        this._chat_service.update_room_password(this.room._id, resp.new_password, resp.old_password)
+          .subscribe( resp => {
+            if(!resp.ok) {
+              this._dialog_service.openGeneralDialog(
+                {title: 'error', icon: 'warning_amber', msg: resp.msg}
+              );
+            } else {
+              this.room.has_password = true;
+              this._dialog_service.openGeneralDialog(
+                {title: 'Success', icon: 'done', msg: resp.msg}
+              );
+            }
+          })
+      }
+    });
+    
   }
 
 }

@@ -7,6 +7,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogData } from '../interfaces/shared-interfaces';
 // Dialogs
 import { GralDialogComponent } from '../components/gral-dialog/gral-dialog.component';
+import { PasswordDialogComponent } from '../components/password-dialog/password-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,15 @@ export class DialogService {
 
   public openGeneralDialogResponse(data: DialogData): Observable<boolean> {
     const dialogRef = this._dialog.open(GralDialogComponent, {
+      width: '250px',
+      data
+    });
+
+    return dialogRef.afterClosed();
+  }
+
+  public openPasswordDialog(data: DialogData) {
+    const dialogRef = this._dialog.open(PasswordDialogComponent, {
       width: '250px',
       data
     });
