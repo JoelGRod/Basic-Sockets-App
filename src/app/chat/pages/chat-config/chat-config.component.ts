@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 // Interfaces
 import { Room } from 'src/app/auth/interfaces/interfaces';
 import { DialogData } from 'src/app/shared/interfaces/shared-interfaces';
@@ -16,8 +17,6 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['../../chat-styles.scss', './chat-config.component.scss']
 })
 export class ChatConfigComponent implements OnInit {
-
-  private _empty_photo: string = 'https://staticfilesprod.musicworldcupdevelopment.com/backend/images/profile-no-img.png?v=1.0.40';
   
   public room: Room = {
     _id: '',
@@ -60,7 +59,7 @@ export class ChatConfigComponent implements OnInit {
   }
 
   public changeSource( event: any ): void {
-    event.target.src = this._empty_photo;
+    event.target.src = environment.empty_chat_photo;
   }
 
   public update_room_name(): void {
