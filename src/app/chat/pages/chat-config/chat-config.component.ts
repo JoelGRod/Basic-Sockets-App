@@ -21,6 +21,7 @@ export class ChatConfigComponent implements OnInit {
     _id: '',
     name: ''
   }
+  public is_loaded: boolean = false;
 
   private _empty_photo: string = 'https://staticfilesprod.musicworldcupdevelopment.com/backend/images/profile-no-img.png?v=1.0.40';
 
@@ -45,6 +46,9 @@ export class ChatConfigComponent implements OnInit {
     .subscribe( resp => {
       this.room = resp.room!;
       this.update_form_values();
+      setTimeout(() => {
+        this.is_loaded = true;
+      }, 500);
     })
   }
 

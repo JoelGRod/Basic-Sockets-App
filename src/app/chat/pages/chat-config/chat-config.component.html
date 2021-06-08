@@ -1,4 +1,5 @@
-<div class="flex-container d-flex flex-column">
+<div class="flex-container d-flex flex-column animate__animated animate__fadeIn animation-speed"
+    *ngIf="is_loaded; else spinner">
     <div class="content d-flex flex-row flex-wrap">
 
         <mat-card class="profile-card m-md-3">
@@ -91,4 +92,15 @@
         </button>
     </div>
 </div>
+
+<ng-template #spinner>
+    <div class="flex-container-spinner d-flex justify-content-center align-items-center">
+        <mat-progress-spinner
+        diameter="60"
+        color="primary"
+        mode="indeterminate"
+        value="80">
+        </mat-progress-spinner>
+    </div>
+</ng-template>
 
