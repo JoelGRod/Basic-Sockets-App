@@ -6,7 +6,14 @@ import { ActionObject } from '../../interfaces/chat-interface';
 @Component({
   selector: 'app-chat-list',
   templateUrl: './chat-list.component.html',
-  styles: []
+  styles: [`
+    .header-img {
+      vertical-align: middle;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  `]
 })
 export class ChatListComponent {
 

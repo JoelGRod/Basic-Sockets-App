@@ -1,7 +1,10 @@
 <mat-list>
   <div mat-subheader>{{chat_list_type}}</div>
   <mat-list-item *ngFor="let room of rooms">
-    <mat-icon mat-list-icon>question_answer</mat-icon>
+    <!-- <mat-icon mat-list-icon>question_answer</mat-icon> -->
+    <mat-icon mat-list-icon class="mb-4 pe-2">
+      <img [src]="room.photo" alt="header image" class="header-img">
+    </mat-icon>
     <div mat-line>{{room.name}}</div>
     <div mat-line> {{room.created_at | date}} </div>
 
