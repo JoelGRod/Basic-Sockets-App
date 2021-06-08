@@ -71,7 +71,9 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public form: FormGroup = this._fb.group({
     msg: ['', [Validators.required]]
-  });
+  })
+
+  public is_loaded: boolean = false;
 
   constructor(private _fb: FormBuilder,
     private _activ_route: ActivatedRoute,

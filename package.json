@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~11.1.0",
     "@angular/platform-browser-dynamic": "~11.1.0",
     "@angular/router": "~11.1.0",
+    "animate.css": "^4.1.1",
     "ngx-socket-io": "^4.0.0",
     "rxjs": "~6.6.0",
     "sweetalert2": "^10.16.6",
