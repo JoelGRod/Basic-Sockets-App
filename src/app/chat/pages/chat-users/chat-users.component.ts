@@ -17,6 +17,7 @@ export class ChatUsersComponent implements OnInit {
   public profile_id: string = "";
   public room_id: string = "";
   public room_users: Profile[] = [];
+  public is_loaded: boolean = false;
 
   constructor( 
     private _ar: ActivatedRoute,
@@ -34,7 +35,10 @@ export class ChatUsersComponent implements OnInit {
     )
     .subscribe( resp => {
       this.room_users = resp.profiles!;
-    } )
+      setTimeout(() => {
+        this.is_loaded = true;
+      }, 500);
+    })
   }
 
 }
