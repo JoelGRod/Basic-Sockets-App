@@ -27,6 +27,7 @@ export class ProfileComponent implements OnInit {
     photo: ''
   };
   public profile_rooms: Room[] = [];
+  public is_loaded: boolean = false;
   private _empty_photo: string = 'https://staticfilesprod.musicworldcupdevelopment.com/backend/images/profile-no-img.png?v=1.0.40';
 
   public form: FormGroup = this._fb.group({
@@ -60,8 +61,12 @@ export class ProfileComponent implements OnInit {
         })
       )
       .subscribe( resp => {
-        if(resp.ok) this.profile_rooms = resp.rooms!;
-        else this._dialog_service.openGeneralDialog(
+        if(resp.ok) {
+          this.profile_rooms = resp.rooms!;
+          setTimeout(() => {
+            this.is_loaded = true;
+          }, 500);
+        } else this._dialog_service.openGeneralDialog(
           { title: 'Error', icon: 'warning_amber', msg: resp.msg }
         );
       })
