@@ -3,9 +3,11 @@
     <mat-card class="flex-fill d-flex flex-column">
         <mat-card-header>
 
-            <!-- <div mat-card-avatar>{{ room_info.photo }}</div> -->
+            <div mat-card-avatar>
+                <img [src]="room_info.photo" alt="header image" class="header-img">
+            </div>
             <mat-card-title>{{ room_info.name }}</mat-card-title>
-            <!-- <mat-card-subtitle>{{ room_info.desc }}</mat-card-subtitle> -->
+            <mat-card-subtitle class="chat-description">{{ room_info.desc }}</mat-card-subtitle>
 
             <div class="spacer"></div>
 
