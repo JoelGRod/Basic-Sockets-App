@@ -97,7 +97,6 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
       )
       .subscribe(resp => {
         this._profile = resp.profile!;
-        this.is_loaded = true;
       });
 
     // Sockets
@@ -130,6 +129,9 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.is_loaded = true;
+    }, 500);
     this.see_last_messages();
   }
 
