@@ -5,7 +5,7 @@
         <mat-card-header>
 
             <div mat-card-avatar>
-                <img [src]="room_info.photo" alt="header image" class="header-img">
+                <img [src]="room_info.photo" (error)="changeSource($event)" alt="header image" class="header-img">
             </div>
             <mat-card-title>{{ room_info.name }}</mat-card-title>
             <mat-card-subtitle class="chat-description">{{ room_info.desc }}</mat-card-subtitle>

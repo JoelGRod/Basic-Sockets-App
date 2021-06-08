@@ -13,6 +13,7 @@ import { switchMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogData } from 'src/app/shared/interfaces/shared-interfaces';
 import { GralDialogComponent } from 'src/app/shared/components/gral-dialog/gral-dialog.component';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -213,6 +214,10 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
     setTimeout(() => {
       this.chat_window.nativeElement.scrollTop = this.chat_window.nativeElement.scrollHeight;
     }, 500);
+  }
+
+  public changeSource( event: any ): void {
+    event.target.src = environment.empty_chat_photo;
   }
 
   // Helpers (some are in menu too - Repetitive! clean this!!)
