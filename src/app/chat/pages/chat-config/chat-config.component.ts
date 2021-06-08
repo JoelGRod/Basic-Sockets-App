@@ -17,14 +17,13 @@ import { switchMap } from 'rxjs/operators';
 })
 export class ChatConfigComponent implements OnInit {
 
+  private _empty_photo: string = 'https://staticfilesprod.musicworldcupdevelopment.com/backend/images/profile-no-img.png?v=1.0.40';
+  
   public room: Room = {
     _id: '',
     name: ''
   }
   public is_loaded: boolean = false;
-
-  private _empty_photo: string = 'https://staticfilesprod.musicworldcupdevelopment.com/backend/images/profile-no-img.png?v=1.0.40';
-
   public form: FormGroup = this._fb.group({
     name: [''],
     desc: [''],
