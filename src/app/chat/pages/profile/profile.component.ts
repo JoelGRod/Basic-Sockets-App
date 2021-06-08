@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 // Services
 import { ChatService } from '../../services/chat.service';
 import { DialogService } from 'src/app/shared/services/dialog.service';
@@ -28,7 +29,6 @@ export class ProfileComponent implements OnInit {
   };
   public profile_rooms: Room[] = [];
   public is_loaded: boolean = false;
-  private _empty_photo: string = 'https://staticfilesprod.musicworldcupdevelopment.com/backend/images/profile-no-img.png?v=1.0.40';
 
   public form: FormGroup = this._fb.group({
     nickname: [''],
@@ -81,7 +81,7 @@ export class ProfileComponent implements OnInit {
   }
 
   public changeSource( event: any ): void {
-    event.target.src = this._empty_photo;
+    event.target.src = environment.empty_profile_photo;
   }
 
   public backToPreviousPage() {
