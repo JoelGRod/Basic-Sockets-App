@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Room } from 'src/app/auth/interfaces/interfaces';
+import { environment } from 'src/environments/environment';
 import { ActionObject } from '../../interfaces/chat-interface';
 
 
@@ -9,8 +10,8 @@ import { ActionObject } from '../../interfaces/chat-interface';
   styles: [`
     .header-img {
       vertical-align: middle;
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
     }
   `]
@@ -21,7 +22,6 @@ export class ChatListComponent {
   @Input() rooms: Room[] = [];
   @Input() is_general: boolean = true;
   @Output() on_emit_object: EventEmitter<ActionObject> = new EventEmitter<ActionObject>();
-  private _empty_photo: string = 'https://images.stockfreeimages.com/1956/sfixl/19561107.jpg';
 
   constructor() { }
 
@@ -32,7 +32,7 @@ export class ChatListComponent {
   }
 
   public changeSource( event: any ): void {
-    event.target.src = this._empty_photo;
+    event.target.src = environment.empty_chat_photo;
   }
 
 }

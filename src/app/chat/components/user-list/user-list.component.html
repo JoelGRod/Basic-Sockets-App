@@ -1,7 +1,9 @@
 <mat-list>
   <div mat-subheader>{{user_list_type}}</div>
   <mat-list-item *ngFor="let profile of profiles">
-    <mat-icon mat-list-icon>face</mat-icon>
+    <mat-icon mat-list-icon class="mb-4 pe-3">
+      <img [src]="profile.photo" (error)="changeSource($event)" alt="profile image" class="header-img">
+    </mat-icon>
     <div mat-line>{{profile.nickname}}</div>
     <div mat-line> {{profile.created_at | date}} </div>
 

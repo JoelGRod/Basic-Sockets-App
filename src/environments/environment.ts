@@ -6,7 +6,9 @@ export const environment = {
   production: false,
   // Sockets
   ws_url: 'http://localhost:4000',
-  base_url: 'http://localhost:4000/api'
+  base_url: 'http://localhost:4000/api',
+  empty_chat_photo: 'https://images.unsplash.com/photo-1481277542470-605612bd2d61?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=995&q=80',
+  empty_profile_photo: 'https://staticfilesprod.musicworldcupdevelopment.com/backend/images/profile-no-img.png?v=1.0.40'
 };
 
 /*
