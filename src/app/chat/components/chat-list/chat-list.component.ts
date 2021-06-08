@@ -21,6 +21,7 @@ export class ChatListComponent {
   @Input() rooms: Room[] = [];
   @Input() is_general: boolean = true;
   @Output() on_emit_object: EventEmitter<ActionObject> = new EventEmitter<ActionObject>();
+  private _empty_photo: string = 'https://images.stockfreeimages.com/1956/sfixl/19561107.jpg';
 
   constructor() { }
 
@@ -28,6 +29,10 @@ export class ChatListComponent {
     this.on_emit_object.emit(
       { id, action, subject }
     );
+  }
+
+  public changeSource( event: any ): void {
+    event.target.src = this._empty_photo;
   }
 
 }
