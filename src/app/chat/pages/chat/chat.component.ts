@@ -97,6 +97,7 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
       )
       .subscribe(resp => {
         this._profile = resp.profile!;
+        this.is_loaded = true;
       });
 
     // Sockets
@@ -108,22 +109,24 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
         this._room.msgs?.push(resp as Msg);
         this.see_last_messages();
       });
-    
-    this._listen_logout_user_subs = this._activ_route.params.pipe(
-      switchMap( resp => this._chat_service.listen_logout_users(resp.room_id))
-    )
-    .subscribe( (resp: any) => {
-      this._room.profiles = this._room.profiles!.filter((profile: Profile) => {
-        return profile.nickname !== resp.nickname;
-      });
-    });
 
-    this._listen_new_logged_users_subs = this._activ_route.params.pipe(
-      switchMap( resp => this._chat_service.listen_new_logged_users(resp.room_id))
-    )
-    .subscribe( resp => {
-      this._room.profiles!.push(resp as Profile);
-    });
+    this._listen_logout_user_subs = this._activ_route.params
+      .pipe(
+        switchMap(resp => this._chat_service.listen_logout_users(resp.room_id))
+      )
+      .subscribe((resp: any) => {
+        this._room.profiles = this._room.profiles!.filter((profile: Profile) => {
+          return profile.nickname !== resp.nickname;
+        });
+      });
+
+    this._listen_new_logged_users_subs = this._activ_route.params
+      .pipe(
+        switchMap(resp => this._chat_service.listen_new_logged_users(resp.room_id))
+      )
+      .subscribe(resp => {
+        this._room.profiles!.push(resp as Profile);
+      });
   }
 
   ngAfterViewInit(): void {
@@ -157,7 +160,7 @@ export class ChatComponent implements OnInit, AfterViewInit, OnDestroy {
             icon: 'warning_amber',
             msg: 'The room has been deleted by its creator, do not worry, we already left the room for you'
           });
-          this._router.navigateByUrl('/chat/menu');
+        this._router.navigateByUrl('/chat/menu');
       });
 
   }

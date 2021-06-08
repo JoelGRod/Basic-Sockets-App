@@ -29,7 +29,6 @@
                 <div *ngFor="let msg of room_msgs">
                     <div class="avatar" 
                         [ngClass]="{ 'right-avatar': msg.nickname == profile_info.nickname}">
-                        <!-- <img class="avatar-img" [src]="msg.img" alt="..."> -->
                         {{ msg.nickname }}
                     </div>
                     <mat-list-item *ngFor="let single_msg of msg.msgs" 
@@ -74,12 +73,12 @@
 </div>
 
 <ng-template #spinner>
-    <div class="d-flex justify-content-center chat-content">
+    <div class="flex-container-spinner d-flex justify-content-center align-items-center">
         <mat-progress-spinner
-        diameter="50"
+        diameter="60"
         color="primary"
         mode="indeterminate"
-        value="50">
+        value="80">
         </mat-progress-spinner>
     </div>
 </ng-template>
