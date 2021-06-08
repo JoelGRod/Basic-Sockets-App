@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 // Services
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChatService } from '../../services/chat.service';
@@ -13,7 +14,6 @@ import { switchMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogData } from 'src/app/shared/interfaces/shared-interfaces';
 import { GralDialogComponent } from 'src/app/shared/components/gral-dialog/gral-dialog.component';
-import { environment } from 'src/environments/environment';
 
 
 @Component({
