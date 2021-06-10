@@ -21,6 +21,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDialogModule } from '@angular/material/dialog';
 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     // Dialogs
     MatDialogModule,
     // Extras
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatGridListModule
   ]
 })
 export class MaterialModule { }

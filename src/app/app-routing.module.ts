@@ -4,6 +4,10 @@ import { JwtValidatorGuard } from './shared/guards/jwt-validator.guard';
 
 const routes: Routes = [
   {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomeModule )
+  },
+  {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule )
   },
@@ -15,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'auth'
+    redirectTo: 'home'
   }
 ];
 
