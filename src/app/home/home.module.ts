@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 // Moduless
 import { MaterialModule } from '../material/material.module';
 import { HomeRoutingModule } from './home-routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 // Components
 import { MainComponent } from './pages/main/main.component';
 
@@ -12,7 +13,8 @@ import { MainComponent } from './pages/main/main.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FlexLayoutModule
   ]
 })
 export class HomeModule { }

@@ -1,20 +1,16 @@
-.flex-container {
-    height: 100%;
+.logo {
+  width: 20%;
 }
 
-.flex-container-spinner {
-    height: 50%;
-}
-
-.example-card {
+.card {
     max-width: 40%;
     z-index: 1;
-  }
+ }
   
-  .example-header-image {
+.example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
-  }
+}
 
 /* --------------------------------------------------- */ 
 // Animated Background - Created by Louis Hoebregts
@@ -23,12 +19,13 @@
 .background {
     // background: #3E1E68;
     background: #333333;
-  }
+    height: 100%;
+}
   
   $particleSize: 20vmin;
   $animationDuration: 6s;
   $amount: 20;
-  .background span {
+  .background .background-item {
     width: $particleSize;
     height: $particleSize;
     border-radius: $particleSize;
@@ -68,9 +65,3 @@
   }
 
 /* --------------------------------------------------- */
-
-@media (min-width: 600px) {
-    .flex-container {
-        height: 100%;
-    }
-}
