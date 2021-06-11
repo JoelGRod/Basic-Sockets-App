@@ -10,7 +10,10 @@
         </mat-toolbar>
 
         <mat-nav-list>
-            <a *ngFor="let item of menu_items" mat-list-item [routerLink]="item.route" (click)="sidenav.toggle()">
+            <a *ngFor="let item of menu_items" 
+                mat-list-item 
+                [routerLink]="item.route" 
+                (click)="sidenav.toggle()">
                 <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
                 <span>{{item.name}}</span>
             </a>
@@ -24,7 +27,11 @@
         <span>My PortFolio</span>
         <span class="spacer"></span>
         <div fxShow="true" fxHide.lt-md="true">
-            <button *ngFor="let item of menu_items" mat-button>{{ item.name }}</button>
+            <button *ngFor="let item of menu_items" 
+                mat-button
+                [routerLink]="item.route">
+                {{ item.name }}
+            </button>
             <!-- <img src="../../../../assets/images/Logo 1.png" alt="JGR Logo" class="logo"> -->
         </div>
         <div fxShow="true" fxHide.gt-sm="true">

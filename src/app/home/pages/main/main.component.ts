@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuItem } from 'src/app/shared/interfaces/shared-interfaces';
 
 @Component({
@@ -6,34 +6,31 @@ import { MenuItem } from 'src/app/shared/interfaces/shared-interfaces';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
 
   public menu_items: MenuItem[] = [
     {
-      route: './chat/menu',
+      route: '/home',
       icon: 'label',
       name: 'Home'
     },
     {
-      route: './chat/menu',
+      route: '/home/demos',
       icon: 'label',
       name: 'Demos'
     },
     {
-      route: './chat/menu',
+      route: '/home/angular',
       icon: 'label',
       name: 'Angular'
     },
     {
-      route: './chat/menu',
+      route: '/home/about',
       icon: 'label',
       name: 'About Me'
     }
   ];
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
