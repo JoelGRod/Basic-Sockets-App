@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// Moduless
+// Modules
 import { MaterialModule } from '../material/material.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from '../shared/shared.module';
 // Components
 import { MainComponent } from './pages/main/main.component';
 
@@ -13,8 +14,9 @@ import { MainComponent } from './pages/main/main.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
+    FlexLayoutModule,
     MaterialModule,
-    FlexLayoutModule
+    SharedModule
   ]
 })
 export class HomeModule { }

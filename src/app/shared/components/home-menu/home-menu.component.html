@@ -1,0 +1,84 @@
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="push">
+
+        <mat-toolbar color="primary">
+            <span>Menu</span>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+
+        <mat-nav-list>
+            <a *ngFor="let item of menu_items" mat-list-item [routerLink]="item.route" (click)="sidenav.toggle()">
+                <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+                <span>{{item.name}}</span>
+            </a>
+        </mat-nav-list>
+
+    </mat-sidenav>
+
+    <!-- Mat Sidenav external Content -->
+
+    <mat-toolbar class="toolbar">
+        <span>My PortFolio</span>
+        <span class="spacer"></span>
+        <div fxShow="true" fxHide.lt-md="true">
+            <button *ngFor="let item of menu_items" mat-button>{{ item.name }}</button>
+            <!-- <img src="../../../../assets/images/Logo 1.png" alt="JGR Logo" class="logo"> -->
+        </div>
+        <div fxShow="true" fxHide.gt-sm="true">
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </div>
+    </mat-toolbar>
+
+    
+    <div class="background">
+
+        <!-- <router-outlet></router-outlet> -->
+        
+        <mat-grid-list cols="1" rowHeight="100%">
+
+            <mat-grid-tile>
+
+                <mat-card class="card">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>Shiba Inu</mat-card-title>
+                        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                    </mat-card-header>
+                    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                        alt="Photo of a Shiba Inu"> -->
+                    <mat-card-content>
+                        <p>
+                            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
+                            Japan.
+                            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
+                            originally
+                            bred for hunting.
+                        </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-button>LIKE</button>
+                        <button mat-button>SHARE</button>
+                    </mat-card-actions>
+                </mat-card>
+
+            </mat-grid-tile>
+
+        </mat-grid-list>
+
+        <span class="background-item"></span>
+        <span class="background-item"></span>
+        <span class="background-item"></span>
+        <span class="background-item"></span>
+        <span class="background-item"></span>
+        <span class="background-item"></span>
+        <span class="background-item"></span>
+        <span class="background-item"></span>
+        <span class="background-item"></span>
+    </div>
+
+</mat-sidenav-container>
