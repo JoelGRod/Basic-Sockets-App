@@ -2,27 +2,33 @@
 
     <mat-grid-tile>
 
-        <mat-card class="card">
-            <mat-card-header>
-                <div mat-card-avatar class="example-header-image"></div>
-                <mat-card-title>Home</mat-card-title>
-                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            </mat-card-header>
-            <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-                alt="Photo of a Shiba Inu"> -->
-            <mat-card-content>
-                <p>
-                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from
-                    Japan.
-                    A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
-                    originally
-                    bred for hunting.
-                </p>
+        <mat-card class="card" fxLayout="column" fxLayout.gt-xs="row">
+
+            <div class="card-img-container" fxLayout="column" fxLayoutAlign="center center">
+                <img class="card-img"
+                    src="../../../../assets/images/photo_2.jpeg"
+                    alt="Photo of a Shiba Inu">
+            </div>
+
+            <mat-card-content class="card-text-container">
+                <mat-card-header>
+                    <mat-card-title>Inicio</mat-card-title>
+                </mat-card-header>
+                <mat-divider inset="true">
+                </mat-divider>
+                <div class="card-text">
+                    <p>Bienvenido/a!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <p>Temporibus soluta ratione quam repellat, aspernatur, nisi asperiores tempore laborum praesentium
+                        hic possimus tenetur.</p>
+                    <p>Facere iste maxime, eaque unde odio quasi nam.</p>
+                    <mat-card-actions>
+                        <button mat-button>LIKE</button>
+                        <button mat-button>SHARE</button>
+                    </mat-card-actions>
+                </div>
             </mat-card-content>
-            <mat-card-actions>
-                <button mat-button>LIKE</button>
-                <button mat-button>SHARE</button>
-            </mat-card-actions>
+
         </mat-card>
 
     </mat-grid-tile>
