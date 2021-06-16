@@ -14,12 +14,14 @@ import { ErrMsgDirective } from './directives/err-msg.directive';
 import { GralDialogComponent } from './components/gral-dialog/gral-dialog.component';
 import { DialogService } from './services/dialog.service';
 import { PasswordDialogComponent } from './components/password-dialog/password-dialog.component';
+import { HorizontalCardComponent } from './components/horizontal-card/horizontal-card.component';
+import { VerticalCardComponent } from './components/vertical-card/vertical-card.component';
 
 
 
 @NgModule({
   declarations: [
-    // Components
+    // Gral Components
     FooterComponent,
     MainMenuComponent,
     HomeMenuComponent,
@@ -27,7 +29,10 @@ import { PasswordDialogComponent } from './components/password-dialog/password-d
     ErrMsgDirective,
     // Dialogs
     GralDialogComponent,
-    PasswordDialogComponent
+    PasswordDialogComponent,
+    // Cards
+    HorizontalCardComponent,
+    VerticalCardComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +50,10 @@ import { PasswordDialogComponent } from './components/password-dialog/password-d
     ErrMsgDirective,
     // Dialogs
     GralDialogComponent,
-    PasswordDialogComponent
+    PasswordDialogComponent,
+    // Cards
+    HorizontalCardComponent,
+    VerticalCardComponent
   ],
   providers: [ 
     DialogService 

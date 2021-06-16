@@ -1,6 +1,5 @@
 .card {
     max-width: 85%;
-    height: 95%;
     margin-top: 2rem;
     border-radius: 0.5rem;
     background-color: rgba(51,51,51,0.70);
@@ -32,6 +31,7 @@
     
     .card {
         height: auto;
+        margin-bottom: 6rem;
     }
 
     .card-img-container {
