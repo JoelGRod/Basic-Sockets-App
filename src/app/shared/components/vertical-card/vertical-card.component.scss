@@ -1,0 +1,17 @@
+.v-card {
+    max-width: 100%;
+    margin: 1rem 1rem 0rem 1rem;
+    border-radius: 0.5rem;
+    background-color: rgba(51,51,51,0.70);
+    overflow-y: scroll;
+    z-index: 1;
+}
+
+.example-card {
+    max-width: 400px;
+}
+  
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
