@@ -10,3 +10,13 @@
 .header-image {
     background-size: cover;
 }
+
+.card-img {
+    max-height: 250px;
+    object-fit: cover;
+}
+
+a, a:hover a:focus a:active {
+    text-decoration: none;
+    color: inherit;
+}

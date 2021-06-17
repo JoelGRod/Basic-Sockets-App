@@ -19,5 +19,6 @@ export interface CardInfo {
     image: string;
     image_alt_text: string;
     description: string[];
-    link: string;
+    link?: string;
+    external_link?: string;
 }

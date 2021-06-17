@@ -24,6 +24,19 @@ export class DemosComponent implements OnInit {
       ],
       link: '/chat/menu'
     },
+    {
+      avatar_img: '../../../../assets/images/logos/wordpress.png',
+      title: 'wordpress page',
+      subtitle: 'Wordpress',
+      image: '../../../../assets/images/home/elsitio.png',
+      image_alt_text: 'Logo El Sitio del Sauzal',
+      description: [
+        'A page made for the socio-cultural space El Sitio del Sauzal.',
+        'For its realization, the CMS Wordpress has been used together with the avada template.',
+        'Some elements were developed to satisfy the client needs (styles and custom main menu, all solved with CSS).'
+      ],
+      external_link: 'https://elsitiodelsauzal.com/'
+    },
   ];
 
   constructor() { }
