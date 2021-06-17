@@ -11,3 +11,13 @@ export interface DialogData {
     response?: boolean;
     has_password?: boolean;
 }
+
+export interface CardInfo {
+    avatar_img: string;
+    title: string;
+    subtitle: string;
+    image: string;
+    image_alt_text: string;
+    description: string[];
+    link: string;
+}
