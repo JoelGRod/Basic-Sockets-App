@@ -12,8 +12,15 @@
 }
 
 .card-img {
-    max-height: 250px;
+    min-height: 12rem;
+    max-height: 12rem;
     object-fit: cover;
+}
+
+.card-content {
+    min-height: 12rem;
+    max-height: 12rem;
+    overflow-y: scroll;
 }
 
 a, a:hover a:focus a:active {
