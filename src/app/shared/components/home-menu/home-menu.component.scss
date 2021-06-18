@@ -1,7 +1,16 @@
 .toolbar {
     position: relative;
+    padding-left: 2rem;
+    padding-right: 2rem;
     z-index: 1;
-  }
+}
+
+.footer {
+    position: relative;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    z-index: 1;
+}
     
   /* --------------------------------------------------- */ 
   // Animated Background - Created by Louis Hoebregts
@@ -10,7 +19,7 @@
   .background {
       // background: #3E1E68;
       background: #333333;
-      height: calc(100% - 64px);
+      height: calc(100% - 64px - 4rem);
   }
     
     $particleSize: 20vmin;
@@ -56,3 +65,4 @@
     }
   
   /* --------------------------------------------------- */
+
