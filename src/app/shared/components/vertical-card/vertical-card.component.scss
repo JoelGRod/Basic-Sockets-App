@@ -27,3 +27,19 @@ a, a:hover a:focus a:active {
     text-decoration: none;
     color: inherit;
 }
+
+@media (min-width: 600px) {
+    .v-card {
+        margin: 2rem 4rem 0rem 4rem;
+    }
+
+    .card-content {
+        min-height: 8rem;
+    }
+}
+
+@media (min-width: 960px) {
+    .v-card {
+        margin: 2rem 1rem 0rem 1rem;
+    }
+}
