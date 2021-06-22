@@ -18,3 +18,16 @@
     }
 }
 
+.about-content {
+    margin: 0rem 1rem 1rem 0rem; //delete
+    border-radius: 0.5rem;
+    background-color: rgba(51,51,51,1);
+    z-index: 1;
+}
+
+@media (min-width: 960px) {
+    .about-content {
+        margin-top: 1rem;
+    }
+}
+

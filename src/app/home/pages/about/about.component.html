@@ -2,7 +2,12 @@
     <div class="white-circle overlay-white"></div>
 </div>
 
-<div gdAreas="side content" gdGap="16px" gdColumns="30% 70%">
+<div
+    gdAreas="side | content"
+    gdColumns="100%" 
+    gdGap="16px" 
+    gdAreas.gt-sm="side content" 
+    gdColumns.gt-sm="30% 70%">
 
     <div gdArea="side">
         <div fxLayout="column">
@@ -19,13 +24,23 @@
                     </p>
                 </mat-card-content>
                 <mat-card-actions align="end">
-                    <button mat-mini-fab color="primary" class="social-button" fxLayout="row" fxLayoutAlign="center center">
-                        <a href="https://twitter.com/GRJoe8" target="_blank" rel="nofollow">
+                    <button mat-mini-fab color="primary" 
+                        class="social-button" 
+                        fxLayout="row" 
+                        fxLayoutAlign="center center">
+                        <a href="https://twitter.com/GRJoe8" 
+                            target="_blank" 
+                            rel="nofollow">
                             <mat-icon svgIcon="twitter" class="button-icon"></mat-icon>
                         </a>
                     </button>
-                    <button mat-mini-fab color="primary" class="social-button" fxLayout="row" fxLayoutAlign="center end">
-                        <a href="https://www.linkedin.com/in/joel-gonz%C3%A1lez-rodr%C3%ADguez-087b6652/" target="_blank" rel="nofollow">
+                    <button mat-mini-fab color="primary" 
+                        class="social-button" 
+                        fxLayout="row" 
+                        fxLayoutAlign="center end">
+                        <a href="https://www.linkedin.com/in/joel-gonz%C3%A1lez-rodr%C3%ADguez-087b6652/" 
+                            target="_blank" 
+                            rel="nofollow">
                             <mat-icon svgIcon="linkedin"></mat-icon>
                         </a>
                     </button>
@@ -34,13 +49,23 @@
         </div>
     </div>
     <div gdArea="content">
-        <ul>
-            <li>Item 1</li>
-            <li>Item 1</li>
-            <li>Item 1</li>
-            <li>Item 1</li>
-            <li>Item 1</li>
-        </ul>
+        <div fxLayout="column" class="about-content">
+            <mat-list>
+                <div mat-subheader>Folders</div>
+                <mat-list-item *ngFor="let folder of folders">
+                  <mat-icon mat-list-icon>folder</mat-icon>
+                  <div mat-line>{{folder.name}}</div>
+                  <div mat-line> {{folder.updated | date}} </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <div mat-subheader>Notes</div>
+                <mat-list-item *ngFor="let note of notes">
+                  <mat-icon mat-list-icon>note</mat-icon>
+                  <div mat-line>{{note.name}}</div>
+                  <div mat-line> {{note.updated | date}} </div>
+                </mat-list-item>
+            </mat-list>
+        </div>
     </div>
 
 </div>
