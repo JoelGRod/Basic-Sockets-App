@@ -65,6 +65,21 @@
                   <div mat-line> {{note.updated | date}} </div>
                 </mat-list-item>
             </mat-list>
+
+            <mat-divider></mat-divider>
+
+            <mat-chip-list
+                class="example-chip"
+                cdkDropList 
+                cdkDropListOrientation="horizontal"
+                (cdkDropListDropped)="drop($event)">
+                <mat-chip
+                class="example-box"
+                cdkDrag
+                *ngFor="let skill of main_skills">
+                    {{skill.name}}
+                </mat-chip>
+            </mat-chip-list>
         </div>
     </div>
 
