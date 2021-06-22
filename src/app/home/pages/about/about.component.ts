@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
+import { IconRegistryService } from 'src/app/shared/services/icon-registry.service';
 
 @Component({
   selector: 'app-about',
@@ -10,18 +11,8 @@ import { DomSanitizer } from "@angular/platform-browser";
 export class AboutComponent implements OnInit {
 
   constructor(
-    private _matIconRegistry: MatIconRegistry,
-    private _domSanitizer: DomSanitizer
-  ) { 
-    this._matIconRegistry.addSvgIcon(
-      `twitter`,
-      this._domSanitizer.bypassSecurityTrustResourceUrl("../../../../assets/images/icons/twitter.svg")
-    );
-    this._matIconRegistry.addSvgIcon(
-      `linkedin`,
-      this._domSanitizer.bypassSecurityTrustResourceUrl("../../../../assets/images/icons/linkedin.svg")
-    );
-  }
+    private _iconRegistryService: IconRegistryService
+  ) {}
 
   ngOnInit(): void {
   }
