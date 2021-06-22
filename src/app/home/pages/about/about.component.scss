@@ -12,8 +12,9 @@
 
 .social-button {
     margin-right: 0.3rem;
+
+    a:hover, a:focus {
+        color: #333333;
+    }
 }
 
-a:hover, a:focus {
-    color: #333333;
-}
