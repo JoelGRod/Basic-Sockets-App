@@ -23,9 +23,8 @@
     overflow-y: scroll;
 }
 
-a, a:hover a:focus a:active {
-    text-decoration: none;
-    color: inherit;
+a:hover, a:focus {
+    color: #333333;
 }
 
 @media (min-width: 600px) {

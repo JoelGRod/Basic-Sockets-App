@@ -5,6 +5,15 @@
     z-index: 1;
 }
 
+.filtered {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
 .social-button {
     margin-right: 0.3rem;
+}
+
+a:hover, a:focus {
+    color: #333333;
 }

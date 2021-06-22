@@ -19,7 +19,7 @@
             </button>
             <button *ngIf="card.external_link" mat-raised-button 
                 color="accent">
-                <a [href]="card.external_link">Go to Web!</a>    
+                <a [href]="card.external_link" target="_blank" rel="nofollow">Go to Web!</a>    
             </button>
         </mat-card-actions>
     </mat-card>

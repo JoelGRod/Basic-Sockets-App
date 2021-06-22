@@ -13,11 +13,11 @@ export class IconRegistryService {
   ) { 
     this._matIconRegistry.addSvgIcon(
       `twitter`,
-      this._domSanitizer.bypassSecurityTrustResourceUrl("../../../../assets/images/icons/twitter.svg")
+      this._domSanitizer.bypassSecurityTrustResourceUrl("/assets/images/icons/twitter.svg")
     );
     this._matIconRegistry.addSvgIcon(
       `linkedin`,
-      this._domSanitizer.bypassSecurityTrustResourceUrl("../../../../assets/images/icons/linkedin.svg")
+      this._domSanitizer.bypassSecurityTrustResourceUrl("/assets/images/icons/linkedin.svg")
     );
   }
 }
