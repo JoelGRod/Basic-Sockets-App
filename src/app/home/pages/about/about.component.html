@@ -7,7 +7,7 @@
     gdColumns="100%" 
     gdGap="16px" 
     gdAreas.gt-sm="side content" 
-    gdColumns.gt-sm="30% 70%">
+    gdColumns.gt-sm="30% 66%">
 
     <div gdArea="side">
         <div fxLayout="column">
@@ -16,7 +16,7 @@
                     class="filtered"
                     src="../../../../assets/images/about/profile_2.jpg" 
                     alt="Joel profile image">
-                <mat-card-content class="card-content">
+                <mat-card-content>
                     <p>
                         The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
                         A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
@@ -44,27 +44,42 @@
                             <mat-icon svgIcon="linkedin"></mat-icon>
                         </a>
                     </button>
+                    <button mat-mini-fab color="primary" 
+                        class="social-button" 
+                        fxLayout="row" 
+                        fxLayoutAlign="center end">
+                        <a href="https://soundcloud.com/da7kl3i4" 
+                            target="_blank" 
+                            rel="nofollow">
+                            <mat-icon svgIcon="soundcloud"></mat-icon>
+                        </a>
+                    </button>
                 </mat-card-actions>
             </mat-card>
         </div>
     </div>
+
     <div gdArea="content">
-        <div fxLayout="column" class="about-content">
+        <mat-card fxLayout="column" class="about-content">
             <mat-list>
-                <div mat-subheader>Folders</div>
+                <div mat-subheader>Experience</div>
                 <mat-list-item *ngFor="let folder of folders">
                   <mat-icon mat-list-icon>folder</mat-icon>
                   <div mat-line>{{folder.name}}</div>
                   <div mat-line> {{folder.updated | date}} </div>
                 </mat-list-item>
-                <mat-divider></mat-divider>
-                <div mat-subheader>Notes</div>
+
+                <mat-divider inset="true"></mat-divider>
+
+                <div mat-subheader>Education</div>
                 <mat-list-item *ngFor="let note of notes">
                   <mat-icon mat-list-icon>note</mat-icon>
                   <div mat-line>{{note.name}}</div>
                   <div mat-line> {{note.updated | date}} </div>
                 </mat-list-item>
-                <mat-divider></mat-divider>
+
+                <mat-divider inset="true"></mat-divider>
+
                 <div mat-subheader>Main Skills</div>
                 <mat-chip-list>
                     <mat-chip *ngFor="let skill of main_skills"
@@ -72,7 +87,7 @@
                             {{skill.name}}
                     </mat-chip>
                 </mat-chip-list>
-                <mat-divider class="divider"></mat-divider>
+
                 <div mat-subheader>Secondary Skills</div>
                 <mat-chip-list
                     class="example-chip"
@@ -87,10 +102,9 @@
                         {{skill.name}}
                     </mat-chip>
                 </mat-chip-list>
-                
             </mat-list>
 
-        </div>
+        </mat-card>
     </div>
 
 </div>

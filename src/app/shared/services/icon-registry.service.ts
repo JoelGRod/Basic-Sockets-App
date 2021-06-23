@@ -19,5 +19,9 @@ export class IconRegistryService {
       `linkedin`,
       this._domSanitizer.bypassSecurityTrustResourceUrl("/assets/images/icons/linkedin.svg")
     );
+    this._matIconRegistry.addSvgIcon(
+      `soundcloud`,
+      this._domSanitizer.bypassSecurityTrustResourceUrl("/assets/images/icons/soundcloud.svg")
+    );
   }
 }
