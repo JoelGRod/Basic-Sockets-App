@@ -19,10 +19,14 @@
 }
 
 .about-content {
-    margin: 0rem 1rem 1rem 0rem; //delete
+    margin: 0rem 1rem 1rem 1rem; //delete
     border-radius: 0.5rem;
     background-color: rgba(51,51,51,1);
     z-index: 1;
+
+    .divider {
+        margin-top: 1rem;
+    }
 }
 
 // Chips drag and drop

@@ -52,35 +52,35 @@ export class AboutComponent {
 
   // Content - Chips
   main_skills: Skill[] = [
-    { name: 'HTML' },
-    { name: 'CSS' },
-    { name: 'JavaScript' },
-    { name: 'TypeScript' },
-    { name: 'Angular 2+' },
-    { name: 'NodeJs' },
-    { name: 'MongoDb' },
-    { name: 'MySQL' },
-    { name: 'VSCode' },
-    { name: 'MacOs' },
-    { name: 'Debian' }
+    { name: 'HTML', color: 'accent' },
+    { name: 'CSS', color: 'gray'},
+    { name: 'JavaScript', color: 'primary' },
+    { name: 'TypeScript', color: 'accent' },
+    { name: 'NodeJs', color: 'primary' },
+    { name: 'Angular 2+', color: 'accent' },
+    { name: 'MySQL', color: 'primary' },
+    { name: 'MongoDb', color: 'accent' },
+    { name: 'VSCode', color: 'primary' },
+    { name: 'MacOs', color: 'primary' },
+    { name: 'Debian', color: 'gray' }
   ];
 
   secondary_skills: Skill[] = [
-    { name: 'VueJs' },
-    { name: 'PHP' },
-    { name: 'Laravel' },
-    { name: 'Eclipse' },
-    { name: 'Netbeans' },
-    { name: 'Virtual Box' },
-    { name: 'Gimp' },
-    { name: 'Vagrant' },
-    { name: 'Docker' },
-    { name: 'Unity' },
-    { name: 'Ableton Live' }
+    { name: 'VueJs', color: 'accent' },
+    { name: 'PHP', color: 'gray' },
+    { name: 'Laravel', color: 'gray' },
+    { name: 'Virtual Box', color: 'accent' },
+    { name: 'Vagrant', color: 'primary' },
+    { name: 'Gimp', color: 'accent' },
+    { name: 'Docker', color: 'primary' },
+    { name: 'Ableton Live', color: 'accent' },
+    { name: 'Unity', color: 'primary' },
+    { name: 'Eclipse', color: 'gray' },
+    { name: 'Netbeans', color: 'gray' }
   ];
 
   drop(event: CdkDragDrop<Skill[]>) {
-    moveItemInArray(this.main_skills, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.secondary_skills, event.previousIndex, event.currentIndex);
   }
 
 
