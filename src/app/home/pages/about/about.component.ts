@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 // Services
 import { IconRegistryService } from 'src/app/shared/services/icon-registry.service';
 
 export interface Section {
   name: string;
-  updated: Date;
+  description: string;
+  start_date: Date;
+  end_date: Date;
 }
 
 export interface Skill {
@@ -25,28 +26,50 @@ export class AboutComponent {
   ) { }
 
   // Content - List
-  folders: Section[] = [
+  experiences: Section[] = [
     {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
+      name: 'IT Systems Technician',
+      description: 'Computer maintenance. Preparation, configuration and assembly of individual equipment. Bizerba programming. Servers and computers backups. Development of lightweight Apps with Access. ERP system used: CSB-System. User Support. RGPD.',
+      start_date: new Date('1/1/16'),
+      end_date: new Date('1/1/16')
     },
     {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
+      name: 'Maintenance Administrative',
+      description: 'Administrative tasks in the maintenance area.',
+      start_date: new Date('1/1/16'),
+      end_date: new Date('1/1/16')
     },
     {
-      name: 'Work',
-      updated: new Date('1/28/16'),
+      name: 'Construction Technician',
+      description: '',
+      start_date: new Date('1/1/16'),
+      end_date: new Date('1/1/16')
+    },
+    {
+      name: 'Technical Architect',
+      description: '',
+      start_date: new Date('1/1/16'),
+      end_date: new Date('1/1/16')
     }
   ];
-  notes: Section[] = [
+  educations: Section[] = [
     {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
+      name: 'Technical Architecture',
+      description: '',
+      start_date: new Date('1/1/16'),
+      end_date: new Date('1/1/16')
     },
     {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
+      name: 'Programmer Analyst',
+      description: '',
+      start_date: new Date('1/1/16'),
+      end_date: new Date('1/1/16')
+    },
+    {
+      name: 'App. Dev. Web Technology',
+      description: '',
+      start_date: new Date('1/1/16'),
+      end_date: new Date('1/1/16')
     }
   ];
 
@@ -78,10 +101,5 @@ export class AboutComponent {
     { name: 'Eclipse', color: 'gray' },
     { name: 'Netbeans', color: 'gray' }
   ];
-
-  drop(event: CdkDragDrop<Skill[]>) {
-    moveItemInArray(this.secondary_skills, event.previousIndex, event.currentIndex);
-  }
-
 
 }

@@ -23,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
@@ -50,6 +51,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatProgressSpinnerModule,
     MatGridListModule,
     MatChipsModule,
+    MatExpansionModule,
     DragDropModule
   ]
 })
