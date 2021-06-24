@@ -17,10 +17,22 @@
                     src="../../../../assets/images/about/profile_2.jpg" 
                     alt="Joel profile image">
                 <mat-card-content>
-                    <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
+                    <div class="profile-data">
+                        <p>Joel Glez Rguez </p>
+                        <p>{{ '09/17/82' | date }} </p>
+                        <address>
+                            <p><a href="mailto:joelgr@hotmail.es">
+                            joelgr@hotmail.es</a></p>
+                          <p>Tenerife, Canary Islands, Spain</p>
+                        </address>
+                    </div>
+                    <p class="profile-desc">
+                        Full Stack MEAN Web Developer, Architecture Technician, Building Operator, 
+                        Multipurpose Professional, Father... My profile is eminently technical, 
+                        give me a problem and I will do everything in my hands to find a solution. 
+                        Passionate about technology, I decided to reinvent myself after the global crisis 
+                        suffered in 2007. Angular and NodeJs are my favorite Frontend and Backend 
+                        working ecosystems, but I'm always open to other alternatives.
                     </p>
                 </mat-card-content>
                 <mat-card-actions align="end">
@@ -71,11 +83,11 @@
                                     <mat-icon mat-list-icon class="expansion-icon">
                                         folder
                                     </mat-icon>
-                                    {{experience.name}}
+                                    {{experience.name}} <mat-icon>expand_more</mat-icon>
                                 </mat-panel-title>
                                 <mat-panel-description fxFlex="35%">
                                     {{experience.start_date | date}} - {{experience.end_date | date}}
-                            </mat-panel-description>
+                                </mat-panel-description>
                           </mat-expansion-panel-header>
                           <p>{{experience.description}}</p>
                         </mat-expansion-panel>
@@ -92,7 +104,7 @@
                                 <mat-icon mat-list-icon class="expansion-icon">
                                     note
                                 </mat-icon>
-                                {{education.name}}
+                                {{education.name}} <mat-icon>expand_more</mat-icon>
                             </mat-panel-title>
                             <mat-panel-description fxFlex="35%">
                                 {{education.start_date | date}} - {{education.end_date | date}}

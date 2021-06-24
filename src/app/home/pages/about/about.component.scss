@@ -3,6 +3,21 @@
     border-radius: 0.5rem;
     background-color: rgba(51,51,51,0.70);
     z-index: 1;
+
+    .profile-desc {
+        max-height: 13rem;
+        padding: 0rem 0.5rem 0.5rem 0.5rem;
+        text-align: justify;
+        text-justify: inter-word;
+        overflow-y: scroll;
+    }
+
+    .profile-data {
+        padding: 0rem 0.5rem 0rem 0.5rem;
+        p {
+            line-height: 12px;
+        }
+    }
 }
 
 .filtered {
@@ -48,6 +63,13 @@
 
 
 @media (min-width: 960px) {
+
+    .profile-card {
+        .profile-desc {
+            max-height: 4rem;
+        }
+    }
+
     .about-content {
         margin-top: 1rem;
 
