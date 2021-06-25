@@ -91,21 +91,16 @@
 
                 <mat-divider inset="true"></mat-divider>
 
-                <div mat-subheader class="chip-subheader">Main Skills</div>
-                <mat-chip-list>
-                    <mat-chip *ngFor="let skill of main_skills"
-                        [color]="skill.color" selected>
-                            {{skill.name}}
-                    </mat-chip>
-                </mat-chip-list>
+                <app-chips-list 
+                    list_title="Main Skills" 
+                    [chip_list]="main_skills">
+                </app-chips-list>
+
+                <app-chips-list 
+                    list_title="Secondary Skills" 
+                    [chip_list]="secondary_skills">
+                </app-chips-list>
                 
-                <div mat-subheader class="chip-subheader extra-padding">Secondary Skills</div>
-                <mat-chip-list>
-                    <mat-chip *ngFor="let skill of secondary_skills"
-                        [color]="skill.color" selected>
-                            {{skill.name}}
-                    </mat-chip>
-                </mat-chip-list>
             </mat-list>
             
         </mat-card>
