@@ -13,6 +13,7 @@ import { AngularComponent } from './pages/angular/angular.component';
 import { AboutComponent } from './pages/about/about.component';
 import { AccordionListComponent } from './components/accordion-list/accordion-list.component';
 import { ChipsListComponent } from './components/chips-list/chips-list.component';
+import { ProfileCardComponent } from './components/profile-card/profile-card.component';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { ChipsListComponent } from './components/chips-list/chips-list.component
     HomeComponent, 
     DemosComponent, 
     AngularComponent, 
-    AboutComponent, AccordionListComponent, ChipsListComponent, 
+    AboutComponent, AccordionListComponent, ChipsListComponent, ProfileCardComponent, 
   ],
   imports: [
     CommonModule,
