@@ -74,49 +74,20 @@
     <div gdArea="content">
         <mat-card fxLayout="column" class="about-content">
             <mat-list>
-                <div mat-subheader>Experience</div>
-                <mat-accordion>
-                    <mat-expansion-panel *ngFor="let experience of experiences" 
-                        class="expansion-info" hideToggle>
-                        <mat-expansion-panel-header fxLayout="row">
-                            <mat-panel-title fxFlex="65%">
-                                <mat-icon mat-list-icon class="expansion-icon">
-                                    folder
-                                </mat-icon>
-                                {{experience.name}} <mat-icon>expand_more</mat-icon>
-                            </mat-panel-title>
-                            <mat-panel-description fxFlex="35%">
-                                {{experience.start_date | date}} - {{experience.end_date | date}}
-                            </mat-panel-description>
-                        </mat-expansion-panel-header>
-                        <div>
-                            <p class="expansion-content">{{experience.description}}</p>
-                        </div>
-                    </mat-expansion-panel>
-                </mat-accordion>
 
+                <app-accordion-list 
+                    [list_items]="experiences" 
+                    list_title="Experience"
+                    item_icon="folder">
+                </app-accordion-list>
+                
                 <mat-divider inset="true"></mat-divider>
 
-                <div mat-subheader>Education</div>
-                <mat-accordion>
-                    <mat-expansion-panel *ngFor="let education of educations" 
-                        class="expansion-info" hideToggle>
-                        <mat-expansion-panel-header fxLayout="row">
-                            <mat-panel-title fxFlex="65%">
-                                <mat-icon mat-list-icon class="expansion-icon">
-                                    note
-                                </mat-icon>
-                                {{education.name}} <mat-icon>expand_more</mat-icon>
-                            </mat-panel-title>
-                            <mat-panel-description fxFlex="35%">
-                                {{education.start_date | date}} - {{education.end_date | date}}
-                            </mat-panel-description>
-                        </mat-expansion-panel-header>
-                        <div>
-                            <p class="expansion-content">{{education.description}}</p>
-                        </div>
-                    </mat-expansion-panel>
-                </mat-accordion>
+                <app-accordion-list 
+                    [list_items]="educations" 
+                    list_title="Education"
+                    item_icon="note">
+                </app-accordion-list>
 
                 <mat-divider inset="true"></mat-divider>
 

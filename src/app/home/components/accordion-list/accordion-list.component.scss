@@ -1,0 +1,33 @@
+.list-title {
+    padding-top: 2rem;
+}
+
+.expansion-info {
+    background-color: rgba(51,51,51,0);
+    box-shadow: none;
+    margin: 0.5rem 0rem 0rem 0rem;
+    padding: 1.5rem 0rem 1rem 0rem;
+
+    .expansion-icon {
+        margin: 0rem 1rem 0rem 0rem;
+    }
+
+    .expansion-content {
+        border-radius: 0.5rem;
+        margin-top: 1.5rem;
+        padding: 0.5rem 1rem 0.5rem 1rem;
+        background-color: rgba(139,57,173,0.2);
+    }
+}
+
+@media (min-width: 960px) {
+
+    .expansion-info {
+        margin: 0.3rem 0rem 0rem 0rem;
+        padding: 0;
+
+        .expansion-content {
+            margin-top: 0rem;
+        }
+    }
+}

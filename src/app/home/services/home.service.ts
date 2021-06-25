@@ -6,6 +6,7 @@ import { CardInfo } from 'src/app/shared/interfaces/shared-interfaces';
 })
 export class HomeService {
 
+  // Projects / Examples cards
   private _cards: CardInfo[] = [
     {
       avatar_img: '../../../../assets/images/logos/angular.png',

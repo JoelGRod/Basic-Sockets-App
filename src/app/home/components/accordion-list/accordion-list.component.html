@@ -1,0 +1,20 @@
+<div mat-subheader class="list-title"> {{ list_title }} </div>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let item of list_items" 
+        class="expansion-info" hideToggle>
+        <mat-expansion-panel-header fxLayout="row">
+            <mat-panel-title fxFlex="65%">
+                <mat-icon mat-list-icon class="expansion-icon">
+                    {{ item_icon }}
+                </mat-icon>
+                {{item.name}} <mat-icon>expand_more</mat-icon>
+            </mat-panel-title>
+            <mat-panel-description fxFlex="35%">
+                {{item.start_date | date}} - {{item.end_date | date}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+            <p class="expansion-content">{{item.description}}</p>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

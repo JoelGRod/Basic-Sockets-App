@@ -11,6 +11,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { DemosComponent } from './pages/demos/demos.component';
 import { AngularComponent } from './pages/angular/angular.component';
 import { AboutComponent } from './pages/about/about.component';
+import { AccordionListComponent } from './components/accordion-list/accordion-list.component';
+import { ChipsListComponent } from './components/chips-list/chips-list.component';
 
 
 @NgModule({
@@ -19,7 +21,7 @@ import { AboutComponent } from './pages/about/about.component';
     HomeComponent, 
     DemosComponent, 
     AngularComponent, 
-    AboutComponent, 
+    AboutComponent, AccordionListComponent, ChipsListComponent, 
   ],
   imports: [
     CommonModule,
