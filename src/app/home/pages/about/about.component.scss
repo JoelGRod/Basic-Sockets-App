@@ -5,7 +5,7 @@
     z-index: 1;
 
     .profile-desc {
-        max-height: 13rem;
+        max-height: 16rem;
         padding: 0rem 0.5rem 0.5rem 0.5rem;
         text-align: justify;
         text-justify: inter-word;
@@ -34,8 +34,7 @@
 }
 
 .about-content {
-    margin: 0rem 1rem 1rem 1rem;
-    padding: 0.5rem 1rem 2rem 1rem;
+    margin: 0rem 0.5rem 1rem 0.5rem;
     background-color: rgba(51,51,51,0.70);
     border-radius: 0.5rem;
     z-index: 1;
@@ -43,15 +42,22 @@
     .expansion-info {
         background-color: rgba(51,51,51,0);
         box-shadow: none;
-        margin-top: 0.5rem;
-        margin-bottom: 1rem;
+        margin: 0.5rem 0rem 0rem 0rem;
+        padding: 1.5rem 0rem 1rem 0rem;
 
         .expansion-icon {
             margin: 0rem 1rem 0rem 0rem;
         }
+
+        .expansion-content {
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            background-color: rgba(139,57,173,0.2);
+        }
     }
 
-    .mat-subheader.chip-subheader { 
+    .mat-subheader.chip-subheader {
         padding-top: 1.5rem;
         padding-bottom: 2rem;
     }
@@ -61,21 +67,37 @@
     }
 }
 
+@media (min-width: 600px) {
+    .profile-card{
+        margin: 2rem 4rem 0rem 4rem;
+    }
+
+    .about-content {
+        margin: 2rem 4rem 0rem 4rem;
+    }
+}
+
 
 @media (min-width: 960px) {
 
     .profile-card {
+        margin: 1rem 1rem 1rem 1rem;
+
         .profile-desc {
             max-height: 4rem;
         }
     }
 
     .about-content {
-        margin-top: 1rem;
+        margin: 1rem 0rem 1rem 0rem;
 
         .expansion-info {
-            margin-top: 0.3rem;
-            margin-bottom: 0rem;
+            margin: 0.3rem 0rem 0rem 0rem;
+            padding: 0;
+
+            .expansion-content {
+                margin-top: 0rem;
+            }
         }
     }
 }
