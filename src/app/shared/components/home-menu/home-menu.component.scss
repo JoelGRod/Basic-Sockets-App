@@ -15,9 +15,9 @@
   .background {
       // background: #3E1E68;
       background: #333333;
-      // height: calc(100% - 64px);
-      height: 100%;
+      height: calc(100% - 64px);
       padding-bottom: 2rem;
+      overflow: hidden;
   }
     
     $particleSize: 20vmin;
@@ -44,8 +44,8 @@
       @for $i from 1 through $amount {
         &:nth-child(#{$i}) {
           color: nth($colors, random(length($colors)));
-          top: random(60) * 1%;
-          left: random(60) * 1%;
+          top: random(40) * 1%;
+          left: random(40) * 1%;
           animation-duration: (random($animationDuration * 100) / 10) * 1s + 10s;
           animation-delay: random(($animationDuration + 10s) * 10) / 10 * -1s;
           transform-origin: (random(50) - 25) * 1vw (random(50) - 25) * 1vh;
