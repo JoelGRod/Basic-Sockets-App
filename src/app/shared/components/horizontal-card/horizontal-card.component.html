@@ -2,25 +2,26 @@
 
     <mat-card class="card" fxLayout="column" fxLayout.gt-sm="row">
 
-        <div class="card-img-container" fxLayout="column" fxLayoutAlign="center center">
-            <img class="card-img" src="../../../../assets/images/logos/angular.png" alt="Angular photo">
+        <div *ngIf="card.image" class="card-img-container" fxLayout="column" fxLayoutAlign="center center">
+            <img class="card-img" [src]="card.image" [alt]="card.image_alt_text">
+        </div>
+
+        <div *ngIf="card.image_group" class="card-img-container" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="1rem">
+            <img fxFlex="20" *ngFor="let img of card.image_group" class="multi-card-img" [src]="img" [alt]="card.image_alt_text">
         </div>
 
         <mat-card-content class="card-text-container">
             <mat-card-header>
-                <mat-card-title>Inicio</mat-card-title>
+                <mat-card-title> {{ card.title }} </mat-card-title>
             </mat-card-header>
             <mat-divider inset="true">
             </mat-divider>
             <div class="card-text">
-                <p>Bienvenido/a!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                <p>Temporibus soluta ratione quam repellat, aspernatur, nisi asperiores tempore laborum praesentium
-                    hic possimus tenetur.</p>
-                <mat-card-actions>
+                <p *ngFor="let paragraph of card.description"> {{ paragraph }} </p>
+                <!-- <mat-card-actions>
                     <button mat-button>LIKE</button>
                     <button mat-button>SHARE</button>
-                </mat-card-actions>
+                </mat-card-actions> -->
             </div>
         </mat-card-content>
 

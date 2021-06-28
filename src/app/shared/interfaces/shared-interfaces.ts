@@ -13,12 +13,13 @@ export interface DialogData {
 }
 
 export interface CardInfo {
-    avatar_img: string;
     title: string;
-    subtitle: string;
-    image: string;
     image_alt_text: string;
     description: string[];
+    image_group?: string[];
+    subtitle?: string;
+    image?: string;
+    avatar_img?: string;
     link?: string;
     external_link?: string;
 }

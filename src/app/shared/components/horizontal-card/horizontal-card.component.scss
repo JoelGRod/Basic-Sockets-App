@@ -18,6 +18,11 @@
      height: 100%;
  }
 
+ .multi-card-img {
+     object-fit: cover;
+     width: 10%;
+ }
+
  .card-text-container {
      padding: 0.5rem 0.5rem 0rem 1rem;
      overflow: scroll;
