@@ -1,13 +1,28 @@
 <div fxLayout="row" fxLayoutAlign="center center">
 
-    <mat-card class="card" fxLayout="column" fxLayout.gt-sm="row">
+    <mat-card class="card animate__animated animate__fadeIn animation-speed" 
+        fxLayout="column" 
+        fxLayout.gt-sm="row">
 
-        <div *ngIf="card.image" class="card-img-container" fxLayout="column" fxLayoutAlign="center center">
-            <img class="card-img" [src]="card.image" [alt]="card.image_alt_text">
+        <div *ngIf="card.image" 
+            class="card-img-container" 
+            fxLayout="column" 
+            fxLayoutAlign="center center">
+            <img class="card-img" 
+                [src]="card.image" 
+                [alt]="card.image_alt_text">
         </div>
 
-        <div *ngIf="card.image_group" class="card-img-container" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="1rem">
-            <img fxFlex="20" *ngFor="let img of card.image_group" class="multi-card-img" [src]="img" [alt]="card.image_alt_text">
+        <div *ngIf="card.image_group" 
+            class="card-img-container" 
+            fxLayout="row wrap" 
+            fxLayoutAlign="center center"
+            fxLayoutGap="1rem">
+            <img fxFlex="20" 
+                *ngFor="let img of card.image_group" 
+                class="multi-card-img" 
+                [src]="img"
+                [alt]="card.image_alt_text">
         </div>
 
         <mat-card-content class="card-text-container">
@@ -17,7 +32,9 @@
             <mat-divider inset="true">
             </mat-divider>
             <div class="card-text">
-                <p *ngFor="let paragraph of card.description"> {{ paragraph }} </p>
+                <p *ngFor="let paragraph of card.description">
+                    {{ paragraph }}
+                </p>
                 <!-- <mat-card-actions>
                     <button mat-button>LIKE</button>
                     <button mat-button>SHARE</button>
