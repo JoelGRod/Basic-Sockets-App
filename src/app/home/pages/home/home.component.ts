@@ -12,10 +12,12 @@ export class HomeComponent implements OnInit {
     title: "Welcome to my PortFolio!",
     image_alt_text: 'Icon Technologies',
     description: [
-      'This is my protfolio',
-      'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-      'Temporibus soluta ratione quam repellat, aspernatur, nisi asperiores tempore laborum praesentium hic possimus tenetur.',
-      'Temporibus soluta ratione quam repellat, aspernatur, nisi asperiores tempore laborum.',
+      'This page is for professional purposes only.',
+      'It has been created using angular as frontend, nodejs as backend and mongodb as database.',
+      'In the Works section you can see some examples (sometimes modules of this same app, external applications or wordpress pages) of what I have done so far, personally, as an example for potential employers.',
+      'My resume is available in the "about me" section, as well as access to my social networks and github.',
+      'All the code of this website is included in the following github link in case you want to review it, remember that this page is in constant construction, there are many things that I still need to add.',
+      'Thank you so much for the visit!',
     ],
     // image: '/assets/images/logos/angular.png'
     image_group: [
