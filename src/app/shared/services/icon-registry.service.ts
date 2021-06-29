@@ -23,5 +23,9 @@ export class IconRegistryService {
       `soundcloud`,
       this._domSanitizer.bypassSecurityTrustResourceUrl("/assets/images/icons/soundcloud.svg")
     );
+    this._matIconRegistry.addSvgIcon(
+      `github`,
+      this._domSanitizer.bypassSecurityTrustResourceUrl("/assets/images/icons/github.svg")
+    );
   }
 }
