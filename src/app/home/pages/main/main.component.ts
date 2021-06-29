@@ -28,7 +28,12 @@ export class MainComponent {
       route: '/home/about',
       icon: 'label',
       name: 'About Me'
-    }
+    },
+    {
+      route: '/home/contact',
+      icon: 'label',
+      name: 'Contact'
+    },
   ];
 
   constructor() { }
