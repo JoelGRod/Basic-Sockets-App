@@ -8,14 +8,17 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { HomeMenuComponent } from './components/home-menu/home-menu.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UnderConstructionComponent } from './components/under-construction/under-construction.component';
 // Directives
 import { ErrMsgDirective } from './directives/err-msg.directive';
 // Dialogs
 import { GralDialogComponent } from './components/gral-dialog/gral-dialog.component';
-import { DialogService } from './services/dialog.service';
 import { PasswordDialogComponent } from './components/password-dialog/password-dialog.component';
+// Cards
 import { HorizontalCardComponent } from './components/horizontal-card/horizontal-card.component';
 import { VerticalCardComponent } from './components/vertical-card/vertical-card.component';
+// Services
+import { DialogService } from './services/dialog.service';
 
 
 
@@ -25,6 +28,7 @@ import { VerticalCardComponent } from './components/vertical-card/vertical-card.
     FooterComponent,
     MainMenuComponent,
     HomeMenuComponent,
+    UnderConstructionComponent,
     // Directives
     ErrMsgDirective,
     // Dialogs
@@ -32,7 +36,7 @@ import { VerticalCardComponent } from './components/vertical-card/vertical-card.
     PasswordDialogComponent,
     // Cards
     HorizontalCardComponent,
-    VerticalCardComponent
+    VerticalCardComponent,
   ],
   imports: [
     CommonModule,
@@ -46,6 +50,7 @@ import { VerticalCardComponent } from './components/vertical-card/vertical-card.
     FooterComponent,
     MainMenuComponent,
     HomeMenuComponent,
+    UnderConstructionComponent,
     // Directives
     ErrMsgDirective,
     // Dialogs
