@@ -7,11 +7,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../shared/shared.module';
 // Pages
 import { MainComponent } from './pages/main/main.component';
+import { PacmanComponent } from './pages/pacman/pacman.component';
 
 
 @NgModule({
   declarations: [
-    MainComponent
+    MainComponent,
+    PacmanComponent
   ],
   imports: [
     CommonModule,
