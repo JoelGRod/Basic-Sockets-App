@@ -8,8 +8,8 @@ import { Section, Skill } from '../interfaces/home-interfaces';
 })
 export class HomeService {
 
-  // Info
-  // Projects / Examples cards
+  // --------------------- Projects - Demos --------------------- //
+  // Examples cards
   private _cards: CardInfo[] = [
     {
       avatar_img: '../../../../assets/images/logos/angular.png',
@@ -40,6 +40,7 @@ export class HomeService {
     },
   ];
 
+  // --------------------- About Me --------------------- //
   // Content - List
   private _experiences: Section[] = [
     {
@@ -68,6 +69,12 @@ export class HomeService {
       description: 'Focan Institute - App. Development With Web Technology - Level 3 Professional Certificate',
       start_date: new Date('04/1/20'),
       end_date: new Date('10/1/20')
+    },
+    {
+      name: 'Google IT Automation with Python',
+      description: 'Coursera - This six-course certificate, developed by Google, is designed to provide IT professionals with in-demand skills -- including Python, Git, and IT automation -- that can help them advance their careers. The hands-on curriculum is designed to teach learners how to write code in Python, with a special focus on how this applies to automating tasks in the world of IT support and systems administration.',
+      start_date: new Date('01/1/20'),
+      end_date: new Date('07/1/20')
     },
     {
       name: 'Programmer Analyst',
@@ -108,6 +115,7 @@ export class HomeService {
 
   private _secondary_skills: Skill[] = [
     { name: 'VueJs', color: 'accent' },
+    { name: 'Python', color: 'primary' },
     { name: 'PHP', color: 'gray' },
     { name: 'Laravel', color: 'gray' },
     { name: 'Virtual Box', color: 'accent' },
