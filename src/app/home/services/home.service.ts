@@ -12,10 +12,10 @@ export class HomeService {
   // Examples cards
   private _cards: CardInfo[] = [
     {
-      avatar_img: '../../../../assets/images/logos/angular.png',
+      avatar_img: '/assets/images/logos/angular.png',
       title: 'chat app',
       subtitle: 'MEAN Stack',
-      image: '../../../../assets/images/stock/chat_app.jpeg',
+      image: '/assets/images/stock/chat_app.jpeg',
       image_alt_text: 'Chat App example image',
       description: [
         'A basic chat app created with Angular and NodeJs.',
@@ -26,10 +26,10 @@ export class HomeService {
       link: '/chat/menu'
     },
     {
-      avatar_img: '../../../../assets/images/logos/wordpress.png',
+      avatar_img: '/assets/images/logos/wordpress.png',
       title: 'wordpress page',
       subtitle: 'Wordpress',
-      image: '../../../../assets/images/home/elsitio.png',
+      image: '/assets/images/home/elsitio.png',
       image_alt_text: 'Logo El Sitio del Sauzal',
       description: [
         'A page made for the socio-cultural space El Sitio del Sauzal.',
@@ -39,15 +39,14 @@ export class HomeService {
       external_link: 'https://elsitiodelsauzal.com/'
     },
     {
-      avatar_img: '../../../../assets/images/logos/wordpress.png',
-      title: 'Basic Unity Games',
+      avatar_img: '/assets/images/logos/unity.png',
+      title: 'Classic Games',
       subtitle: 'Unity',
-      image: '../../../../assets/images/home/elsitio.png',
-      image_alt_text: 'Logo unity',
+      image: '/assets/images/stock/arcade.jpeg',
+      image_alt_text: 'Arcade machine high score board in a rainbow pattern.',
       description: [
-        'A page made for the socio-cultural space El Sitio del Sauzal.',
-        'For its realization, the CMS Wordpress has been used together with the avada template.',
-        'Some elements were developed to satisfy the client needs (styles and custom main menu, all solved with CSS).'
+        'In this module we can find some classic games that I developed with unity at the beginning of 2019 as a personal hobby.',
+        'The goal was to familiarize myself with unity and what the engine is capable of in 2D.'
       ],
       link: '/game'
     },
