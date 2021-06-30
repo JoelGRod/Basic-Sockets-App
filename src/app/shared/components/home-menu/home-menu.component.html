@@ -21,13 +21,12 @@
     <!-- Mat Sidenav external Content -->
 
     <mat-toolbar class="toolbar">
-        <span>My PortFolio</span>
+        <span> {{ title }} </span>
         <span class="spacer"></span>
         <div fxShow="true" fxHide.lt-md="true">
             <button *ngFor="let item of menu_items" mat-button [routerLink]="item.route">
                 {{ item.name }}
             </button>
-            <!-- <img src="../../../../assets/images/Logo 1.png" alt="JGR Logo" class="logo"> -->
         </div>
         <div fxShow="true" fxHide.gt-sm="true">
             <button mat-icon-button (click)="sidenav.toggle()">
@@ -38,7 +37,7 @@
 
     <div fxLayout="column" class="menu-content">
 
-        <div class="background" fxFlex="1 0 auto">
+        <div *ngIf="is_animated" class="background" fxFlex="1 0 auto">
 
             <router-outlet></router-outlet>
 
@@ -51,6 +50,12 @@
             <span class="background-item"></span>
             <span class="background-item"></span>
             <span class="background-item"></span>
+
+        </div>
+
+        <div *ngIf="!is_animated" class="background" fxFlex="1 0 auto">
+
+            <router-outlet></router-outlet>
 
         </div>
 
