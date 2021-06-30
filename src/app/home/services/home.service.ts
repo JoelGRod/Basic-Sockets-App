@@ -38,6 +38,19 @@ export class HomeService {
       ],
       external_link: 'https://elsitiodelsauzal.com/'
     },
+    {
+      avatar_img: '../../../../assets/images/logos/wordpress.png',
+      title: 'Basic Unity Games',
+      subtitle: 'Unity',
+      image: '../../../../assets/images/home/elsitio.png',
+      image_alt_text: 'Logo unity',
+      description: [
+        'A page made for the socio-cultural space El Sitio del Sauzal.',
+        'For its realization, the CMS Wordpress has been used together with the avada template.',
+        'Some elements were developed to satisfy the client needs (styles and custom main menu, all solved with CSS).'
+      ],
+      link: '/game'
+    },
   ];
 
   // --------------------- About Me --------------------- //
