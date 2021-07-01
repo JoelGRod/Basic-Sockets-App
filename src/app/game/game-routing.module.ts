@@ -10,7 +10,7 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       { path: 'pacman', component: PacmanComponent },
-      { path: '**', redirectTo: 'pacman' }
+      { path: '**', redirectTo: '' }
     ]
   }
 ];
