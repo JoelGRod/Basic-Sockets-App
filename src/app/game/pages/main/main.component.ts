@@ -16,9 +16,9 @@ export class MainComponent {
       name: 'Home'
     },
     {
-      route: '/game/pacman',
+      route: '/game',
       icon: 'label',
-      name: 'Pac-Man'
+      name: 'Games'
     },
   ];
 
