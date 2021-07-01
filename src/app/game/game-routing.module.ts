@@ -7,6 +7,7 @@ import { PacmanComponent } from './pages/pacman/pacman.component';
 import { WallbreakerComponent } from './pages/wallbreaker/wallbreaker.component';
 import { MinesweeperComponent } from './pages/minesweeper/minesweeper.component';
 import { TetrisComponent } from './pages/tetris/tetris.component';
+import { RunningComponent } from './pages/running/running.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'wallbreaker', component: WallbreakerComponent },
       { path: 'minesweeper', component: MinesweeperComponent },
       { path: 'tetris', component: TetrisComponent },
+      { path: 'running', component: RunningComponent },
       { path: '**', redirectTo: 'menu' }
     ]
   }

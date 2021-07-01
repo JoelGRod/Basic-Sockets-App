@@ -12,6 +12,7 @@ import { PacmanComponent } from './pages/pacman/pacman.component';
 import { WallbreakerComponent } from './pages/wallbreaker/wallbreaker.component';
 import { MinesweeperComponent } from './pages/minesweeper/minesweeper.component';
 import { TetrisComponent } from './pages/tetris/tetris.component';
+import { RunningComponent } from './pages/running/running.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { TetrisComponent } from './pages/tetris/tetris.component';
     MenuComponent,
     WallbreakerComponent,
     MinesweeperComponent,
-    TetrisComponent
+    TetrisComponent,
+    RunningComponent
   ],
   imports: [
     CommonModule,
