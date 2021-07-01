@@ -54,12 +54,13 @@ export class MenuComponent {
       avatar_img: '/assets/images/logos/unity.png',
       title: 'Tetris',
       subtitle: 'Unity 2019',
-      image: '/assets/images/games/minesweeper.png',
+      image: '/assets/images/games/tetris.png',
       image_alt_text: 'Tetris ingame image',
       description: [
-        'Another classic clone made with the unity 2D engine, MineSweeper.',
-        'It uses a painting system similar to the color fill used in programs such as photoshop, or also called the FloodFill algorithm.',
-        'It consists of 5 levels, easy, normal, hard, very hard and inferno, but the last two are so complicated that they are practically unplayable.'
+        'A classic clone made with the unity 2D engine, its tetris time.',
+        'We return to the grid system using two-dimensional arrays, for this type of classic games it is what works best.',
+        'A single endless level, the only thing that counts is the score you get.',
+        'A timeless classic.'
       ],
       link: '/game/tetris'
     },
