@@ -5,6 +5,7 @@ import { MainComponent } from './pages/main/main.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { PacmanComponent } from './pages/pacman/pacman.component';
 import { WallbreakerComponent } from './pages/wallbreaker/wallbreaker.component';
+import { MinesweeperComponent } from './pages/minesweeper/minesweeper.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: 'menu', component: MenuComponent },
       { path: 'pacman', component: PacmanComponent },
       { path: 'wallbreaker', component: WallbreakerComponent },
+      { path: 'minesweeper', component: MinesweeperComponent },
       { path: '**', redirectTo: 'menu' }
     ]
   }

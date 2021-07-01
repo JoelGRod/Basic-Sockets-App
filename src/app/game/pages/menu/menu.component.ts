@@ -12,7 +12,7 @@ export class MenuComponent {
   public cards: CardInfo[] = [
     {
       avatar_img: '/assets/images/logos/unity.png',
-      title: 'Pac-Man',
+      title: 'PacMan',
       subtitle: 'Unity 2019',
       image: '/assets/images/games/pacman.png',
       image_alt_text: 'Pac-Man ingame image',
@@ -36,6 +36,32 @@ export class MenuComponent {
         'It only consists of one level, just for demonstrative purposes.'
       ],
       link: '/game/wallbreaker'
+    },
+    {
+      avatar_img: '/assets/images/logos/unity.png',
+      title: 'Mine Sweeper',
+      subtitle: 'Unity 2019',
+      image: '/assets/images/games/minesweeper.png',
+      image_alt_text: 'Mine Sweeper ingame image',
+      description: [
+        'Another classic clone made with the unity 2D engine, MineSweeper.',
+        'It uses a painting system similar to the color fill used in programs such as photoshop, or also called the FloodFill algorithm.',
+        'It consists of 5 levels, easy, normal, hard, very hard and inferno, but the last two are so complicated that they are practically unplayable.'
+      ],
+      link: '/game/minesweeper'
+    },
+    {
+      avatar_img: '/assets/images/logos/unity.png',
+      title: 'Tetris',
+      subtitle: 'Unity 2019',
+      image: '/assets/images/games/minesweeper.png',
+      image_alt_text: 'Tetris ingame image',
+      description: [
+        'Another classic clone made with the unity 2D engine, MineSweeper.',
+        'It uses a painting system similar to the color fill used in programs such as photoshop, or also called the FloodFill algorithm.',
+        'It consists of 5 levels, easy, normal, hard, very hard and inferno, but the last two are so complicated that they are practically unplayable.'
+      ],
+      link: '/game/tetris'
     },
   ];
 
