@@ -9,13 +9,15 @@ import { SharedModule } from '../shared/shared.module';
 import { MainComponent } from './pages/main/main.component';
 import { PacmanComponent } from './pages/pacman/pacman.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { WallbreakerComponent } from './pages/wallbreaker/wallbreaker.component';
 
 
 @NgModule({
   declarations: [
     MainComponent,
     PacmanComponent,
-    MenuComponent
+    MenuComponent,
+    WallbreakerComponent
   ],
   imports: [
     CommonModule,
