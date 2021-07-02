@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ViewChild, ElementRef, Input } from '@angular/core';
 declare var UnityLoader: any;
 
 @Component({
@@ -9,18 +9,19 @@ declare var UnityLoader: any;
 export class GameLoaderComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('unityContainer') unityContainer!: ElementRef<HTMLElement>;
-  // @Input() game_route: string = '';
+  @Input() game_route: string = '';
+  @Input() title: string = 'Game';
 
   public unityInstance: any;
 
   constructor() { }
 
   ngAfterViewInit(): void {
-    this.unityInstance = UnityLoader.instantiate(this.unityContainer.nativeElement, "assets/games/pacman/pacman.json");
+    this.unityInstance = UnityLoader.instantiate(this.unityContainer.nativeElement, this.game_route);
   }
 
   ngOnDestroy(): void {
-    this.unityInstance.Quit( () => { console.log('done') } );
+    this.unityInstance.Quit( () => { console.log('Game Over') } );
   }
 
 }
