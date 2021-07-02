@@ -13,17 +13,22 @@ import { WallbreakerComponent } from './pages/wallbreaker/wallbreaker.component'
 import { MinesweeperComponent } from './pages/minesweeper/minesweeper.component';
 import { TetrisComponent } from './pages/tetris/tetris.component';
 import { RunningComponent } from './pages/running/running.component';
+// Components
+import { GameLoaderComponent } from './components/game-loader/game-loader.component';
 
 
 @NgModule({
   declarations: [
+    // Pages
     MainComponent,
     PacmanComponent,
     MenuComponent,
     WallbreakerComponent,
     MinesweeperComponent,
     TetrisComponent,
-    RunningComponent
+    RunningComponent,
+    // Components
+    GameLoaderComponent
   ],
   imports: [
     CommonModule,

@@ -6,18 +6,18 @@ declare var UnityLoader: any;
   templateUrl: './pacman.component.html',
   styleUrls: ['./pacman.component.scss']
 })
-export class PacmanComponent implements AfterViewInit, OnDestroy {
+export class PacmanComponent  {
   
   unityInstance: any;
 
   constructor() { }
   
-  ngAfterViewInit(): void {
-    this.unityInstance = UnityLoader.instantiate("unityContainer", "assets/games/pacman/pacman.json");
-  }
+  // ngAfterViewInit(): void {
+  //   this.unityInstance = UnityLoader.instantiate("unityContainer", "assets/games/pacman/pacman.json");
+  // }
 
-  ngOnDestroy(): void {
-    this.unityInstance.Quit( () => { console.log('done') } );
-  }
+  // ngOnDestroy(): void {
+  //   this.unityInstance.Quit( () => { console.log('done') } );
+  // }
 
 }
