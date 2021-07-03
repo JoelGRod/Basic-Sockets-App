@@ -17,18 +17,23 @@ export class MainComponent implements OnInit {
 
   public menu_items: MenuItem[] = [
     {
+      route: '/home',
+      icon: 'home',
+      name: 'Home'
+    },
+    {
       route: '/chat/menu',
-      icon: 'label',
+      icon: 'question_answer',
       name: 'Chat'
     },
     {
       route: '/auth/login',
-      icon: 'label',
+      icon: 'input',
       name: 'Login'
     },
     {
       route: '/auth/register',
-      icon: 'label',
+      icon: 'app_registration',
       name: 'Register'
     },
   ];
