@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
+// Services
+import { HttpClient } from '@angular/common/http';
 // Interfaces
 import { CardInfo } from 'src/app/shared/interfaces/shared-interfaces';
-import { Section, Skill } from '../interfaces/home-interfaces';
+import { Section, Skill, EmailResponse, EmailBody } from '../interfaces/home-interfaces';
+// Environments
+import { environment } from 'src/environments/environment';
+// RXJS
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeService {
+
+  private _base_url: string = environment.base_url;
 
   // --------------------- Projects - Demos --------------------- //
   // Examples cards
@@ -161,5 +169,13 @@ export class HomeService {
     return [...this._secondary_skills];
   }
 
-  constructor() { }
+  constructor( private _http: HttpClient ) { }
+
+  /* ---------------------------------- HTTP --------------------------------------- */
+  public send_contact_email(form_body: EmailBody): Observable<EmailResponse> {
+    const url: string = `${this._base_url}/email/send_contact_email`;
+    const body = {...form_body};
+
+    return this._http.post<EmailResponse>(url, body);
+  }
 }
