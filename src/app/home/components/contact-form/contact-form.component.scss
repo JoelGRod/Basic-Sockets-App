@@ -1,0 +1,50 @@
+.contact-card {
+    max-width: 100%;
+    margin: 1rem 1rem -0.5rem 1rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+    z-index: 1;
+
+    .contact-card-content {
+        padding-top: 2rem;
+        margin-bottom: 0rem;
+
+        .contact-input {
+            margin-top: -1rem;
+            padding: 0rem 0.5rem 0rem 0.5rem;
+            width: 100%;
+        }
+
+        .contact-textarea {
+            margin-top: -1rem;
+            padding: 0rem 0.5rem 0rem 0.5rem;
+            width: 100%;
+
+            .textarea-box {
+                min-height: 3rem;
+            }
+            
+        }
+    }
+
+    .contact-card-actions {
+        margin: -1.5rem 0.5rem 0.5rem 0rem;
+
+        .contact-button {
+            padding: 0.2rem 1.5rem;
+        }
+    }
+}
+
+@media (min-width: 600px) {
+    .contact-card {
+        width: 600px;
+
+        .contact-card-content {
+            .contact-textarea {
+                .textarea-box {
+                    min-height: 12rem;
+                }
+            }
+        }
+    }
+}

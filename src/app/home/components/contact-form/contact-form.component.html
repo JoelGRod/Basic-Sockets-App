@@ -1,0 +1,57 @@
+<mat-card class="contact-card">
+
+    <mat-card-header>
+        <mat-card-title>Contact Me</mat-card-title>
+        <mat-card-subtitle>Do you want to contact me? This is the right place</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-divider inset="true"></mat-divider>
+
+    <mat-card-content class="contact-card-content">
+        <form>
+            <p>
+                <mat-form-field appearance="outline" class="contact-input">
+                    <mat-label>Name</mat-label>
+                    <input matInput placeholder="Your name goes here">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="outline" class="contact-input">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="I need an email to contact you">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="outline" class="contact-input">
+                    <mat-label>Subject</mat-label>
+                    <input matInput placeholder="What do you need from me?">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field appearance="outline" class="contact-textarea">
+                    <mat-label>Message</mat-label>
+                    <textarea matInput 
+                        cdkTextareaAutosize
+                        class="textarea-box"
+                        placeholder="Do you want to further develop your request? Here you have the space to do it"></textarea>
+                </mat-form-field>
+            </p>
+
+            
+        </form>
+    </mat-card-content>
+
+    <mat-card-actions fxLayout="row" 
+        fxLayoutAlign="end"
+        class="contact-card-actions">
+        <button mat-flat-button 
+            type="submit" 
+            color="primary"
+            class="contact-button">
+            Send
+        </button>
+    </mat-card-actions>
+</mat-card>

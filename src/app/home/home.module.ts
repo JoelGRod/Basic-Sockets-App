@@ -5,6 +5,7 @@ import { MaterialModule } from '../material/material.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 // Pages
 import { MainComponent } from './pages/main/main.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -16,6 +17,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { AccordionListComponent } from './components/accordion-list/accordion-list.component';
 import { ChipsListComponent } from './components/chips-list/chips-list.component';
 import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
 
 
 @NgModule({
@@ -31,13 +33,15 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
     AccordionListComponent, 
     ChipsListComponent, 
     ProfileCardComponent, 
+    ContactFormComponent, 
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     FlexLayoutModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class HomeModule { }
