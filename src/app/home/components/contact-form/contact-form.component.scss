@@ -24,15 +24,16 @@
             }
             
         }
-    }
 
-    .contact-card-actions {
-        margin: -1.5rem 0.5rem 0.5rem 0rem;
-
-        .contact-button {
-            padding: 0.2rem 1.5rem;
+        .contact-card-actions {
+            margin: -1rem 0.5rem 0.5rem 0rem;
+    
+            .contact-button {
+                padding: 0.2rem 1.5rem;
+            }
         }
     }
+
 }
 
 @media (min-width: 600px) {

@@ -8,11 +8,13 @@
     <mat-divider inset="true"></mat-divider>
 
     <mat-card-content class="contact-card-content">
-        <form>
+        <form [formGroup]="form" (ngSubmit)="send_message()">
             <p>
                 <mat-form-field appearance="outline" class="contact-input">
                     <mat-label>Name</mat-label>
-                    <input matInput placeholder="Your name goes here">
+                    <input formControlName="name" 
+                        matInput 
+                        placeholder="Your name goes here">
                     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 </mat-form-field>
             </p>
@@ -20,7 +22,9 @@
             <p>
                 <mat-form-field appearance="outline" class="contact-input">
                     <mat-label>Email</mat-label>
-                    <input matInput placeholder="I need an email to contact you">
+                    <input formControlName="contact_email" 
+                        matInput 
+                        placeholder="I need an email to contact you">
                     <mat-icon matSuffix>email</mat-icon>
                 </mat-form-field>
             </p>
@@ -28,7 +32,9 @@
             <p>
                 <mat-form-field appearance="outline" class="contact-input">
                     <mat-label>Subject</mat-label>
-                    <input matInput placeholder="What do you need from me?">
+                    <input formControlName="subject" 
+                        matInput 
+                        placeholder="What do you need from me?">
                     <mat-icon matSuffix>title</mat-icon>
                 </mat-form-field>
             </p>
@@ -36,24 +42,26 @@
             <p>
                 <mat-form-field appearance="outline" class="contact-textarea">
                     <mat-label>Message</mat-label>
-                    <textarea matInput 
+                    <textarea matInput
+                        formControlName="msg"
                         cdkTextareaAutosize
                         class="textarea-box"
                         placeholder="Do you want to further develop your request? Here you have the space to do it"></textarea>
                     <mat-icon matSuffix>message</mat-icon>
                 </mat-form-field>
             </p>
+
+            <div fxLayout="row" 
+                fxLayoutAlign="end"
+                class="contact-card-actions">
+                <button mat-flat-button 
+                    type="submit" 
+                    color="primary"
+                    class="contact-button">
+                    Send
+                </button>
+            </div>
         </form>
     </mat-card-content>
 
-    <mat-card-actions fxLayout="row" 
-        fxLayoutAlign="end"
-        class="contact-card-actions">
-        <button mat-flat-button 
-            type="submit" 
-            color="primary"
-            class="contact-button">
-            Send
-        </button>
-    </mat-card-actions>
 </mat-card>
