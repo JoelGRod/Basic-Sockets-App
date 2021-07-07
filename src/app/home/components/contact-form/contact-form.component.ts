@@ -14,19 +14,19 @@ export class ContactFormComponent {
   @ViewChild('formDirective') formDirective!: FormGroupDirective;
 
   public form: FormGroup = this._fb.group({
-    name: ['sdsdsds', [
+    name: ['', [
       Validators.required,
       Validators.minLength(3)
     ]],
-    contact_email: ['joel@mail.com', [
+    contact_email: ['', [
       Validators.required,
       Validators.pattern(this._fvalidators.email_pattern)
     ]],
-    subject: ['sdadadssad', [
+    subject: ['', [
       Validators.required,
       Validators.minLength(3)
     ]],
-    msg: ['asdasdsadasd', [
+    msg: ['', [
       Validators.required,
       Validators.minLength(3)
     ]]
