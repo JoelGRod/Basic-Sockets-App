@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 // Services
 import { FormValidatorsService } from 'src/app/shared/validators/form-validators.service';
 import { HomeService } from '../../services/home.service';
@@ -11,20 +11,22 @@ import { HomeService } from '../../services/home.service';
 })
 export class ContactFormComponent {
 
+  @ViewChild('formDirective') formDirective!: FormGroupDirective;
+
   public form: FormGroup = this._fb.group({
-    name: ['', [
+    name: ['sdsdsds', [
       Validators.required,
       Validators.minLength(3)
     ]],
-    contact_email: ['', [
+    contact_email: ['joel@mail.com', [
       Validators.required,
       Validators.pattern(this._fvalidators.email_pattern)
     ]],
-    subject: ['', [
+    subject: ['sdadadssad', [
       Validators.required,
       Validators.minLength(3)
     ]],
-    msg: ['', [
+    msg: ['asdasdsadasd', [
       Validators.required,
       Validators.minLength(3)
     ]]
@@ -52,9 +54,8 @@ export class ContactFormComponent {
 
     this._home_service.send_contact_email(this.form.value)
       .subscribe( resp => {
-        this.form.reset();
+        this.formDirective.resetForm();
       });
-
   }
 
 }

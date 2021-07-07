@@ -8,7 +8,10 @@
     <mat-divider inset="true"></mat-divider>
 
     <mat-card-content class="contact-card-content">
-        <form [formGroup]="form" (ngSubmit)="send_message()" autocomplete="off">
+        <form [formGroup]="form" 
+            (ngSubmit)="send_message()" 
+            autocomplete="off"
+            #formDirective="ngForm">
             <p>
                 <mat-form-field appearance="outline" class="contact-input">
                     <mat-label>Name</mat-label>
@@ -86,3 +89,7 @@
     </mat-card-content>
 
 </mat-card>
+
+<pre> Form value: {{ form.value | json }} </pre>
+<pre> Form valid: {{ form.valid | json }} </pre>
+<pre> Form touched: {{ form.touched| json }} </pre>
