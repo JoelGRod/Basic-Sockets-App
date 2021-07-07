@@ -8,7 +8,7 @@
     <mat-divider inset="true"></mat-divider>
 
     <mat-card-content class="contact-card-content">
-        <form [formGroup]="form" (ngSubmit)="send_message()">
+        <form [formGroup]="form" (ngSubmit)="send_message()" autocomplete="off">
             <p>
                 <mat-form-field appearance="outline" class="contact-input">
                     <mat-label>Name</mat-label>
@@ -16,6 +16,11 @@
                         matInput 
                         placeholder="Your name goes here">
                     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <span class="form-error-msg" 
+                        error-msg
+                        [show_error]="is_field_invalid('name')"
+                        [error]="form.get('name')?.errors">
+                    </span>
                 </mat-form-field>
             </p>
 
@@ -26,6 +31,11 @@
                         matInput 
                         placeholder="I need an email to contact you">
                     <mat-icon matSuffix>email</mat-icon>
+                    <span class="form-error-msg" 
+                        error-msg
+                        [show_error]="is_field_invalid('contact_email')"
+                        [error]="form.get('contact_email')?.errors">
+                    </span>
                 </mat-form-field>
             </p>
 
@@ -36,6 +46,11 @@
                         matInput 
                         placeholder="What do you need from me?">
                     <mat-icon matSuffix>title</mat-icon>
+                    <span class="form-error-msg" 
+                        error-msg
+                        [show_error]="is_field_invalid('subject')"
+                        [error]="form.get('subject')?.errors">
+                    </span>
                 </mat-form-field>
             </p>
 
@@ -48,6 +63,11 @@
                         class="textarea-box"
                         placeholder="Do you want to further develop your request? Here you have the space to do it"></textarea>
                     <mat-icon matSuffix>message</mat-icon>
+                    <span class="form-error-msg" 
+                        error-msg
+                        [show_error]="is_field_invalid('msg')"
+                        [error]="form.get('msg')?.errors">
+                    </span>
                 </mat-form-field>
             </p>
 
@@ -57,7 +77,8 @@
                 <button mat-flat-button 
                     type="submit" 
                     color="primary"
-                    class="contact-button">
+                    class="contact-button"
+                    [disabled]="form.invalid">
                     Send
                 </button>
             </div>

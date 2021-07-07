@@ -36,7 +36,12 @@ export class ContactFormComponent {
     private _home_service: HomeService
   ) { }
 
-  send_message(): void {
+  public is_field_invalid(field: string): boolean {
+    return this.form.get(field)?.invalid!
+      && this.form.get(field)?.touched!;
+  }
+
+  public send_message(): void {
 
     Object.keys(this.form.controls).forEach((key) => this.form.get(key)!.setValue(this.form.get(key)!.value.trim()));
 
