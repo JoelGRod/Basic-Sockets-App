@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 // Services
-import { FormValidatorsService } from 'src/app/shared/validators/form-validators.service';
 import { HomeService } from '../../services/home.service';
+import { FormValidatorsService } from 'src/app/shared/validators/form-validators.service';
+import { DialogService } from 'src/app/shared/services/dialog.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -35,7 +36,8 @@ export class ContactFormComponent {
   constructor( 
     private _fb: FormBuilder,
     private _fvalidators: FormValidatorsService,
-    private _home_service: HomeService
+    private _home_service: HomeService,
+    private _dialog_service: DialogService
   ) { }
 
   public is_field_invalid(field: string): boolean {
@@ -54,7 +56,20 @@ export class ContactFormComponent {
 
     this._home_service.send_contact_email(this.form.value)
       .subscribe( resp => {
-        this.formDirective.resetForm();
+        if(resp.ok) {
+          this._dialog_service.openGeneralDialog({
+            title: 'Message sent',
+            icon: 'check',
+            msg: 'Everything went well and your message has been sent'
+          });
+          this.formDirective.resetForm();
+        } else {
+          this._dialog_service.openGeneralDialog({
+            title: 'Message not sent',
+            icon: 'error',
+            msg: 'There has been an error and your message has not been sent. Try it again later.'
+          });
+        }
       });
   }
 
