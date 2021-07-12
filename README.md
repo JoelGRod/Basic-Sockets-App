@@ -1,6 +1,11 @@
 # Basic-Sockets-App
 
-Basic socket config in angular app for demostrative purposes
+
+This is my web development portfolio made with Angular 11.
+
+To test it, you need the associated backend, do an npm install and fill in the environment variables in its corresponding folder (see environment.dist for more information). Photos in the assets folder are not included.
+
+Basic socket config in angular app for demostrative purposes (and chat app).
 
 Library: ngx-socket-io
 
