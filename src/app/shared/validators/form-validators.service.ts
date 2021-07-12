@@ -7,6 +7,15 @@ import { AbstractControl, ValidationErrors } from '@angular/forms';
 export class FormValidatorsService {
 
   public email_pattern: string = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+  public char_limit_300: string = "[\w]{1,300}";
+  public phone: string = "\+?\(?\d{2,4}\)?[\d\s-]{3,}";
+  public zip_code: string = "^\d{5,6}(?:[-\s]\d{4})?$";
+  /* 
+  * Strong Password: Only accept a string that has 1 uppercase alphabet, 
+  * 1 lowercase alphabet, 2 digits and 1 special character. 
+  * Also the minimum allowed length is 8 characters. 
+  */
+  public strong_password: string = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9].*[0-9])(?=.*[^a-zA-Z0-9]).{8,}";
 
   constructor() { }
 
