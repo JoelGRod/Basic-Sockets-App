@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
       'It has been created using angular as frontend, nodejs as backend and mongodb as database (along with other technologies like Angular Material, Angular Flex Layout, Bootstrap 5, SCSS...).',
       'In the Works section you can see some examples (sometimes modules of this same app, external applications or wordpress pages) of what I have done so far, personally, as an example for potential employers.',
       'My resume is available in the "about me" section, as well as access to my social networks and github.',
-      'All the code of this website is included in the following github link in case you want to review it, remember that this page is under constant construction, there are many things that I still need to add.',
+      'All the code of this website it is included in the Basic-Sockets-App (frontend) and Backend-Server-TS-Sockets (Backend) projects in my GitHub account (see About Me section) in case you want to review it, remember that this page is under constant construction, there are many things that I still need to add!.',
       'Thank you so much for the visit!',
     ],
     // image: '/assets/images/logos/angular.png'
