@@ -11,7 +11,7 @@ export class GameService {
   private _cards: CardInfo[] = [
     {
       avatar_img: '/assets/images/logos/unity.png',
-      title: 'PacMan',
+      title: 'PocMan',
       subtitle: 'Unity 2019',
       image: '/assets/images/games/pacman.png',
       image_alt_text: 'Pac-Man ingame image',
@@ -20,8 +20,8 @@ export class GameService {
         'Physics systems are not used because the result is not suitable for this type of game.',
         'An array is used as a grid, each position of the characters takes one of these positions per movement, in turn, cells with walls are not accessible.',
         'In short, this game has been made in the most traditional way possible using Unity to obtain the best result.',
-        'Menu Music: Brute Force - Daniel Deluxe',
-        'Game Music: Nightcrawler - Patrick Cowley'
+        'Menu Music: Day I - Da7kL3i4',
+        'Game Music: 1n Th3 P45t - Da7kL3i4'
       ],
       link: '/game/pacman'
     },
@@ -35,7 +35,7 @@ export class GameService {
         'A WallBreaker clone made with the Unity\'s 2D engine.',
         'In this game the unity physics system is used, being very useful for the movement of the ball and the collisions with the bricks.',
         'It only consists of one level, just for demonstrative purposes.',
-        'Game Music: Divide - Magna'
+        'Game Music: Lov3 D34dm4u5 - Da7kL3i4'
       ],
       link: '/game/wallbreaker'
     },
@@ -65,8 +65,8 @@ export class GameService {
         'We return to the grid system using two-dimensional arrays, for this type of classic games it is what works best.',
         'A single endless level, the only thing that counts is the score you get.',
         'A timeless classic.',
-        'Menu Music: Stone in Focus - Aphex Twin',
-        'Game Music: Oneiric - Lazerhawk'
+        'Menu Music: S0m3 0l1mp1c... - Da7kL3i4',
+        'Game Music: My Fl45hB4ck - Da7kL3i4'
       ],
       link: '/game/tetris'
     },
@@ -80,8 +80,8 @@ export class GameService {
         'An unfinished little game using Unity\'s 2D engine.',
         'I wanted to test the parallax effect in the backgrounds, animate a character created by myself and the random generation of the path the protagonist moves on.',
         'It is not a big deal and there is a lot to fix, it is one of those projects that are left half but I put it here since I do not think I will ever take it up again.',
-        'Menu Music: Super Mario Main Theme - Koji Kondo',
-        'Game Music: Territory - Daniel Deluxe'
+        'Menu Music: Day II - Da7kL3i4',
+        'Game Music: Th3 1n5ul1n614n - Da7kL3i4'
       ],
       link: '/game/running'
     },
