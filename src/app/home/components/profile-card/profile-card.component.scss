@@ -6,7 +6,7 @@
 
     .profile-desc {
         max-height: 16rem;
-        padding: 0rem 0.5rem 0.5rem 0.5rem;
+        padding: 0rem 0.5rem 0rem 0.5rem;
         text-align: justify;
         text-justify: inter-word;
         overflow-y: scroll;
@@ -45,6 +45,19 @@
 
         .profile-desc {
             max-height: 4rem;
+            // white-space: nowrap;
+            // overflow: hidden;
+            // text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+
+        .profile-desc:hover {
+            transition: max-height 1s; 
+            max-height: 20rem;
+            -webkit-line-clamp: 20;
         }
     }
 }
