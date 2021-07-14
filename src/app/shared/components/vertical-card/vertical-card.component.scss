@@ -3,7 +3,6 @@
     margin: 1rem 1rem 0rem 1rem;
     border-radius: 0.5rem;
     background-color: rgba(51,51,51,0.70);
-    overflow-y: scroll;
     z-index: 1;
 }
   
@@ -18,9 +17,7 @@
 }
 
 .card-content {
-    min-height: 12rem;
-    max-height: 12rem;
-    overflow-y: scroll;
+    min-height: 8rem;
 }
 
 a:hover, a:focus {
@@ -31,10 +28,6 @@ a:hover, a:focus {
     .v-card {
         margin: 2rem 4rem 0rem 4rem;
     }
-
-    .card-content {
-        min-height: 8rem;
-    }
 }
 
 @media (min-width: 960px) {
@@ -43,6 +36,17 @@ a:hover, a:focus {
     }
 
     .card-content {
-        min-height: 12rem;
+        min-height: 4rem;
+        max-height: 8rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
     }
+
+    .card-content:hover {
+        transition: max-height 1s; 
+        max-height: 30rem;
+        -webkit-line-clamp: 30;
+    }  
 }
