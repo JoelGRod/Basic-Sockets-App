@@ -39,6 +39,14 @@
                     Go to Web!
                 </a>
             </button>
+            <button *ngIf="card.code_link" 
+                mat-raised-button>
+                <a [href]="card.code_link" 
+                    target="_blank" 
+                    rel="nofollow">
+                    Code
+                </a>
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>

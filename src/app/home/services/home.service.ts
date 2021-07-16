@@ -31,7 +31,8 @@ export class HomeService {
         'As a security measure, each room can only be entered with a single profile.',
         'The backend is solved with NodeJs and Express, MongoDb is used as database.'
       ],
-      link: '/chat/menu'
+      link: '/chat/menu',
+      code_link: 'https://github.com/JoelGRod/Backend-Server-TS-Sockets'
     },
     {
       avatar_img: '/assets/images/logos/wordpress.png',
@@ -57,6 +58,22 @@ export class HomeService {
         'The goal was to familiarize myself with unity and what the engine is capable of in 2D.'
       ],
       link: '/game'
+    },
+    {
+      avatar_img: '/assets/images/logos/angular.png',
+      title: 'Focan Final Project',
+      subtitle: 'MEAN Stack',
+      image: '/assets/images/stock/focan.png',
+      image_alt_text: 'App main dashboard image at the hospitals section.',
+      description: [
+        'A basic administrative app created with Angular, NodeJs and MongoDb as a final project for the focan institute course of web development',
+        'You can register hospitals and doctors, associate them with each other and make modifications.',
+        'It also allows you to log in a traditional way or through google and its token system with oauth2 using GCP.',
+        'It also allows you access to your own profile to modify it and change the general theme of the app.',
+        'The Project is based on the udemy courses (Angular Advanced) of the great Fernando Herrera.',
+      ],
+      external_link: 'https://focan-final-project.herokuapp.com/login',
+      code_link: 'https://github.com/JoelGRod/Focan-Final-Project'
     },
   ];
 

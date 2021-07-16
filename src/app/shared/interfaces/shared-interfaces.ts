@@ -22,4 +22,5 @@ export interface CardInfo {
     avatar_img?: string;
     link?: string;
     external_link?: string;
+    code_link?: string;
 }
