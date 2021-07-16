@@ -66,11 +66,11 @@ export class HomeService {
       image: '/assets/images/stock/focan.png',
       image_alt_text: 'App main dashboard image at the hospitals section.',
       description: [
-        'A basic administrative app created with Angular, NodeJs and MongoDb as a final project for the focan institute course of web development',
+        'A basic administrative app created with Angular, NodeJs and MongoDb as a final project for the web development course',
         'You can register hospitals and doctors, associate them with each other and make modifications.',
         'It also allows you to log in a traditional way or through google and its token system with oauth2 using GCP.',
         'It also allows you access to your own profile to modify it and change the general theme of the app.',
-        'The Project is based on the udemy courses (Angular Advanced) of the great Fernando Herrera.',
+        'The Project is based on the udemy courses (Angular Advanced) from the great teacher Fernando Herrera.',
       ],
       external_link: 'https://focan-final-project.herokuapp.com/login',
       code_link: 'https://github.com/JoelGRod/Focan-Final-Project'
