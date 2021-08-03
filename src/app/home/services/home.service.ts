@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 // Interfaces
 import { CardInfo } from 'src/app/shared/interfaces/shared-interfaces';
-import { Section, Skill, EmailResponse, EmailBody } from '../interfaces/home-interfaces';
+import { Section, Skill, EmailResponse, EmailBody, Profile } from '../interfaces/home-interfaces';
 // Environments
 import { environment } from 'src/environments/environment';
 // RXJS
@@ -21,6 +21,10 @@ export class HomeService {
   // Getters
   public get home_card_info(): CardInfo {
     return {...eng_repo.home_card_info};
+  }
+
+  public get profile_info(): Profile {
+    return {...eng_repo.profile_info};
   }
 
   public get cards(): CardInfo[] {

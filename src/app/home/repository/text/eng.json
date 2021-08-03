@@ -24,6 +24,33 @@
             "/assets/images/logos/autocad.png"
         ]
     },
+    "profile_info": {
+        "name": "Joel Glez Rguez",
+        "birthdate": "09/17/82",
+        "email": "joelgrdev@gmail.com",
+        "location": "Tenerife, Canary Islands, Spain",
+        "description": "Full Stack MEAN Web Developer (Junior), Architecture Technician, Building Operator, Multipurpose Professional, Father. My profile is eminently technical, give me a problem and I will do everything in my hands to find a solution. Passionate about technology, I decided to reinvent myself after the global crisis suffered in 2007. Angular and NodeJs are my favorite Frontend and Backend working ecosystems, but I'm always open to other alternatives.",
+        "image": "/assets/images/about/profile_2.jpg",
+        "image_alt_text": "Joel profile image",
+        "social": [
+            {
+                "name": "github",
+                "link": "https://github.com/JoelGRod"
+            },
+            {
+                "name": "twitter",
+                "link": "https://twitter.com/GRJoe8"
+            },
+            {
+                "name": "linkedin",
+                "link": "https://www.linkedin.com/in/joel-gonz%C3%A1lez-rodr%C3%ADguez-087b6652/"
+            },
+            {
+                "name": "soundcloud",
+                "link": "https://soundcloud.com/da7kl3i4"
+            }
+        ]
+    },
     "cards": [
         {
             "avatar_img": "/assets/images/logos/angular.png",

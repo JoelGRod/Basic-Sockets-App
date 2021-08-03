@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { HomeService } from '../../services/home.service';
 import { IconRegistryService } from 'src/app/shared/services/icon-registry.service';
 // Interfaces
-import { Section, Skill } from '../../interfaces/home-interfaces';
+import { Profile, Section, Skill } from '../../interfaces/home-interfaces';
 
 @Component({
   selector: 'app-about',
@@ -18,6 +18,10 @@ export class AboutComponent {
   ) { }
 
   // Content - List
+  public get profile_info(): Profile {
+    return this._home_service.profile_info;
+  }
+
   public get experiences(): Section[] {
     return this._home_service.experiences;
   }

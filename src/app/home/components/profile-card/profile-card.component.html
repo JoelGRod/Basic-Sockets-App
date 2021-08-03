@@ -1,71 +1,34 @@
 <mat-card class="profile-card animate__animated animate__fadeIn animation-speed">
     <img mat-card-image 
         class="filtered" 
-        src="../../../../assets/images/about/profile_2.jpg" 
-        alt="Joel profile image">
+        [src]="profile_info.image" 
+        [alt]="profile_info.image_alt_text">
     <mat-card-content>
         <div class="profile-data">
-            <p>Joel Glez Rguez</p>
-            <p>{{ '09/17/82' | date }} </p>
+            <p>{{profile_info.name}}</p>
+            <p>{{ profile_info.birthdate | date }} </p>
             <address>
-                <p><a href="mailto:joelgr@hotmail.es">
-                    joelgrdev@gmail.com</a>
+                <p><a [href]="'mailto:' + profile_info.email">
+                    {{profile_info.email}}</a>
                 </p>
-                <p>Tenerife, Canary Islands, Spain</p>
+                <p>{{profile_info.location}}</p>
             </address>
         </div>
         <p class="profile-desc">
-            Full Stack MEAN Web Developer (Junior), Architecture Technician, Building Operator,
-            Multipurpose Professional, Father. My profile is eminently technical,
-            give me a problem and I will do everything in my hands to find a solution.
-            Passionate about technology, I decided to reinvent myself after the global crisis
-            suffered in 2007. Angular and NodeJs are my favorite Frontend and Backend
-            working ecosystems, but I'm always open to other alternatives.
+            {{ profile_info.description }}
         </p>
     </mat-card-content>
     <mat-card-actions align="end">
-        <button mat-mini-fab 
+        <button mat-mini-fab
+            *ngFor="let social_button of profile_info.social"
             color="primary" 
             class="social-button" 
             fxLayout="row" 
             fxLayoutAlign="center center">
-            <a href="https://github.com/JoelGRod" 
+            <a [href]="social_button.link" 
                 target="_blank" 
                 rel="nofollow">
-                <mat-icon svgIcon="github"></mat-icon>
-            </a>
-        </button>
-        <button mat-mini-fab 
-            color="primary" 
-            class="social-button" 
-            fxLayout="row" 
-            fxLayoutAlign="center center">
-            <a href="https://twitter.com/GRJoe8" 
-                target="_blank" 
-                rel="nofollow">
-                <mat-icon svgIcon="twitter"></mat-icon>
-            </a>
-        </button>
-        <button mat-mini-fab 
-            color="primary" 
-            class="social-button" 
-            fxLayout="row" 
-            fxLayoutAlign="center end">
-            <a href="https://www.linkedin.com/in/joel-gonz%C3%A1lez-rodr%C3%ADguez-087b6652/" 
-                target="_blank"
-                rel="nofollow">
-                <mat-icon svgIcon="linkedin"></mat-icon>
-            </a>
-        </button>
-        <button mat-mini-fab 
-            color="primary" 
-            class="social-button" 
-            fxLayout="row" 
-            fxLayoutAlign="center end">
-            <a href="https://soundcloud.com/da7kl3i4" 
-                target="_blank" 
-                rel="nofollow">
-                <mat-icon svgIcon="soundcloud"></mat-icon>
+                <mat-icon [svgIcon]="social_button.name"></mat-icon>
             </a>
         </button>
     </mat-card-actions>

@@ -1,3 +1,19 @@
+export interface Profile {
+    name: string;
+    birthdate: string;
+    email: string;
+    location: string;
+    description: string;
+    image: string;
+    image_alt_text: string;
+    social: Social[];
+}
+
+export interface Social {
+    name: string;
+    link: string;
+}
+
 export interface Section {
     name: string;
     description: string;
