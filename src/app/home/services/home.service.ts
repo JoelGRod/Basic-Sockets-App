@@ -19,6 +19,10 @@ export class HomeService {
   private _base_url: string = environment.base_url;
 
   // Getters
+  public get home_card_info(): CardInfo {
+    return {...eng_repo.home_card_info};
+  }
+
   public get cards(): CardInfo[] {
     return [...eng_repo.cards];
   }
