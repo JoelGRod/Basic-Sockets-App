@@ -1,8 +1,8 @@
 export interface Section {
     name: string;
     description: string;
-    start_date: Date;
-    end_date: Date;
+    start_date: string;
+    end_date: string;
 }
 
 export interface Skill {
