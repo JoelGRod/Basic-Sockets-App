@@ -107,6 +107,54 @@
             ],
             "external_link": "https://focan-final-project.herokuapp.com/login",
             "code_link": "https://github.com/JoelGRod/Focan-Final-Project"
+        },
+        {
+            "avatar_img": "/assets/images/logos/angular.png",
+            "title": "Countries App",
+            "subtitle": "Angular App",
+            "image": "/assets/images/stock/countriesApp.jpeg",
+            "image_alt_text": "Girl reading a map photo.",
+            "description": [
+                "A basic app created with Angular to show information of the countries that are searched.",
+                "You can search by country, capital or region and have an autocomplete option.",
+                "Use the API 'REST Countries', very useful to obtain information of this kind.",
+                "This app is deployed on Netlify.",
+                "The Project is based on the udemy courses (Angular Basic 2021) from the great teacher Fernando Herrera."
+            ],
+            "external_link": "https://countries-app-af2708.netlify.app/",
+            "code_link": "https://github.com/JoelGRod/Countries-App"
+        },
+        {
+            "avatar_img": "/assets/images/logos/angular.png",
+            "title": "Gifs App",
+            "subtitle": "Angular App",
+            "image": "/assets/images/stock/gifsApp2.jpeg",
+            "image_alt_text": "A funny cat photo.",
+            "description": [
+                "A basic app created with Angular for search gifs of any kind.",
+                "It has a history of searched gifs and a 'gifs to show' limit.",
+                "Use the API 'Giphy' as gifs search engine.",
+                "This app is deployed on Netlify.",
+                "The Project is based on the udemy courses (Angular Basic 2021) from the great teacher Fernando Herrera."
+            ],
+            "external_link": "https://gifs-app-de371a.netlify.app/",
+            "code_link": "https://github.com/JoelGRod/Gifs-App"
+        },
+        {
+            "avatar_img": "/assets/images/logos/vue.png",
+            "title": "Pokemon Game App",
+            "subtitle": "Vue App",
+            "image": "/assets/images/stock/pokemonApp.jpeg",
+            "image_alt_text": "A funny cat with pokemon photo.",
+            "description": [
+                "A basic game app created with Vue which consists of finding out the hidden pokemon.",
+                "It basically shows you the silhouette of a pokemon and you must guess its name.",
+                "Use the API 'PokeApi' as pokemon info engine.",
+                "This app is deployed on Netlify.",
+                "The Project is based on the udemy courses (Vue 2021) from the great teacher Fernando Herrera."
+            ],
+            "external_link": "https://vue-pokemon-example.netlify.app/",
+            "code_link": "https://github.com/JoelGRod/Vue-Fundamentals-2"
         }
     ],
     "experiences": [
