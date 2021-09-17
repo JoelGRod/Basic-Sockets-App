@@ -11,17 +11,19 @@
             "Thank you so much for the visit!"
         ],
         "image_group": [
+            "/assets/images/logos/vue.png",
             "/assets/images/logos/angular.png",
+            "/assets/images/logos/nodejs.png",
             "/assets/images/logos/typescript.png",
             "/assets/images/logos/javascript.png",
-            "/assets/images/logos/nodejs.png",
             "/assets/images/logos/mongodb.png",
             "/assets/images/logos/mysql.png",
             "/assets/images/logos/docker.png",
             "/assets/images/logos/wordpress.png",
             "/assets/images/logos/vscode.png",
             "/assets/images/logos/unity.png",
-            "/assets/images/logos/autocad.png"
+            "/assets/images/logos/autocad.png",
+            "/assets/images/logos/ableton.png"
         ]
     },
     "profile_info": {
@@ -29,7 +31,7 @@
         "birthdate": "09/17/82",
         "email": "joelgrdev@gmail.com",
         "location": "Tenerife, Canary Islands, Spain",
-        "description": "Full Stack MEAN Web Developer (Junior), Architecture Technician, Building Operator, Multipurpose Professional, Father. My profile is eminently technical, give me a problem and I will do everything in my hands to find a solution. Passionate about technology, I decided to reinvent myself after the global crisis suffered in 2007. Angular and NodeJs are my favorite Frontend and Backend working ecosystems, but I'm always open to other alternatives.",
+        "description": "Full Stack Javascript Web Developer, IT Systems Technician, Architecture Technician, Father. My profile is eminently technical, give me a problem and I will do everything in my hands to find a solution. Passionate about technology, I decided to reinvent myself after the global crisis suffered in 2007. Angular and NodeJs are my favorite Frontend and Backend working ecosystems, but I'm always open to other alternatives.",
         "image": "/assets/images/about/profile_2.jpg",
         "image_alt_text": "Joel profile image",
         "social": [
@@ -160,12 +162,12 @@
     "experiences": [
         {
             "name": "IT Systems Technician",
-            "description": "EGATESA - Computer maintenance. Preparation, configuration and assembly of individual equipment. Bizerba programming. Servers and computers backups. Development of lightweight Apps with Access. ERP system used: CSB-System. User Support. RGPD.",
+            "description": "EGATESA - Computer maintenance. Preparation, configuration and assembly of individual equipment. Bizerba programming. Servers and computers backups. Development of lightweight Apps with Access and Angular. ERP system used: CSB-System. User Support. RGPD.",
             "start_date": "01/05/15",
             "end_date": "12/25/18"
         },
         {
-            "name": "Maintenance Administrative",
+            "name": "IT Systems Technician",
             "description": "GC 7 Islas - Administrative tasks in the maintenance area.",
             "start_date": "07/1/12",
             "end_date": "01/1/13"
@@ -211,15 +213,11 @@
     ],
     "main_skills": [
         {
-            "name": "HTML",
+            "name": "Angular 2+",
             "color": "accent"
         },
         {
-            "name": "CSS",
-            "color": "gray"
-        },
-        {
-            "name": "TypeScript",
+            "name": "VueJs",
             "color": "accent"
         },
         {
@@ -227,11 +225,15 @@
             "color": "primary"
         },
         {
-            "name": "Angular 2+",
+            "name": "JavaScript",
             "color": "accent"
         },
         {
-            "name": "MySQL",
+            "name": "TypeScript",
+            "color": "accent"
+        },
+        {
+            "name": "SQL",
             "color": "primary"
         },
         {
@@ -239,15 +241,11 @@
             "color": "accent"
         },
         {
-            "name": "VSCode",
-            "color": "primary"
+            "name": "HTML",
+            "color": "accent"
         },
         {
-            "name": "MacOs",
-            "color": "primary"
-        },
-        {
-            "name": "Debian",
+            "name": "CSS",
             "color": "gray"
         },
         {
@@ -260,10 +258,6 @@
         }
     ],
     "secondary_skills": [
-        {
-            "name": "VueJs",
-            "color": "accent"
-        },
         {
             "name": "Python",
             "color": "primary"
@@ -299,14 +293,6 @@
         {
             "name": "Unity",
             "color": "primary"
-        },
-        {
-            "name": "Eclipse",
-            "color": "gray"
-        },
-        {
-            "name": "Netbeans",
-            "color": "gray"
         }
     ]
 }
