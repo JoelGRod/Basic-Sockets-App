@@ -31,7 +31,7 @@
         "birthdate": "09/17/82",
         "email": "joelgrdev@gmail.com",
         "location": "Tenerife, Canary Islands, Spain",
-        "description": "Javascript Web Developer, IT Systems Technician and Architecture Technician. My profile is eminently technical, give me a problem and I will do everything in my hands to find a solution.",
+        "description": "Full Stack Javascript Web Developer, IT Systems Technician, Architecture Technician, Father. My profile is eminently technical, give me a problem and I will do everything in my hands to find a solution. Passionate about technology, I decided to reinvent myself after the global crisis suffered in 2007. Angular and NodeJs are my favorite Frontend and Backend working ecosystems, but I'm always open to other alternatives.",
         "image": "/assets/images/about/profile_2.jpg",
         "image_alt_text": "Joel profile image",
         "social": [
@@ -46,6 +46,10 @@
             {
                 "name": "linkedin",
                 "link": "https://www.linkedin.com/in/joel-gonz%C3%A1lez-rodr%C3%ADguez-087b6652/"
+            },
+            {
+                "name": "soundcloud",
+                "link": "https://soundcloud.com/da7kl3i4"
             }
         ]
     },
@@ -137,6 +141,22 @@
             ],
             "external_link": "https://gifs-app-de371a.netlify.app/",
             "code_link": "https://github.com/JoelGRod/Gifs-App"
+        },
+        {
+            "avatar_img": "/assets/images/logos/vue.png",
+            "title": "Pokemon Game App",
+            "subtitle": "Vue App",
+            "image": "/assets/images/stock/pokemonApp.jpeg",
+            "image_alt_text": "A funny cat with pokemon photo.",
+            "description": [
+                "A basic game app created with Vue which consists of finding out the hidden pokemon.",
+                "It basically shows you the silhouette of a pokemon and you must guess its name.",
+                "Use the API 'PokeApi' as pokemon info engine.",
+                "This app is deployed on Netlify.",
+                "The Project is based on the udemy courses (Vue 2021) from the great teacher Fernando Herrera."
+            ],
+            "external_link": "https://vue-pokemon-example.netlify.app/",
+            "code_link": "https://github.com/JoelGRod/Vue-Fundamentals-2"
         }
     ],
     "experiences": [
@@ -249,10 +269,6 @@
         {
             "name": "Laravel",
             "color": "gray"
-        },
-        {
-            "name": "Java",
-            "color": "primary"
         },
         {
             "name": "Virtual Box",

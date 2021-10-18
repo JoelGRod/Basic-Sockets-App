@@ -19,11 +19,11 @@ export class MainComponent {
       icon: 'label',
       name: 'Demos'
     },
-    {
-      route: '/home/angular',
-      icon: 'label',
-      name: 'Angular'
-    },
+    // {
+    //   route: '/home/angular',
+    //   icon: 'label',
+    //   name: 'Angular'
+    // },
     {
       route: '/home/about',
       icon: 'label',
