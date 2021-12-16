@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { JwtValidatorGuard } from './shared/guards/jwt-validator.guard';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomeModule )
-  },
-  {
-    path: 'game',
-    loadChildren: () => import('./game/game.module').then( m => m.GameModule )
-  },
+  // {
+  //   path: 'home',
+  //   loadChildren: () => import('./home/home.module').then( m => m.HomeModule )
+  // },
+  // {
+  //   path: 'game',
+  //   loadChildren: () => import('./game/game.module').then( m => m.GameModule )
+  // },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule )
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'home'
+    redirectTo: 'chat'
   }
 ];
 
